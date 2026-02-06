@@ -1,0 +1,6 @@
+{
+  "editorScript": [
+    "file:./components.js",
+    "file:./helper.js"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "tablebuilder/table-builder-item",
+  "version": "1.0.0",
+  "title": "Table Data",
+  "category": "tablebuilder",
+  "description": "Table Data Block.",
+  "parent": [
+    "tablebuilder/table-builder-row"
+  ],
+  "attributes": {
+    "blockID": {
+      "type": "string"
+    },
+    "blockClass": {
+      "type": "string"
+    },
+    "blocksCSS": {
+      "type": "object"
+    },
+    "categoryName": {
+      "type": "string",
+      "default": "Gutenkit"
+    },
+    "PaddingDesktop": {
+      "type": "object"
+    },
+    "PaddingTablet": {
+      "type": "object"
+    },
+    "PaddingMobile": {
+      "type": "object"
+    },
+    "PaddingMobileLandscape": {
+      "type": "object"
+    },
+    "PaddingTabletLandscape": {
+      "type": "object"
+    },
+    "PaddingLaptop": {
+      "type": "object"
+    },
+    "PaddingWideScreen": {
+      "type": "object"
+    },
+    "alignmentDesktop": {
+      "type": "string"
+    },
+    "alignmentTablet": {
+      "type": "string"
+    },
+    "alignmentMobile": {
+      "type": "string"
+    },
+    "alignmentMobileLandscape": {
+      "type": "string"
+    },
+    "alignmentTabletLandscape": {
+      "type": "string"
+    },
+    "alignmentLaptop": {
+      "type": "string"
+    },
+    "alignmentWideScreen": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthDesktop": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthTablet": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthMobile": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthMobileLandscape": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthTabletLandscape": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthLaptop": {
+      "type": "string"
+    },
+    "tableBuilderItemWidthWideScreen": {
+      "type": "string"
+    },
+    "tableBuilderItemBackground": {
+      "type": "object"
+    },
+    "tableBuilderItemHoverBackground": {
+      "type": "object"
+    },
+    "tableBuilderItemBorder": {
+      "type": "object"
+    },
+    "tableBuilderItemHoverBorder": {
+      "type": "object"
+    },
+    "tableBuilderBorderItemHoverTransition": {
+      "type": "object"
+    }
+  },
+  "usesContext": [
+    "tablebuilder/table-headers",
+    "tablebuilder/table-footers",
+    "tablebuilder/table-rowCount",
+    "tablebuilder/table-columnCount"
+  ],
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "table-builder-block",
+  "editorScript": "file:./index.js"
+}

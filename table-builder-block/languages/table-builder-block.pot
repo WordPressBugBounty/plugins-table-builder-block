@@ -1,0 +1,1224 @@
+# Copyright (C) 2026 Wpmet
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Table Builder Block 2.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/table-builder-block\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-02-02T10:04:30+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: table-builder-block\n"
+
+#. Plugin Name of the plugin
+#: table-builder-block.php
+msgid "Table Builder Block"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: table-builder-block.php
+msgid "https://wpmet.com/plugin/gutenkit/"
+msgstr ""
+
+#. Description of the plugin
+#: table-builder-block.php
+msgid "Powerful table builder block for Gutenberg block editor."
+msgstr ""
+
+#. Author of the plugin
+#: table-builder-block.php
+msgid "Wpmet"
+msgstr ""
+
+#. Author URI of the plugin
+#: table-builder-block.php
+msgid "https://wpmet.com/"
+msgstr ""
+
+#: includes/Admin/Admin.php:33
+#: includes/Admin/Admin.php:34
+msgid "Table Builder"
+msgstr ""
+
+#: includes/Admin/Admin.php:44
+#: includes/Admin/Admin.php:45
+msgid "Welcome"
+msgstr ""
+
+#: includes/Admin/Admin.php:54
+#: includes/Admin/Admin.php:55
+msgid "Features"
+msgstr ""
+
+#: includes/Admin/Api/SettingsData.php:41
+#: includes/Admin/Api/SettingsData.php:68
+msgid "Nonce mismatch."
+msgstr ""
+
+#: includes/Admin/Api/SettingsData.php:48
+#: includes/Admin/Api/SettingsData.php:75
+msgid "Access denied."
+msgstr ""
+
+#: includes/Admin/Api/SettingsData.php:57
+msgid "Settings list has been fetched successfully."
+msgstr ""
+
+#: includes/Admin/Api/SettingsData.php:88
+msgid "Settings list has been updated successfully."
+msgstr ""
+
+#: includes/Admin/Api/SettingsData.php:93
+msgid "Something went wrong."
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:6
+msgid "Explore Table Builder"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:8
+msgid "Visit Website"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:10
+msgid "See what’s in it for you and the features we’ve got: Patterns, Templates, Demo Blocks, and more!"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:13
+msgid "Your Feedback Matters!"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:15
+msgid "Leave a Review"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:17
+msgid "Drop us a quick review — your feedback helps us get even better at what we do!"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:20
+msgid "Demo Blocks"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:22
+msgid "Browse Demo"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:24
+msgid "Go through our huge collection of demo blocks and get fresh new design ideas for your websites."
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:27
+msgid "Join the Community"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:29
+msgid "Join Now"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:31
+msgid "Be a part of the Wpmet community, connect with your fellow users, share experiences, and stay informed."
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:34
+msgid "Need help?"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:36
+msgid "Contact Us"
+msgstr ""
+
+#: build/admin/dashboard/index.js:1
+#: src/admin/dashboard/assets/js/welcome.js:38
+msgid "Feel free to reach out if you ever need a hand. Our support team is always there for you."
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder-row/index.js:1
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder-item/settings.js:17
+#: src/blocks/table-builder-row/settings.js:16
+#: src/blocks/table-builder/settings.js:56
+msgid "Style"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: src/blocks/table-builder-item/settings.js:26
+msgid "Layout"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:31
+#: src/blocks/table-builder/settings.js:166
+#: src/blocks/table-builder/settings.js:259
+#: src/blocks/table-builder/settings.js:385
+#: src/table-builder-components/controls/caption/CaptionStyle.js:12
+#: src/table-builder-components/controls/cell/CellStyle.js:20
+#: src/table-builder-components/controls/header/HeaderStyle.js:21
+msgid "Alignment"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:64
+#: src/table-builder-components/controls/search/SearchStyle.js:86
+#: src/table-builder-components/controls/search/SearchStyle.js:115
+#: src/table-builder-components/controls/search/SearchStyle.js:280
+msgid "Width"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:77
+#: src/blocks/table-builder/settings.js:233
+#: src/blocks/table-builder/settings.js:356
+#: src/blocks/table-builder/settings.js:428
+#: src/table-builder-components/controls/caption/CaptionStyle.js:52
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:112
+#: src/table-builder-components/controls/cell/CellStyle.js:99
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:95
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:105
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:188
+#: src/table-builder-components/controls/header/HeaderStyle.js:68
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:143
+#: src/table-builder-components/controls/search/SearchStyle.js:98
+#: src/table-builder-components/controls/search/SearchStyle.js:259
+#: src/table-builder-components/controls/search/SearchStyle.js:424
+msgid "Padding"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder-row/index.js:1
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:92
+#: src/blocks/table-builder-item/settings.js:110
+#: src/blocks/table-builder-item/settings.js:121
+#: src/blocks/table-builder-row/settings.js:24
+#: src/blocks/table-builder-row/settings.js:42
+#: src/blocks/table-builder-row/settings.js:52
+#: src/blocks/table-builder/settings.js:213
+#: src/blocks/table-builder/settings.js:301
+#: src/blocks/table-builder/settings.js:406
+#: src/table-builder-components/components/advanced-column-style/index.js:70
+#: src/table-builder-components/components/freeze-table/index.js:92
+#: src/table-builder-components/components/freeze-table/index.js:130
+#: src/table-builder-components/components/freeze-table/index.js:145
+#: src/table-builder-components/components/freeze-table/index.js:155
+#: src/table-builder-components/components/selection-color/ColumnColor.js:29
+#: src/table-builder-components/controls/caption/CaptionStyle.js:33
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:49
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:82
+#: src/table-builder-components/controls/cell/CellStyle.js:57
+#: src/table-builder-components/controls/cell/CellStyle.js:73
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:42
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:70
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:134
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:157
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:222
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:250
+#: src/table-builder-components/controls/header/HeaderStyle.js:42
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:44
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:100
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:106
+#: src/table-builder-components/controls/search/SearchStyle.js:33
+#: src/table-builder-components/controls/search/SearchStyle.js:61
+#: src/table-builder-components/controls/search/SearchStyle.js:163
+#: src/table-builder-components/controls/search/SearchStyle.js:196
+#: src/table-builder-components/controls/search/SearchStyle.js:229
+#: src/table-builder-components/controls/search/SearchStyle.js:328
+#: src/table-builder-components/controls/search/SearchStyle.js:361
+#: src/table-builder-components/controls/search/SearchStyle.js:394
+msgid "Background"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder-row/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:98
+#: src/blocks/table-builder-item/settings.js:138
+#: src/blocks/table-builder-row/settings.js:30
+#: src/blocks/table-builder-row/settings.js:68
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:31
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:24
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:121
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:204
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:16
+#: src/table-builder-components/controls/search/SearchStyle.js:15
+#: src/table-builder-components/controls/search/SearchStyle.js:141
+#: src/table-builder-components/controls/search/SearchStyle.js:306
+#: src/table-builder-components/controls/sorting/SortingStyle.js:54
+msgid "Normal"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder-row/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:102
+#: src/blocks/table-builder-item/settings.js:142
+#: src/blocks/table-builder-row/settings.js:34
+#: src/blocks/table-builder-row/settings.js:72
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:35
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:28
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:125
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:208
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:20
+#: src/table-builder-components/controls/search/SearchStyle.js:19
+#: src/table-builder-components/controls/search/SearchStyle.js:145
+#: src/table-builder-components/controls/search/SearchStyle.js:310
+#: src/table-builder-components/controls/sorting/SortingStyle.js:58
+msgid "Hover"
+msgstr ""
+
+#: build/blocks/table-builder-item/index.js:1
+#: build/blocks/table-builder-row/index.js:1
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder-item/settings.js:132
+#: src/blocks/table-builder-row/settings.js:62
+#: src/blocks/table-builder/settings.js:222
+#: src/blocks/table-builder/settings.js:320
+#: src/blocks/table-builder/settings.js:412
+#: src/table-builder-components/controls/caption/CaptionStyle.js:39
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:55
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:88
+#: src/table-builder-components/controls/cell/CellStyle.js:85
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:48
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:76
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:140
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:163
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:228
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:256
+#: src/table-builder-components/controls/header/HeaderStyle.js:48
+#: src/table-builder-components/controls/search/SearchStyle.js:39
+#: src/table-builder-components/controls/search/SearchStyle.js:67
+#: src/table-builder-components/controls/search/SearchStyle.js:169
+#: src/table-builder-components/controls/search/SearchStyle.js:202
+#: src/table-builder-components/controls/search/SearchStyle.js:235
+#: src/table-builder-components/controls/search/SearchStyle.js:334
+#: src/table-builder-components/controls/search/SearchStyle.js:367
+#: src/table-builder-components/controls/search/SearchStyle.js:400
+msgid "Border"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:252
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:9
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:18
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:26
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:44
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:77
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:34
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:90
+msgid "Text Color"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:241
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:10
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:19
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:27
+msgid "Background Color"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:229
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:11
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:20
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:28
+msgid "CSS Class"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:52
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:12
+#: src/table-builder-components/controls/pagination/PaginationContent.js:42
+#: src/table-builder-components/controls/pagination/PaginationContent.js:62
+#: src/table-builder-components/controls/pagination/PaginationContent.js:70
+msgid "Content"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:35
+msgid "Is Equal To"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:36
+msgid "Not Equal"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:37
+msgid "Contains"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/Options.js:38
+msgid "Does Not Contain"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:153
+msgid "Conditional Formatting"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:163
+msgid "Target Column"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:169
+msgid "Condition Type"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:177
+msgid "Comparison Value"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:178
+msgid "Enter comparison value"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:185
+msgid "Apply Formatting"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:201
+msgid "Replace Text"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:202
+msgid "Enter Value"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/Conditional-Formatting/index.js:230
+msgid "Enter CSS class name"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/freeze-table/index.js:53
+msgid "Freeze Table"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/freeze-table/index.js:55
+msgid "Enable Freeze"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/freeze-table/index.js:80
+msgid "Freeze Header"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:208
+#: src/blocks/table-builder/settings.js:285
+#: src/blocks/table-builder/settings.js:401
+#: src/table-builder-components/components/advanced-column-style/index.js:66
+#: src/table-builder-components/components/freeze-table/index.js:82
+#: src/table-builder-components/components/freeze-table/index.js:120
+#: src/table-builder-components/components/selection-color/ColumnColor.js:37
+#: src/table-builder-components/controls/caption/CaptionStyle.js:28
+#: src/table-builder-components/controls/cell/CellStyle.js:52
+#: src/table-builder-components/controls/cell/CellStyle.js:68
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:37
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:65
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:217
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:245
+#: src/table-builder-components/controls/header/HeaderStyle.js:37
+#: src/table-builder-components/controls/search/SearchStyle.js:28
+#: src/table-builder-components/controls/search/SearchStyle.js:56
+#: src/table-builder-components/controls/search/SearchStyle.js:158
+#: src/table-builder-components/controls/search/SearchStyle.js:191
+#: src/table-builder-components/controls/search/SearchStyle.js:224
+#: src/table-builder-components/controls/search/SearchStyle.js:323
+#: src/table-builder-components/controls/search/SearchStyle.js:356
+#: src/table-builder-components/controls/search/SearchStyle.js:389
+#: src/table-builder-components/controls/sorting/SortingStyle.js:66
+#: src/table-builder-components/controls/sorting/SortingStyle.js:74
+msgid "Color"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/freeze-table/index.js:102
+msgid "Freeze Column"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/freeze-table/index.js:107
+msgid "Left"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/table-builder-components/components/freeze-table/index.js:111
+msgid "Right"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:60
+msgid "Advanced"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:69
+msgid "Settings"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:71
+msgid "Enable Header"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:75
+msgid "Sort & duplicate columns not work without header"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:79
+msgid "Enable Footer"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:84
+msgid "Enable Sort"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:91
+msgid "Sorting work at frontend"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:95
+msgid "Merged cells detected. Please disable sorting to prevent layout issues."
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:88
+msgid "Pro Feature"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:100
+msgid "Fixed width table cells"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:105
+msgid "Border Collapse"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:113
+msgid "Vertical Spacing"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:122
+msgid "Horizontal Spacing"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:133
+msgid "Enable Caption"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:139
+msgid "Caption Position"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:145
+msgid "Top"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:149
+msgid "Bottom"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:163
+msgid "Common"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:203
+#: src/blocks/table-builder/settings.js:270
+#: src/blocks/table-builder/settings.js:396
+#: src/table-builder-components/controls/caption/CaptionStyle.js:23
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:23
+#: src/table-builder-components/controls/cell/CellStyle.js:31
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:182
+#: src/table-builder-components/controls/header/HeaderStyle.js:32
+#: src/table-builder-components/controls/search/SearchStyle.js:109
+#: src/table-builder-components/controls/search/SearchStyle.js:274
+msgid "Typography"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:227
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:67
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:100
+#: src/table-builder-components/controls/header/HeaderStyle.js:61
+#: src/table-builder-components/controls/search/SearchStyle.js:181
+#: src/table-builder-components/controls/search/SearchStyle.js:214
+#: src/table-builder-components/controls/search/SearchStyle.js:247
+#: src/table-builder-components/controls/search/SearchStyle.js:346
+#: src/table-builder-components/controls/search/SearchStyle.js:379
+#: src/table-builder-components/controls/search/SearchStyle.js:412
+msgid "Box Shadow"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/settings.js:252
+msgid "Footer"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:335
+#: src/blocks/table-builder/settings.js:418
+#: src/table-builder-components/controls/caption/CaptionStyle.js:45
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:61
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:94
+#: src/table-builder-components/controls/cell/CellStyle.js:91
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:54
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:82
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:146
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:169
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:234
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:262
+#: src/table-builder-components/controls/header/HeaderStyle.js:54
+#: src/table-builder-components/controls/search/SearchStyle.js:45
+#: src/table-builder-components/controls/search/SearchStyle.js:73
+#: src/table-builder-components/controls/search/SearchStyle.js:175
+#: src/table-builder-components/controls/search/SearchStyle.js:208
+#: src/table-builder-components/controls/search/SearchStyle.js:241
+#: src/table-builder-components/controls/search/SearchStyle.js:340
+#: src/table-builder-components/controls/search/SearchStyle.js:373
+#: src/table-builder-components/controls/search/SearchStyle.js:406
+msgid "Border Radius"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:378
+#: src/table-builder-components/controls/cell/CellStyle.js:17
+msgid "Cells"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/blocks/table-builder/settings.js:424
+#: src/table-builder-components/controls/cell/CellStyle.js:12
+#: src/table-builder-components/controls/header/HeaderStyle.js:11
+msgid "Border radius only works properly when Border Collapse is disabled"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/edit.js:161
+msgid "Show Header"
+msgstr ""
+
+#: build/blocks/table-builder/index.js:1
+#: src/blocks/table-builder/edit.js:168
+msgid "Show Footer"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/library/PlaceholderHeader.js:86
+msgid "Search Patterns..."
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/library/PlaceholderHeader.js:96
+msgid "Syncing..."
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/library/PlaceholderHeader.js:96
+msgid "Sync Library"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/library/PlaceholderHeader.js:97
+msgid "Syncing library"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/library/PlaceholderHeader.js:97
+msgid "Sync library"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Filter.js:29
+msgid "Category"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Filter.js:41
+msgid "Clear search to use category filters"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Filter.js:41
+msgid "Filter by"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Filter.js:41
+msgid "items"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Pattern.js:97
+msgid "Importing"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Pattern.js:97
+msgid "Import"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/pattern/Pattern.js:111
+msgid "Click to see required plugins"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/common/Empty.js:11
+msgid "No patterns found"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/components/common/Empty.js:14
+msgid "Try adjusting your search or filter to find what you're looking for."
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/TableBuilderPlaceholder.js:19
+msgid "TableKit"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/TableBuilderPlaceholder.js:20
+msgid "Choose how you want to start building your table"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/global/template-library/TableBuilderPlaceholder.js:33
+msgid "Choose"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/components/advanced-column-style/index.js:29
+msgid "Select an Option"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/components/advanced-column-style/index.js:53
+#: src/table-builder-components/components/selection-color/ColumnColor.js:21
+msgid "Column"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/components/advanced-column-style/index.js:58
+msgid "Add Style"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/components/advanced-column-style/index.js:61
+#: src/table-builder-components/components/selection-color/ColumnColor.js:24
+msgid "Select Column"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:13
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:11
+msgid "Pagination"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:14
+msgid "Pagination Icon"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:16
+msgid "Previous First"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:22
+msgid "Previous"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:28
+msgid "Next"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:34
+msgid "Next Last"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:40
+msgid "Row Per Page"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:48
+msgid "Count"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:50
+msgid "5"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:51
+msgid "10"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:52
+msgid "20"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:53
+msgid "50"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:54
+msgid "100"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:55
+msgid "All"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:60
+msgid "Pagination Range"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:65
+msgid "Showing {start} to {end} of {total}"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:68
+msgid "Pagination Page Of"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationContent.js:73
+msgid "Page {current} of {total}"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:29
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:85
+msgid "Icon Color"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:39
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:95
+msgid "Input Color"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:50
+msgid "Icon Background"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:56
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:112
+msgid "Icon Border"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:62
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:118
+msgid "Icon Border Radius"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:68
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:124
+msgid "Input Border"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:74
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:130
+msgid "Input Border Radius"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:151
+msgid "Icon Padding"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/pagination/PaginationStyle.js:159
+msgid "Gap"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/sorting/SortingStyle.js:12
+msgid "Sorting"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/sorting/SortingStyle.js:15
+msgid "Size"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/sorting/SortingStyle.js:27
+msgid "Horizontal Position"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/sorting/SortingStyle.js:39
+msgid "Vertical Position"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchContent.js:9
+#: src/table-builder-components/controls/search/SearchStyle.js:10
+msgid "Search"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchContent.js:11
+msgid "Search Icon"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchContent.js:17
+msgid "Search Placeholder"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchStyle.js:107
+msgid "Individual Search Button"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchStyle.js:127
+#: src/table-builder-components/controls/search/SearchStyle.js:292
+msgid "Height"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchStyle.js:149
+#: src/table-builder-components/controls/search/SearchStyle.js:314
+msgid "Active"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/caption/CaptionStyle.js:59
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:119
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:112
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:195
+#: src/table-builder-components/controls/search/SearchStyle.js:266
+#: src/table-builder-components/controls/search/SearchStyle.js:431
+msgid "Margin"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/search/SearchStyle.js:272
+msgid "Individual Search Options"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:13
+msgid "Export Button"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:15
+msgid "Export Button Icon"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:101
+msgid "Export Button Dropdown"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:21
+msgid "Cart Button"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/caption/CaptionStyle.js:9
+msgid "Caption"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/hide-column/HideColumn.js:16
+#: src/table-builder-components/controls/hide-column/HideColumn.js:18
+msgid "Exclude Column"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/cell/CellStyle.js:39
+msgid "Even Cell"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/cell/CellStyle.js:43
+msgid "Odd Cell"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/header/HeaderStyle.js:18
+msgid "Header"
+msgstr ""
+
+#: build/blocks/table-builder-item/block.json
+#: src/blocks/table-builder-item/block.json
+msgctxt "block title"
+msgid "Table Data"
+msgstr ""
+
+#: build/blocks/table-builder-item/block.json
+#: src/blocks/table-builder-item/block.json
+msgctxt "block description"
+msgid "Table Data Block."
+msgstr ""
+
+#: build/blocks/table-builder-row/block.json
+#: src/blocks/table-builder-row/block.json
+msgctxt "block title"
+msgid "Table Row"
+msgstr ""
+
+#: build/blocks/table-builder-row/block.json
+#: src/blocks/table-builder-row/block.json
+msgctxt "block description"
+msgid "Table Row for Gutenkit Pro."
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block title"
+msgid "Table Builder"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gkit"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenkit"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenkit pro"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "table builder"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "table"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "builder"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenkit table builder"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "advanced table"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "table block"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenberg table"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenberg table block"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenberg table builder"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block keyword"
+msgid "gutenberg advanced table"
+msgstr ""
+
+#: build/blocks/table-builder/block.json
+#: src/blocks/table-builder/block.json
+msgctxt "block description"
+msgid "Table Builder block."
+msgstr ""
