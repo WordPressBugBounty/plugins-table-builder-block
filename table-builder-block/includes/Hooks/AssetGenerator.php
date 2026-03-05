@@ -33,6 +33,15 @@ class AssetGenerator
         add_filter('wp_resource_hints', array($this, 'fonts_resource_hints'), 10, 2);
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 10);
         add_action('enqueue_block_assets', array($this, 'block_assets'), 10);
+        
+        // Clear FSE cache when templates are saved
+        add_action('save_post_wp_template', array($this, 'clear_fse_cache'));
+        add_action('save_post_wp_template_part', array($this, 'clear_fse_cache'));
+    }
+
+    // Clear FSE asset cache.
+    public function clear_fse_cache() {
+        delete_transient('table_builder_fse_blocks');
     }
 
     /**
@@ -115,8 +124,13 @@ class AssetGenerator
             return;
         }
 
-        // Skip if this is an autosave or update
+        // Skip if this is not an update (new post)
         if (!$update) {
+            return;
+        }
+
+        // Early bailout: Check if post content has tablebuilder blocks before parsing
+        if (false === strpos($post->post_content, 'tablebuilder')) {
             return;
         }
 
@@ -135,14 +149,26 @@ class AssetGenerator
 
     /**
      * Generate assets for templates.
+     * Now with caching to improve performance.
      *
      * @return array $filtered_blocks The filtered blocks for FSE templates.
      */
     protected function generate_fse_assets()
     {
+        // Check cache first (expires after 6 hours)
+        $cached_blocks = get_transient('table_builder_fse_blocks');
+        if (false !== $cached_blocks && is_array($cached_blocks)) {
+            return $cached_blocks;
+        }
+
         $args = [
             'post_type' => ['wp_template_part', 'wp_template'],
-            'posts_per_page' => -1,
+            'posts_per_page' => 100, // Limit to 100 templates for performance
+            'orderby' => 'modified',
+            'order' => 'DESC',
+            'no_found_rows' => true, // Improve query performance
+            'update_post_meta_cache' => false, // Skip meta cache
+            'update_post_term_cache' => false, // Skip term cache
         ];
 
         $posts = get_posts($args);
@@ -152,7 +178,12 @@ class AssetGenerator
             $merged_blocks = array_merge($merged_blocks, parse_blocks($post->post_content));
         }
 
-        return $this->filter_blocks($merged_blocks);
+        $filtered_blocks = $this->filter_blocks($merged_blocks);
+        
+        // Cache for 6 hours
+        set_transient('table_builder_fse_blocks', $filtered_blocks, 6 * HOUR_IN_SECONDS);
+
+        return $filtered_blocks;
     }
 
     /**

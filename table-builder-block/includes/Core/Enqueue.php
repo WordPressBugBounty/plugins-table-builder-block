@@ -1,4 +1,5 @@
 <?php
+
 namespace TableBuilder\Core;
 
 defined('ABSPATH') || exit;
@@ -11,7 +12,8 @@ use TableBuilder\Helpers\Utils;
  * @since 1.0.0
  * @access public
  */
-class Enqueue {
+class Enqueue
+{
     use \TableBuilder\Traits\Singleton;
 
     /**
@@ -21,23 +23,26 @@ class Enqueue {
      * @return void
      * @since 1.0.0
      */
-    public function __construct() {
+    public function __construct()
+    {
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
-        add_action('enqueue_block_editor_assets', array($this, 'blocks_editor_scripts'), 5);
+        add_action('enqueue_block_editor_assets', array($this, 'blocks_editor_scripts'));
         add_action('wp_head', array($this, 'print_device_script_for_window'));
+        add_filter('admin_body_class', array($this, 'add_admin_body_class'));
     }
 
-	/**
-	 * Get WP filesystem
-	 *
-	 * @return void
-	 */
-	protected function get_filesystem() {
-		if (!function_exists('WP_Filesystem')) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-		}
-		WP_Filesystem();
-	}
+    /**
+     * Get WP filesystem
+     *
+     * @return void
+     */
+    protected function get_filesystem()
+    {
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+        }
+        WP_Filesystem();
+    }
 
     /**
      * Enqueues necessary scripts and localizes data for the admin area.
@@ -46,7 +51,11 @@ class Enqueue {
      * @return void
      * @since 1.0.0
      */
-    public function admin_scripts($hook) {
+    public function admin_scripts($hook)
+    {
+        // Only load heavy data on editor screens to improve performance
+        $is_editor_screen = in_array($hook, array('post.php', 'post-new.php', 'site-editor.php', 'widgets.php'));
+
         wp_localize_script(
             'wp-block-editor',
             'tableBuilder',
@@ -65,19 +74,24 @@ class Enqueue {
             )
         );
 
-        if($hook == 'toplevel_page_tablebuilder') {
-			$assets = include TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/admin/dashboard/index.asset.php';
-            if ( isset( $assets['version'] ) ) {
-                
+        // Localize tablekitEssential only on editor screens and if tablekit-essential plugin is not active
+        if ($is_editor_screen && !$this->is_tablekit_essential_active()) {
+            wp_localize_script('wp-block-editor', 'tablekitEssential', RestApi::get_localized_data());
+        }
 
-				// Enqueue the JavaScript
-				wp_enqueue_script(
-					'tablebuilder-admin-dashboard',
+        if ($hook == 'toplevel_page_tablebuilder') {
+            $assets = include TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/admin/dashboard/index.asset.php';
+            if (isset($assets['version'])) {
+
+
+                // Enqueue the JavaScript
+                wp_enqueue_script(
+                    'tablebuilder-admin-dashboard',
                     TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/admin/dashboard/index.js',
                     $assets['dependencies'],
                     $assets['version'],
                     true
-				);
+                );
 
                 // Enqueue the stylesheet
                 wp_enqueue_style(
@@ -100,30 +114,46 @@ class Enqueue {
                     )
                 );
             }
-		}
-    }
-
-    /**
-     * Enqueue block editor assets.
-     *
-     * @return void
-     * @since 1.0.0
-     */
-    public function blocks_editor_scripts() {
-        $assets = [
-            'components' => TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/tablebuilder/components.asset.php',
-            'helper'     => TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/tablebuilder/helper.asset.php',
-            'global'     => TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/tablebuilder/global.asset.php',
-        ];
-
-        foreach ($assets as $handle => $asset_path) {
-            $this->enqueue_assets($asset_path, "table_builder-block-editor-{$handle}", "{$handle}.js");
         }
     }
 
-    private function enqueue_assets($asset_file, $handle, $script_file) {
-		$this->get_filesystem();
-		global $wp_filesystem;
+    /**
+     * Check if tablekit-essential is active.
+     */
+    private function is_tablekit_essential_active()
+    {
+        if (!function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        return is_plugin_active('tablekit-essential/tablekit-essential.php');
+    }
+
+    // Enqueue block editor assets.
+    public function blocks_editor_scripts()
+    {
+        $scripts = [
+            'components' => 'gkit-components',
+            'helper'     => 'gkit-helpers',
+            'global'     => 'tablekit-blocks-editor-global',
+        ];
+
+        $shared_handles = ['gkit-components', 'gkit-helpers'];
+
+        foreach ($scripts as $name => $handle) {
+            if (in_array($handle, $shared_handles) && wp_script_is($handle, 'registered')) {
+                continue;
+            }
+
+            $asset_path = TABLE_BUILDER_BLOCK_PLUGIN_DIR . "build/tablebuilder/{$name}.asset.php";
+            $this->enqueue_assets($asset_path, $handle, "{$name}.js");
+        }
+    }
+
+
+    private function enqueue_assets($asset_file, $handle, $script_file)
+    {
+        $this->get_filesystem();
+        global $wp_filesystem;
 
         if (!isset($wp_filesystem) || !$wp_filesystem->exists($asset_file)) {
             return;
@@ -152,7 +182,8 @@ class Enqueue {
      * @param array $custom_properties The array of custom CSS properties.
      * @return string The generated CSS rules.
      */
-    public function convert_custom_properties($custom_properties) {
+    public function convert_custom_properties($custom_properties)
+    {
         if (empty($custom_properties)) {
             return '';
         }
@@ -167,10 +198,19 @@ class Enqueue {
     /**
      * Print device script in the header for responsive behavior.
      */
-    public function print_device_script_for_window() {
+    public function print_device_script_for_window()
+    {
         if (!is_admin()) {
             $devices = Utils::get_device_list();
             wp_add_inline_script('wp-block-editor', 'var breakpoints = ' . wp_json_encode($devices) . ';', 'before');
         }
+    }
+
+    /**
+     * Add tableBuilder class to admin/editor body.
+     */
+    public function add_admin_body_class($classes)
+    {
+        return $classes . ' tableBuilder';
     }
 }

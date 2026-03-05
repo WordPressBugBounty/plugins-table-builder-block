@@ -6,7 +6,7 @@
  * Requires PHP: 7.4
  * Plugin URI: https://wpmet.com/plugin/gutenkit/
  * Author: Wpmet
- * Version: 2.2.0
+ * Version: 2.2.1
  * Author URI: https://wpmet.com/
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -21,12 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 final class TableBuilder {
-	/**
-	 * plugin version
-	 *
-	 * @var string
-	 */
-	const VERSION = '2.2.0';
+	const VERSION = '2.2.1';
 
 	private static $instance = null;
 
@@ -38,28 +33,16 @@ final class TableBuilder {
 	}
 
 	private function __construct() {
-		/**
-		 * Plugins helper constants
-		 *
-		 * @return void
-		 * @since 1.0.0
-		 */
 		$this->define_constants();
 
-		/**
-		 * Make sure ADD AUTOLOAD is scoped/vendor/scoper-autoload.php file
-		 *
-		 * @return void
-		 * @since 2.0.1
-		 */
+		 // Prevent redirects during programmatic plugin activation
+		 // This hook runs very early to intercept activation redirects from other plugins
+		add_action( 'admin_init', [ $this, 'prevent_activation_redirect' ], 1 );
+
+		// Make sure ADD AUTOLOAD is scoped/vendor/scoper-autoload.php file
 		require_once TABLE_BUILDER_BLOCK_PLUGIN_DIR . '/scoped/vendor/scoper-autoload.php';
 
-		/**
-		 * Fires after initialization of the GutenKit plugin
-		 *
-		 * @return void
-		 * @since 1.0.0
-		 */
+		// Fires after initialization of the GutenKit plugin
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
 	}
 
@@ -72,11 +55,22 @@ final class TableBuilder {
 		define( 'TABLE_BUILDER_BLOCK_DIR', TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/blocks/' );
 	}
 
+
+	// Prevent activation redirects when plugins are activated programmatically.
+	// Intercepts wp_redirect/wp_safe_redirect during REST API activation.
+	public function prevent_activation_redirect(): void {
+		if ( get_transient( 'tablekit_skip_activation_redirect' ) ) {
+			add_filter( 'wp_redirect', '__return_empty_string', 999 );
+			add_filter( 'wp_safe_redirect_fallback', '__return_empty_string', 999 );
+		}
+	}
+
 	public function on_plugins_loaded(): void {
 		do_action( 'tablebuilder/before_init' );
 
 		TableBuilder\Hooks\AssetGenerator::instance();
 		TableBuilder\Core\Enqueue::instance();
+		TableBuilder\Core\RestApi::instance();
 		TableBuilder\Config\Blocks::instance();
 		TableBuilder\Admin\Admin::instance();
 

@@ -4,7 +4,7 @@ Tags: table, table builder block, datatable, pricing table, table builder
 Requires at least: 6.1
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,15 @@ TableKit is the ultimate solution for building various tables on WordPress websi
 
 
 == Changelog ==
+
+= Table Builder Block: 2.2.1 (2026-03-04) =
+* Improved: Enhanced product cart button styling.
+* Improved: Improved required plugin detection and validation.
+* Improved: Refined Template Library user interface.
+* Improved: Enhanced Freeze Table user interface. 
+* Fixed: Fixed issues with required plugin installation and activation process.
+* Tweaked: Optimized block icon for better consistency and performance.
+* Removed: Removed unnecessary markup from both editor and frontend output.
 
 = Table Builder Block: 2.2.0 (2026-02-02) =
 * Improved: Table Builder block overall styling and visual consistency

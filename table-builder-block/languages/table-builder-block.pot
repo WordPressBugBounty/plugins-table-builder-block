@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-02T10:04:30+00:00\n"
+"POT-Creation-Date: 2026-02-10T08:30:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: table-builder-block\n"
@@ -198,7 +198,7 @@ msgstr ""
 #: src/blocks/table-builder/settings.js:356
 #: src/blocks/table-builder/settings.js:428
 #: src/table-builder-components/controls/caption/CaptionStyle.js:52
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:112
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:141
 #: src/table-builder-components/controls/cell/CellStyle.js:99
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:95
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:105
@@ -232,8 +232,8 @@ msgstr ""
 #: src/table-builder-components/components/freeze-table/index.js:155
 #: src/table-builder-components/components/selection-color/ColumnColor.js:29
 #: src/table-builder-components/controls/caption/CaptionStyle.js:33
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:49
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:82
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:64
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:102
 #: src/table-builder-components/controls/cell/CellStyle.js:57
 #: src/table-builder-components/controls/cell/CellStyle.js:73
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:42
@@ -265,7 +265,7 @@ msgstr ""
 #: src/blocks/table-builder-item/settings.js:138
 #: src/blocks/table-builder-row/settings.js:30
 #: src/blocks/table-builder-row/settings.js:68
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:31
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:40
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:24
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:121
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:204
@@ -285,7 +285,7 @@ msgstr ""
 #: src/blocks/table-builder-item/settings.js:142
 #: src/blocks/table-builder-row/settings.js:34
 #: src/blocks/table-builder-row/settings.js:72
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:35
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:44
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:28
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:125
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:208
@@ -308,8 +308,8 @@ msgstr ""
 #: src/blocks/table-builder/settings.js:320
 #: src/blocks/table-builder/settings.js:412
 #: src/table-builder-components/controls/caption/CaptionStyle.js:39
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:55
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:88
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:70
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:108
 #: src/table-builder-components/controls/cell/CellStyle.js:85
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:48
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:76
@@ -336,8 +336,9 @@ msgstr ""
 #: src/table-builder-components/components/Conditional-Formatting/Options.js:9
 #: src/table-builder-components/components/Conditional-Formatting/Options.js:18
 #: src/table-builder-components/components/Conditional-Formatting/Options.js:26
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:44
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:77
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:53
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:92
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:97
 #: src/table-builder-components/controls/pagination/PaginationStyle.js:34
 #: src/table-builder-components/controls/pagination/PaginationStyle.js:90
 msgid "Text Color"
@@ -606,8 +607,8 @@ msgstr ""
 #: build/global/components.js:1
 #: build/tablebuilder/components.js:1
 #: src/blocks/table-builder/settings.js:227
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:67
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:100
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:82
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:120
 #: src/table-builder-components/controls/header/HeaderStyle.js:61
 #: src/table-builder-components/controls/search/SearchStyle.js:181
 #: src/table-builder-components/controls/search/SearchStyle.js:214
@@ -629,8 +630,8 @@ msgstr ""
 #: src/blocks/table-builder/settings.js:335
 #: src/blocks/table-builder/settings.js:418
 #: src/table-builder-components/controls/caption/CaptionStyle.js:45
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:61
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:94
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:76
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:114
 #: src/table-builder-components/controls/cell/CellStyle.js:91
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:54
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:82
@@ -916,6 +917,7 @@ msgstr ""
 
 #: build/global/components.js:1
 #: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:58
 #: src/table-builder-components/controls/pagination/PaginationStyle.js:29
 #: src/table-builder-components/controls/pagination/PaginationStyle.js:85
 msgid "Icon Color"
@@ -1040,7 +1042,7 @@ msgstr ""
 #: build/global/components.js:1
 #: build/tablebuilder/components.js:1
 #: src/table-builder-components/controls/caption/CaptionStyle.js:59
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:119
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:148
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:112
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:195
 #: src/table-builder-components/controls/search/SearchStyle.js:266
@@ -1080,14 +1082,26 @@ msgstr ""
 
 #: build/global/components.js:1
 #: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:29
+msgid "Icon Size"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:132
+msgid "Gap Between"
+msgstr ""
+
+#: build/global/components.js:1
+#: build/tablebuilder/components.js:1
 #: src/table-builder-components/controls/caption/CaptionStyle.js:9
 msgid "Caption"
 msgstr ""
 
 #: build/global/components.js:1
 #: build/tablebuilder/components.js:1
-#: src/table-builder-components/controls/hide-column/HideColumn.js:16
-#: src/table-builder-components/controls/hide-column/HideColumn.js:18
+#: src/table-builder-components/controls/hide-column/HideColumn.js:17
+#: src/table-builder-components/controls/hide-column/HideColumn.js:19
 msgid "Exclude Column"
 msgstr ""
 

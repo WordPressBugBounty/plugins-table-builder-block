@@ -67,32 +67,28 @@ class Blocks
         ], $categories);
     }
 
-    /**
-     * Enqueue global assets for both block editor and frontend.
-     */
+
+    // Enqueue block global assets 
     public function enqueue_block_assets()
     {
         wp_enqueue_style(
-            'table-builder-block-components',
+            'gkit-components',
             TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/tablebuilder/components.css',
             [],
             TABLE_BUILDER_BLOCK_PLUGIN_VERSION,
             'all'
         );
 
-
-        // wp_enqueue_style(
-        //     'table-builder-block-global-style',
-        //     TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/tablebuilder/style-global.css',
-        //     [],
-        //     TABLE_BUILDER_BLOCK_PLUGIN_VERSION,
-        //     'all'
-        // );
+        wp_enqueue_style(
+            'table-builder-block-global',
+            TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/tablebuilder/global.css',
+            [],
+            TABLE_BUILDER_BLOCK_PLUGIN_VERSION,
+            'all'
+        );
     }
 
-    /**
-     * Enqueue block editor assets.
-     */
+    // Enqueue block editor assets.
     public function block_editor_assets()
     {
         $blocks_list = \TableBuilder\Config\BlockList::get_block_list();
