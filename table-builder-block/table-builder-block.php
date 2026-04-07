@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Table Builder Block
- * Description: Powerful table builder block for Gutenberg block editor.
+ * Plugin Name: TableKit
+ * Description: Powerful Table Builder for Gutenberg block editor.
  * Requires at least: 6.1
  * Requires PHP: 7.4
  * Plugin URI: https://wpmet.com/plugin/gutenkit/
  * Author: Wpmet
- * Version: 2.2.1
+ * Version: 2.2.2
  * Author URI: https://wpmet.com/
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 final class TableBuilder {
-	const VERSION = '2.2.1';
+	const VERSION = '2.2.2';
 
 	private static $instance = null;
 

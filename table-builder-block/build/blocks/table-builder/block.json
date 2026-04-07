@@ -120,6 +120,22 @@
         }
       ]
     },
+    "columnWidths": {
+      "type": "array",
+      "default": []
+    },
+    "rowHeights": {
+      "type": "array",
+      "default": []
+    },
+    "headerHeight": {
+      "type": "number",
+      "default": 0
+    },
+    "resizerEnabled": {
+      "type": "boolean",
+      "default": true
+    },
     "isEmpty": {
       "type": "boolean",
       "default": true
@@ -192,6 +208,12 @@
     },
     "background": {
       "type": "object"
+    },
+    "hoverBackground": {
+      "type": "object"
+    },
+    "hoverColor": {
+      "type": "string"
     },
     "border": {
       "type": "object",
@@ -492,6 +514,18 @@
       "default": true
     },
     "mergeTableCell": {
+      "type": "object"
+    },
+    "evenCellColor": {
+      "type": "string"
+    },
+    "evenCellBgColor": {
+      "type": "object"
+    },
+    "oddCellColor": {
+      "type": "string"
+    },
+    "oddCellBgColor": {
       "type": "object"
     }
   },

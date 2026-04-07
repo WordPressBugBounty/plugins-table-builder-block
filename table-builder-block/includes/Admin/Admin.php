@@ -30,8 +30,8 @@ class Admin
     public function add_admin_menu()
     {
         add_menu_page(
-            esc_html__('Table Builder', 'table-builder-block'),
-            esc_html__('Table Builder', 'table-builder-block'),
+            esc_html__('TableKit', 'table-builder-block'),
+            esc_html__('TableKit', 'table-builder-block'),
             'manage_options',
             $this->menu_slug,
             [$this, 'settings_menu_callback'],

@@ -28,7 +28,8 @@ class Enqueue
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
         add_action('enqueue_block_editor_assets', array($this, 'blocks_editor_scripts'));
         add_action('wp_head', array($this, 'print_device_script_for_window'));
-        add_filter('admin_body_class', array($this, 'add_admin_body_class'));
+        add_filter('body_class', array($this, 'add_body_class'));
+        add_filter('admin_body_class', array($this, 'add_body_class'));
     }
 
     /**
@@ -209,8 +210,13 @@ class Enqueue
     /**
      * Add tableBuilder class to admin/editor body.
      */
-    public function add_admin_body_class($classes)
+    public function add_body_class($classes)
     {
-        return $classes . ' tableBuilder';
+        if (is_array($classes)) {
+            $classes[] = 'tableBuilder-frontend';
+        } else {
+            $classes .= ' tableBuilder';
+        }
+        return $classes;
     }
 }
