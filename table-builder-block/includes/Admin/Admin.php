@@ -24,6 +24,8 @@ class Admin
 
         // Register Settings API
         new Api\SettingsData();
+        new Api\OnboardData();
+        new Api\ChangelogData();
         add_action('admin_menu', [$this, 'add_admin_menu'], 9);
     }
 
@@ -41,12 +43,22 @@ class Admin
 
         add_submenu_page(
             $this->menu_slug,
+            esc_html__('TableKit', 'table-builder-block'),
+            esc_html__('TableKit', 'table-builder-block'),
+            'manage_options',
+            admin_url('admin.php?page=tablebuilder&onboard=1'),
+            '',
+            1
+        );
+
+        add_submenu_page(
+            $this->menu_slug,
             esc_html__('Welcome', 'table-builder-block'),
             esc_html__('Welcome', 'table-builder-block'),
             'manage_options',
             $this->menu_link_part . '#welcome',
             '',
-            1
+            2
         );
 
         add_submenu_page(
@@ -56,18 +68,32 @@ class Admin
 			'manage_options',
 			$this->menu_link_part . '#features',
 			'',
-			2
+			3
 		);
 
         remove_submenu_page($this->menu_slug, $this->menu_slug);
     }
 
+    private function should_show_onboard(): bool
+    {
+        if ( get_option( 'tablebuilder_onboard_completed', false ) ) {
+            return false;
+        }
+
+        if ( isset( $_GET['onboard'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['onboard'] ) ) ) {
+            return true;
+        }
+
+        return (bool) get_transient( 'tablebuilder_show_onboard' );
+    }
+
     // Callback for settings submenu
     public function settings_menu_callback()
     {
+      $admin_mode = $this->should_show_onboard() ? 'onboard' : 'dashboard';
       ?>
         <div class="wrap">
-            <div class="tablebuilder-dashboard"></div>
+            <div class="tablebuilder-dashboard" data-admin="<?php echo esc_attr( $admin_mode ); ?>"></div>
         </div>
      <?php
     }

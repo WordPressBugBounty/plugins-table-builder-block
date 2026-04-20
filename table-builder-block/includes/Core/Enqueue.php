@@ -109,6 +109,7 @@ class Enqueue
                         'plugin_url' => TABLE_BUILDER_BLOCK_PLUGIN_URL,
                         'screen' => $hook,
                         'adminUrl' => esc_url(admin_url('/')),
+                        'pluginStatus' => $this->get_onboard_plugin_status(),
                         'has_pro' => defined('TABLE_BUILDER_BLOCK_PRO_PLUGIN_VERSION'),
                         'version' => TABLE_BUILDER_BLOCK_PLUGIN_VERSION,
                         'pro_version' => defined('TABLE_BUILDER_BLOCK_PRO_PLUGIN_VERSION') ? TABLE_BUILDER_BLOCK_PRO_PLUGIN_VERSION : '1.0.0',
@@ -127,6 +128,43 @@ class Enqueue
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
         return is_plugin_active('tablekit-essential/tablekit-essential.php');
+    }
+
+    /**
+     * Build plugin status map for PopupKit-style onboarding steps.
+     */
+    private function get_onboard_plugin_status()
+    {
+        if (!function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugins = array(
+            'getgenie' => 'getgenie/getgenie.php',
+            'gutenkit-blocks-addon' => 'gutenkit-blocks-addon/gutenkit-blocks-addon.php',
+            'elementskit-lite' => 'elementskit-lite/elementskit-lite.php',
+            'metform' => 'metform/metform.php',
+            'shopengine' => 'shopengine/shopengine.php',
+            'blocks-for-shopengine' => 'blocks-for-shopengine/shopengine-gutenberg-addon.php',
+            'popup-builder-block' => 'popup-builder-block/popup-builder-block.php',
+            'wp-social' => 'wp-social/wp-social.php',
+            'wp-ultimate-review' => 'wp-ultimate-review/wp-ultimate-review.php',
+        );
+
+        $status = array();
+
+        foreach ($plugins as $slug => $plugin_file) {
+            $plugin_path = WP_PLUGIN_DIR . '/' . $plugin_file;
+
+            if (!file_exists($plugin_path)) {
+                $status[$slug] = 'notInstalled';
+                continue;
+            }
+
+            $status[$slug] = is_plugin_active($plugin_file) ? 'active' : 'inactive';
+        }
+
+        return $status;
     }
 
     // Enqueue block editor assets.

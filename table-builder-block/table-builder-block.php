@@ -6,7 +6,7 @@
  * Requires PHP: 7.4
  * Plugin URI: https://wpmet.com/plugin/gutenkit/
  * Author: Wpmet
- * Version: 2.2.2
+ * Version: 2.2.3
  * Author URI: https://wpmet.com/
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 final class TableBuilder {
-	const VERSION = '2.2.2';
+	const VERSION = '2.2.3';
 
 	private static $instance = null;
 
@@ -44,6 +44,18 @@ final class TableBuilder {
 
 		// Fires after initialization of the GutenKit plugin
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
+		add_action( 'admin_init', [ $this, 'maybe_redirect_to_onboard' ] );
+	}
+
+	public static function activate(): void {
+		if ( get_transient( 'tablekit_skip_activation_redirect' ) ) {
+			return;
+		}
+
+		if ( ! get_option( 'tablebuilder_onboard_completed', false ) ) {
+			set_transient( 'tablebuilder_show_onboard', 1, DAY_IN_SECONDS );
+			set_transient( 'tablebuilder_do_activation_redirect', 1, MINUTE_IN_SECONDS );
+		}
 	}
 
 	private function define_constants(): void {
@@ -74,11 +86,34 @@ final class TableBuilder {
 		TableBuilder\Config\Blocks::instance();
 		TableBuilder\Admin\Admin::instance();
 
+		if ( is_admin() ) {
+			TableBuilder\Libs\UtilityPackages::instance();
+		}
+
 		// Data migration
 		// TODO:: WIll be removed in next upcoming version
 		(new TableBuilder\Core\DataMigration());
 
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [ $this, 'plugin_action_link' ] );
+	}
+
+	public function maybe_redirect_to_onboard(): void {
+		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		if ( ! get_transient( 'tablebuilder_do_activation_redirect' ) ) {
+			return;
+		}
+
+		if ( isset( $_GET['activate-multi'] ) ) {
+			delete_transient( 'tablebuilder_do_activation_redirect' );
+			return;
+		}
+
+		delete_transient( 'tablebuilder_do_activation_redirect' );
+		wp_safe_redirect( admin_url( 'admin.php?page=tablebuilder&onboard=1' ) );
+		exit;
 	}
 
 	public function plugin_action_link( array $plugin_actions ): array {
@@ -89,3 +124,5 @@ final class TableBuilder {
 if ( class_exists( 'TableBuilder' ) ) {
 	TableBuilder::get_instance();
 }
+
+register_activation_hook( __FILE__, [ 'TableBuilder', 'activate' ] );

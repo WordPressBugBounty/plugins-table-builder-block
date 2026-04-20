@@ -1,10 +1,10 @@
 === TableKit: Table Builder Blocks for Gutenberg ===
-Contributors: Roxnor, Ataurr
-Tags: table, table builder block, datatable, pricing table, table builder
+Contributors: Roxnor, Ataurr, aion11
+Tags: table, table builder block, product table for woocommerce, woocommerce product table, datatable, pricing table, post table
 Requires at least: 6.1
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.2
+Stable tag: 2.2.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,83 +12,134 @@ Powerful table builder block for Gutenberg block editor.
 
 == Description ==
 
-**Fully Customizable. Multi-Media Integration. Synch Any Data Files. All Within Block Editor.**
+**Fully Customizable. WooCommerce Product Table. Synch Any Data Files.  All Within Block Editor.**
 
-That’s **TableKit - Table Builder Block** by **[Wpmet](wpmet.com)**! An ultimate table builder solution that empowers you to create any type of table design without touching a single line of code. Generating highly functional tables with headers and footers is no longer difficult on your Gutenberg websites.
+That’s **[TableKit - Table Builder Block](https://wpmet.com/plugin/tablekit/)** by Wpmet! An ultimate table builder solution for WordPress that is built from the ground up for the native Gutenberg Block Editor.
 
-TableKit isn’t a typical table builder plugin that only displays data and text. Now, enjoy the freedom of inserting any content like images, videos, audio, or any multimedia directly into the table cells.
+TableKit isn’t a typical table builder plugin that only displays data and text. It gives you the highest level of flexibility like no other table builder. TableKit combines pixel-perfect design control with powerful data features, all inside a seamless Gutenberg experience.
 
-**So, A New Era in WordPress Table Building!** Whether you need to create product comparisons, schedules, pros & cons, data presentations, pricing plans, or any other table format, this single plugin has you covered. For example, if you want to create a **product table like Amazon’s**, just generate the rows and columns, then insert blocks such as image, text, rating, and CTA buttons to display product details effectively.
+https://youtu.be/a4CZZjHkG14?si=sxrrrHDtnDXB5gC4
+
+**So, A New Era in WordPress Table Building!**
+Whether you need a simple content table, a live-data-driven data table, a dynamic WordPress post table, or a fully functional WooCommerce product table with Add to Cart, TableKit has you covered.
 
 TableKit is equipped with **dozens of global and cell-specific customization settings**, allowing you to effortlessly customize every aspect of your table to align with your design vision. Even to **extend the elegance of your table looks more,** this table builder plugin includes stunning animation effects.
 
-## Embrace the Power of TableKit -Table Builder Blocks
-Let’s see how TableKit empowers to unleash table building and customization of Gutenberg-based WordPress websites.
-### ⚒️ Build Advanced Tables, Instantly
-Set up your table anatomy in the blink of an eye! This plugin **streamlines the table-building workflow** by letting you control complex table functionality like headers, footers, fixed-width cells, and border-collapse using simple toggle buttons only. Nothing requires any coding hassle.
+## Block Support in Table Cells for Full Gutenberg Freedom
+TableKit is the only table plugin that lets you place **any Gutenberg block directly inside a table cell**. Images, buttons, galleries, videos, custom HTML, headings, paragraphs — if it's a block, it belongs in your table.
 
-### 🎨 Generate, Style, and Publish
-TableKit is packed with a variety of customizing features to let you **craft aesthetics and interactive table designs**. You can customize every part of the table separately. For instance, it supports individual customization of cells, which means you can **highlight a specific part of the table**.
+Stop being constrained by plain text cells. With TableKit's **rich cell content** support, your tables become full-featured layout canvases. Style every individual cell independently with its own alignment, typography, color, background, border, and padding — all from the block editor sidebar.
 
-To design a perfect table, you have complete styling control over the entire table's typography, background, borders, caption, padding, margin, alignment, and animations. Furthermore, you can customize the table header and footer separately.
+### Freeze Columns and Header Rows
+Keep your readers oriented no matter how large your table grows. TableKit lets you **freeze any column and lock your header row** in place while the rest of the table scrolls freely — horizontally and vertically.
 
-### ✨ A Whole New Level with Animations!
-TableKit is the most powerful table builder to engage your visitors with stunning animation effects. Its pro version has versatile motion effects like **Scrolling, Mouse Tilt, and Mouse Track**. However, you can build mesmerizing website tables like never before with the free version as well.
+This is essential for wide data tables, pricing comparison tables, and product catalogs where users need to reference column headers or row labels while scrolling through dozens of entries.
 
-This table builder plugin includes a library of 50+ entrance animations, complete with advanced controls for speed, delay, and direction. You can even assign unique animation effects to individual table cells and set them to loop.
+### Merge & Split Cells
+Build complex, professional table layouts with full **merge and split cell** support. Combine multiple cells across rows or columns to create grouped headers, spanning sections, or summary rows — just like you would in a spreadsheet. Need to undo it? Split any merged cell back with a single click.
 
-### 💯 Complete Gutenberg Support
+### Conditional Formatting
+Make your data speak for itself. TableKit's **conditional formatting** engine lets you automatically style cells based on their values — highlight low stock in red, flag top-rated products in green, or call out overdue dates in bold. Set your rules once and let TableKit do the rest, keeping your tables dynamic and informative without manual effort.
 
-TableKit is a dedicated Gutenberg block plugin. The biggest advantage of this builder block is that you can insert any Gutenberg or third-party block within the table’s cells. You can customize and configure the functionality of individual blocks directly within the table cells.
-### ⚡ Synch Data Files Automatically
-TableKit ensures a smooth data management experience. This table builder plugin will load the same structure from external files like CSV, XML, Excel, Jason, SpreadSheet, etc. You can illustrate tabular data in an aesthetic and pleasing manner.
+###  Duplicate Full Columns and Rows
+Speed up your table building workflow dramatically. TableKit lets you duplicate entire columns and rows in one click — preserving all content, styling, and configuration. Perfect for building comparison tables, pricing grids, or any repeating structure where consistency matters.
 
-Plus to ensure accessibility to a large data table in the viewport for all visitors, TableKit will support you with all the essential functions like filtering, sorting, and pagination.
-### 🌐 Display anywhere
+### Display anywhere
 Another fun part of TableKit is its flexibility—it can be inserted anywhere on your webpage, allowing you to place it where it will most impact the content flow.
-### 👏 Zero Efforts for Responsiveness
+
+### Zero Efforts for Responsiveness
 Making responsive table designs shouldn’t be a challenge for WordPress users! And, that’s what the TableKit team believes, offering multiple pre-defined responsive breakpoints for different screens. You can set a custom width for each breakpoint ensuring the table looks great on any device.
 
-## You Should Use TableKit if You Want to Create
+## You Should Use TableKit if You Want to Create...
 **🔶 Data Table:** Organize and present large datasets in a structured format.
-
-**🔶 Schedule Table:** Display event or timetable schedules.
 
 **🔶 Comparison Table:** Compare metrics and categories for services or products.
 
-**🔶 Review Table:** Highlight customer reviews or product feedback.
-
-**🔶 FAQ Table:** Present frequently asked questions and answers.
-
-**🔶 Team Member Table:** Showcase employee directories with roles, photos, and contact info.
-
-**🔶 Contact Information Table:** List contact details by department and location.
-
-**🔶 Leaderboard Table:** Display rankings for users, products, or team performance.
-
-**🔶 Reference Table:** Organize resources, links, and related information.
+**🔶 Pricing Table:**
 
 **🔶 Inventory Table:** Track product stock, quantities, and statuses.
 
+**🔶 Image Gallery Table:** List contact details by department and location.
+
+**🔶 Financial Report Table:** Present frequently asked questions and answers.
+
+**🔶 Team Member Table:** Showcase employee directories with roles, photos, and contact info.
+
+**🔶 Property Listing Table:**
+
+**🔶 Pros & Cons Table:**
+
+**🔶 WordPress Post Table:**
+
 The possibilities for creating diverse website table formats with TableKit are endless…
+
+## WooCommerce Product Table
+Turn your WooCommerce store into a high-converting product catalog. TableKit's **WooCommerce Product Table** displays your products in a clean, filterable, searchable table layout — giving customers everything they need to make a purchase decision at a glance.
+
+https://youtu.be/2SimfItbR_4?si=f9lqrRiuCfHi60fX
+
+**✅ Every product detail, in every column:** Display product data like title, description, short description, SKU, price, regular price, sale price, tax status, stock status, stock quantity, and every other details.
+
+**✅ Direct Add to Cart from the table:** Customers can add products to their cart directly from the table without opening product pages. It includes quantity controls and stock status, reducing friction and speeding up purchases.
+
+**✅ Query Filtering:** Filter products by categories, tags, or custom taxonomies with flexible sorting options. Control display order, direction, and even skip items using offset for smarter queries.
+
+**✅ Search, Filter, Paginate, and Export:** Enable live search, column filtering, pagination, and customizable row limits for a smooth browsing experience. Export table data anytime in CSV, Excel, or PDF formats.
+
+## WordPress Post Table
+Display any WordPress content type in a beautiful, queryable table. TableKit's **Post Table** is a powerful way to present posts, pages, media files, custom post types, and templates — searchable, filterable, and paginated.
+
+**Show any content type:**
+-   WordPress Posts and Pages
+-   WordPress Media Files
+-   Custom post types and Templates
+-   ACF (Advanced Custom Fields) data
+
+https://youtu.be/BnqLy1e59yA?si=HI8yeArszM5zzD7u
+
+## WordPress Data Table
+Connect your tables to live external data sources and build truly dynamic tables — no coding required. TableKit's **Data Table** module bridges the gap between spreadsheets, APIs, and your WordPress site.
+
+**Supported data sources:**
+-   CSV files
+-   Google Sheets (with live updates)
+-   JSON and Nested JSON
+-   REST APIs (JSON)
+
+https://youtu.be/pWgK2wCF0-E?si=dQLhTqr6gi6E3mB1
+
+**✅ Live data and caching:** Connect to a Google Sheet and your table updates automatically whenever the sheet changes. For performance, TableKit includes **data caching** so your pages stay fast. Use the **Nested JSON Path Selector** to target exactly the data you need from complex API responses.
+
+**✅ Export, search, and filter:** Every data table comes with built-in search, individual column filtering, pagination, rows-per-page control, total result count, and export to CSV, Excel, and PDF.
+
+## ✨ Core Table Features (Free, For All Tables)
+Every TableKit table — regardless of type — includes:
+
+-   **Advanced Column Sorting** — Sort any column ascending or descending
+-   **Row & Column Styling** — Full control over every row and column's appearance
+-   **Table Caption Support** — Add and style accessible table captions
+-   **Customizable Header and Footer** — Independent control over alignment, typography, color, background, border, and padding for header and footer rows
+-   **Custom Row Styling** — Highlight alternating rows, hover states, or specific rows
+-   **Customizable Controls** — Adjust vertical and horizontal cell spacing independently when border collapse is disabled
+-   **Full Customization** — Alignment, typography, color, background, border, and padding for header cells, footer cells, caption, and common cells
 
 🧿 **Backed By a Trusted Team**
 
-TableKit is brought to you by Wpmet, a name trusted by 10,00,000+ satisfied users worldwide.
+TableKit is brought to you by Wpmet, a name trusted by 3 million+ satisfied users worldwide.
 
 ### 👨‍💻 DOCUMENTATION AND SUPPORT
+
+🟢 [Check Documentation](https://wpmet.com/doc/tablekit/)
 
 ✅ [Contact Our Support](https://wpmet.com/support-ticket-form/)
 
 🌐 [Join Our Facebook Community](https://www.facebook.com/groups/wpmet/)
 
-🟢 [Check Documentation](https://wpmet.com/doc/)
+💹 [Browse Changelogs](https://wpmet.com/plugin/tablekit/roadmap/#changelog)
 
-💹 [Browse Changelogs](https://wpmet.com/plugin/popup-builder-block/roadmaps/#updates)
+### 💝 Love TableKit?
 
-### 💝 Love PopupKit?
-
-🧲 Stay Updated with our [Youtube Channel](https://www.youtube.com/c/Wpmet/videos)
+🧲 Stay Updated with our [Youtube Channel](https://youtube.com/playlist?list=PL3t2OjZ6gY8PFgLEubZcxsfgDTAiKbtVB&si=paJb4HYLFNYbXyfl)
 
 ⭐️ Rate us on [WordPress](https://wordpress.org/support/plugin/table-builder-block/reviews/#new-post)
 
@@ -96,13 +147,13 @@ TableKit is brought to you by Wpmet, a name trusted by 10,00,000+ satisfied user
 
 If you like using PopupKit plugin by Wpmet, then consider checking out our other plugins:
 
-[GutenKit](https://wpmet.com/plugin/gutenkit/) – Build websites **10x Faster** with ZERO coding in the Gutenberg Block Editor.
-
 [ElementsKit](https://wpmet.com/plugin/elementskit/) – All-in-one Addons for Elementor featuring 85+ widgets.
 
 [MetForm](https://wpmet.com/plugin/metform/) – The most flexible and easy-to-use form builder.
 
 [ShopEngine](https://wpmet.com/plugin/shopengine/) – The most complete WooCommerce solution for Elementor.
+
+[GutenKit](https://wpgutenkit.com/) – Build websites **10x Faster** with ZERO coding in the Gutenberg Block Editor.
 
 [EmailKit](https://wpmet.com/plugin/emailkit/) – The most complete WooCommerce solution for Elementor.
 
@@ -124,18 +175,16 @@ Visit [Wpmet](https://wpmet.com/) to learn more about how to get the best of Wor
 
 1. Go to the WordPress Dashboard
 2. Navigate to Plugins > Add New
-3. Search for Table Builder Block
+3. Search for TableKit
 4. Install and Activate the plugin.
 
 **OR**
 
-**Step 1:** Download the Table Builder Block WordPress plugin.
+**Step 1:** Download the TableKit - Table Builder Block WordPress plugin.
 
 **Step 2:** Go to Plugin > Add New > Upload Plugin and upload the plugin file.
 
-**Step 3:** After successful installation, just click on the “Activate” button to activate Table Builder Block.
-
-**Step 4:** Go to a page and search for “Table Builder”.
+**Step 3:** After successful installation, just click on the “Activate” button to activate TableKit plugin.
 
 == Frequently Asked Questions ==
 
@@ -150,28 +199,34 @@ TableKit is the ultimate solution for building various tables on WordPress websi
 
 == Changelog ==
 
-= Table Builder Block: 2.2.2 (2026-04-06) =
-* Added: Export Button Size Control.
-* Added: Hover Control.
-* Improved: Duplicate Column.
-* Improved: Freeze Functionality. 
-* Improved: Free & Pro Checking. 
-* Improved: Template Library Search Option,
-* Fixed: Others Plugin Conflict Issue fix.
-* Fixed: Resizer Violation Error.
+= TableKit: 2.2.3 (2026-04-20) =
+* Added: WordPress `7.0` compatibility
+* Fixed: Minor bug fixes and general improvements
+* Improved: Enhanced dashboard user interface
+* Improved: Template library import
+
+= TableKit: 2.2.2 (2026-04-06) =
+* Added: Export Button Size Control
+* Added: Hover Control
+* Improved: Duplicate Column
+* Improved: Freeze Functionality
+* Improved: Free & Pro Checking
+* Improved: Template Library Search Option
+* Fixed: Others Plugin Conflict Issue fix
+* Fixed: Resizer Violation Error
 * Tweaked: Admin Dashboard
 * Tweaked: SVG Icons
 
-= Table Builder Block: 2.2.1 (2026-03-04) =
-* Improved: Enhanced product cart button styling.
-* Improved: Improved required plugin detection and validation.
-* Improved: Refined Template Library user interface.
-* Improved: Enhanced Freeze Table user interface. 
-* Fixed: Fixed issues with required plugin installation and activation process.
-* Tweaked: Optimized block icon for better consistency and performance.
-* Removed: Removed unnecessary markup from both editor and frontend output.
+= TableKit: 2.2.1 (2026-03-04) =
+* Improved: Enhanced product cart button styling
+* Improved: Improved required plugin detection and validation
+* Improved: Refined Template Library user interface
+* Improved: Enhanced Freeze Table user interface
+* Fixed: Fixed issues with required plugin installation and activation process
+* Tweaked: Optimized block icon for better consistency and performance
+* Removed: Removed unnecessary markup from both editor and frontend output
 
-= Table Builder Block: 2.2.0 (2026-02-02) =
+= TableKit: 2.2.0 (2026-02-02) =
 * Improved: Table Builder block overall styling and visual consistency
 * Improved: Merge functionality and related UI/UX
 * Improved: Duplicate column UI for better clarity
@@ -188,7 +243,7 @@ TableKit is the ultimate solution for building various tables on WordPress websi
 * Tweaked: Replace duplicate column border with active dot indicator
 * Tweaked: Column control color position for better accessibility
 
-= Table Builder Block: 2.1.2 (2025-12-21) =
+= TableKit: 2.1.2 (2025-12-21) =
 * Added: Template Library with placeholder support
 * Added: Enhanced cart button styling
 * Improve: Conditional formatting functionality
@@ -196,30 +251,30 @@ TableKit is the ultimate solution for building various tables on WordPress websi
 * Tweaked: Loader animation smoothness
 * Tweaked: Block icon visual clarity
 
-= Table Builder Block: 2.1.1 (2025-12-02) =
+= TableKit: 2.1.1 (2025-12-02) =
 * Fixed: Advanced tab error
 * Improved: Column style options
 * Improved: Controls across multiple features
 * Improved: Improved dashboard UI
 
-= Table Builder Block: 2.1.0 (2025-09-15) =
+= TableKit: 2.1.0 (2025-09-15) =
 * Added: REST API support for tables
 * Improved: Advanced column styling
 * Improved: Optimize editor performance
 * Fixed: Minor bug and improvements
 
-= Table Builder Block: 2.0.1 (2025-06-02) =
+= TableKit: 2.0.1 (2025-06-02) =
 * Added: Sort functionality in table builder block
 * Fixed: Table block overall style controls
 * Improved: Editor performance
 
-= Table Builder Block: 2.0.0 (2025-05-20) =
+= TableKit: 2.0.0 (2025-05-20) =
 * Improved: Remove GutenKit plugin dependency
 * Improved: Table builder block controls and performance
 
-= Table Builder Block: 1.0.1 (2024-10-27) =
+= TableKit: 1.0.1 (2024-10-27) =
 * Fixed: Compatibility with GutenKit
 * Improved: Table builder block performance
 
-= Table Builder Block: 1.0.0 (2024-10-06) =
+= TableKit: 1.0.0 (2024-10-06) =
 * Inital Release
