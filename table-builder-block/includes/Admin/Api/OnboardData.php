@@ -5,8 +5,29 @@ namespace TableBuilder\Admin\Api;
 defined( 'ABSPATH' ) || exit;
 
 class OnboardData {
+	private const PLUGIN_SUBSCRIBE_URL = 'https://api.wpmet.com/public/plugin-subscribe/';
+
 	public function __construct() {
 		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
+	}
+
+	private function send_email_subscribe_data( string $email ): void {
+		wp_remote_post(
+			self::PLUGIN_SUBSCRIBE_URL,
+			[
+				'method'  => 'POST',
+				'headers' => [
+					'Accept'       => '*/*',
+					'Content-Type' => 'application/json',
+				],
+				'body'    => wp_json_encode(
+					[
+						'email' => $email,
+						'slug'  => 'tablekit',
+					]
+				),
+			]
+		);
 	}
 
 	public function register_routes(): void {
@@ -69,10 +90,15 @@ class OnboardData {
 		}
 
 		$completed = (bool) $request->get_param( 'completed' );
+		$user_mail = sanitize_email( wp_unslash( (string) $request->get_param( 'userMail' ) ) );
 
 		update_option( 'tablebuilder_onboard_completed', $completed ? 1 : 0 );
 
 		if ( $completed ) {
+			if ( ! empty( $user_mail ) && is_email( $user_mail ) ) {
+				$this->send_email_subscribe_data( $user_mail );
+			}
+
 			update_option( 'tablebuilder_onboard_completed_at', current_time( 'mysql' ) );
 			delete_transient( 'tablebuilder_show_onboard' );
 		}

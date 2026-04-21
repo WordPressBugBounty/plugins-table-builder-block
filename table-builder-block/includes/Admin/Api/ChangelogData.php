@@ -11,7 +11,7 @@ class ChangelogData {
     private const SOURCES = [
         'Free' => [
             'file'  => TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'readme.txt',
-            'regex' => '/= Table Builder Block:\s*([^(=]+?)\s*\(([^)]+)\)\s*=\R(.*?)(?=\R= Table Builder Block:|\z)/s',
+            'regex' => '/= (?:TableKit|Table Builder Block)\s*:?\s*([^(=]+?)\s*\(([^)]+)\)\s*=\R(.*?)(?=\R= (?:TableKit|Table Builder Block)\s*:?\s*|\z)/s',
         ],
     ];
 
