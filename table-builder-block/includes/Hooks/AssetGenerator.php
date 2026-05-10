@@ -33,14 +33,15 @@ class AssetGenerator
         add_filter('wp_resource_hints', array($this, 'fonts_resource_hints'), 10, 2);
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 10);
         add_action('enqueue_block_assets', array($this, 'block_assets'), 10);
-        
+
         // Clear FSE cache when templates are saved
         add_action('save_post_wp_template', array($this, 'clear_fse_cache'));
         add_action('save_post_wp_template_part', array($this, 'clear_fse_cache'));
     }
 
     // Clear FSE asset cache.
-    public function clear_fse_cache() {
+    public function clear_fse_cache()
+    {
         delete_transient('table_builder_fse_blocks');
     }
 
@@ -179,7 +180,7 @@ class AssetGenerator
         }
 
         $filtered_blocks = $this->filter_blocks($merged_blocks);
-        
+
         // Cache for 6 hours
         set_transient('table_builder_fse_blocks', $filtered_blocks, 6 * HOUR_IN_SECONDS);
 

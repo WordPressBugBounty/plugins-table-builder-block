@@ -4,7 +4,7 @@ Tags: table, table builder block, product table for woocommerce, woocommerce pro
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -198,6 +198,10 @@ TableKit is the ultimate solution for building various tables on WordPress websi
 
 
 == Changelog ==
+
+= TableKit 2.2.5 (2026-05-04) =
+* Added: Shortcode 
+* Improved: Template Library UI
 
 = TableKit 2.2.4 (2026-04-20) =
 * Fixed: Changelog not displayed
