@@ -1,0 +1,14 @@
+.tablekit-el-placeholder {
+	border: 1px dashed #b5b5b5;
+	padding: 18px 20px;
+	text-align: center;
+	color: #6a6a6a;
+	background: #f8f8f8;
+	border-radius: 4px;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.tablekit-el-placeholder p {
+	margin: 0;
+}

@@ -2,7 +2,7 @@
 
 namespace TableBuilder\Shortcode;
 
-use TableBuilder\Helpers\Utils;
+use TableBuilder\Shortcode\ShortcodeUtils;
 use TableBuilder\Render\BlockRenderer;
 use TableBuilder\Traits\Singleton;
 
@@ -50,15 +50,77 @@ class Shortcode
 	// Shortcode Rendering
 	public function render($raw_atts, string $content = ''): string
 	{
-		$atts  = shortcode_atts(self::DEFAULT_ATTS, (array) $raw_atts, 'tableKit');
-		$ids   = $this->parse_ids($atts);
+		$atts = $this->sanitize_atts(shortcode_atts(self::DEFAULT_ATTS, (array) $raw_atts, 'tableKit'));
+		$ids  = $this->parse_ids($atts);
+
+		ob_start();
+
+		if ( empty( $ids['block_id'] ) && empty( $ids['raw_id'] ) ) {
+			echo $this->render_all_blocks( $ids, $atts, $content );
+			return (string) ob_get_clean();
+		}
+
 		$block = $this->locate_block($ids['post_id'], $ids['block_id'], $ids['raw_id']);
 
-		if (empty($block)) {
+		if (! empty($block)) {
+			echo $this->render_single_block($block, $atts, $ids, $content);
+		}
+
+		return (string) ob_get_clean();
+	}
+
+	// -------------------------------------------------------------------------
+	// Multi-block rendering (no block_id given)
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Render the source post/page content for post_id-only shortcodes.
+	 * For standalone tablekit_table CPT entries, this preserves the original
+	 * behavior of rendering the stored block content.
+	 */
+	private function render_all_blocks( array $ids, array $atts, string $content ): string
+	{
+		if ( empty( $ids['post_id'] ) ) {
 			return '';
 		}
 
-		// Pro hooks here to handle its own block types.
+		$post_id = (int) $ids['post_id'];
+		static $cleared = [];
+		if ( ShortcodeUtils::is_elementor_editor() && ! isset( $cleared[ $post_id ] ) ) {
+			clean_post_cache( $post_id );
+			$cleared[ $post_id ] = true;
+		}
+
+		$post = get_post( $post_id );
+
+		if ( ! $post || empty( $post->post_content ) ) {
+			return '';
+		}
+		$this->block_enqueue_assets();
+		$css   = $this->collect_blocks_css_from_content( $post->post_content );
+		$style = $css ? '<style id="tbk-shortcode-' . absint( $post->ID ) . '">' . $css . '</style>' : '';
+
+		$previous_post = $GLOBALS['post'] ?? null;
+		$GLOBALS['post'] = $post; // Ensure filters use the shortcode post context.
+		setup_postdata( $post );
+		$content = (string) apply_filters( 'the_content', $post->post_content );
+		wp_reset_postdata();
+		$GLOBALS['post'] = $previous_post;
+
+		return $style . $content . ShortcodeUtils::get_elementor_init_script();
+	}
+
+	// -------------------------------------------------------------------------
+	// Single-block rendering
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Render a single resolved block. Used both by the multi-block path and the
+	 * specific block_id path.
+	 */
+	private function render_single_block( array $block, array $atts, array $ids, string $content ): string
+	{
+		// Pro hooks handle their own block types.
 		$output = apply_filters('tablekit/render_block', null, $block, $atts, $ids, $content);
 		if (null !== $output) {
 			return (string) $output;
@@ -66,21 +128,24 @@ class Shortcode
 
 		$attrs = $this->prepare_attrs($block, $atts, $ids['block_id']);
 		$rows  = $block['innerBlocks'] ?? [];
-		$css   = $this->collect_block_css($block);
+		$css   = ShortcodeUtils::collect_block_css($block);
 		$this->block_enqueue_assets();
 		$style = $css ? '<style id="tb-' . esc_attr($attrs['blockID']) . '">' . $css . '</style>' : '';
 
 		return $style . BlockRenderer::render_table_builder($attrs, $rows, $content);
 	}
 
+	// -------------------------------------------------------------------------
 	// Attribute Preparation
+	// -------------------------------------------------------------------------
+
 	private function prepare_attrs(array $block, array $atts, string $block_id): array
 	{
 		$attrs = $block['attrs'] ?? [];
 		$rows  = $block['innerBlocks'] ?? [];
 
 		// Override stored attributes with any inline JSON overrides.
-		$json_overrides = $this->decode_json($atts['attrs_json']);
+		$json_overrides = ShortcodeUtils::decode_json($atts['attrs_json']);
 		if ($json_overrides) {
 			$attrs = array_replace_recursive($attrs, $json_overrides);
 		}
@@ -88,10 +153,9 @@ class Shortcode
 		// Ensure a stable unique block ID.
 		$attrs['blockID'] = $block_id ?: (! empty($attrs['blockID']) ? $attrs['blockID'] : 'tb-' . wp_generate_uuid4());
 
-		
 		// Append any extra CSS class passed via shortcode.
 		if (! empty($atts['class'])) {
-			$extra_class      = sanitize_html_class($atts['class']);
+			$extra_class         = sanitize_html_class($atts['class']);
 			$attrs['blockClass'] = trim(($attrs['blockClass'] ?? '') . ' ' . $extra_class);
 		}
 
@@ -138,12 +202,15 @@ class Shortcode
 		);
 	}
 
+	// -------------------------------------------------------------------------
 	// ID Resolution
+	// -------------------------------------------------------------------------
+
 	private function parse_ids(array $atts): array
 	{
 		$raw_id   = trim((string) ($atts['id'] ?? ''));
-		$post_id  = absint($atts['post_id'] ?? 0);
-		$block_id = sanitize_text_field($atts['block_id'] ?? '');
+		$post_id  = (int) ($atts['post_id'] ?? 0);
+		$block_id = (string) ($atts['block_id'] ?? '');
 
 		if (! $post_id && ctype_digit($raw_id)) {
 			$post_id = (int) $raw_id;
@@ -156,7 +223,10 @@ class Shortcode
 		return compact('raw_id', 'post_id', 'block_id');
 	}
 
-	// Block Resolution
+	// -------------------------------------------------------------------------
+	// Block Resolution (specific block_id path only)
+	// -------------------------------------------------------------------------
+
 	private function locate_block(int $post_id, string $block_id, string $raw_id): array
 	{
 		if ($post_id) {
@@ -186,7 +256,7 @@ class Shortcode
 	}
 
 	/**
-	 * Searches the database for posts containing the given block ID, then
+	 * Searches the database for posts containing the given block ID.
 	 */
 	private function search_block_by_id(string $block_id): array
 	{
@@ -238,79 +308,50 @@ class Shortcode
 		return [];
 	}
 
+	// -------------------------------------------------------------------------
 	// CSS Collection
-	private function collect_block_css(array $block): string
-	{
-		$css = $this->build_css_from_attrs($block['attrs'] ?? []);
+	// -------------------------------------------------------------------------
 
-		foreach ($block['innerBlocks'] ?? [] as $inner_block) {
-			$css .= $this->collect_block_css($inner_block);
+	public function collect_blocks_css_from_content( string $content ): string
+	{
+		if ( '' === trim( $content ) ) {
+			return '';
+		}
+
+		$blocks = parse_blocks( $content );
+		if ( empty( $blocks ) ) {
+			return '';
+		}
+
+		$block_names = apply_filters( 'tablekit/block_names', [ 'tablebuilder/table-builder' ] );
+		$css         = '';
+
+		foreach ( $blocks as $block ) {
+			$css .= $this->collect_css_from_block_tree( $block, $block_names );
 		}
 
 		return $css;
 	}
 
-	/**
-	 * Converts a block's `blocksCSS` attribute map into a CSS string, wrapped
-	 */
-	private function build_css_from_attrs(array $attrs): string
+	private function collect_css_from_block_tree( array $block, array $block_names ): string
 	{
-		$blocks_css = $attrs['blocksCSS'] ?? null;
+		$css = '';
 
-		if (empty($blocks_css) || ! is_array($blocks_css)) {
-			return '';
+		if ( in_array( $block['blockName'] ?? '', $block_names, true ) ) {
+			$css .= ShortcodeUtils::collect_block_css( $block );
 		}
 
-		// Keep only non-empty string entries.
-		$css_map = array_filter(
-			$blocks_css,
-			static fn($value) => is_string($value) && '' !== trim($value)
-		);
-
-		if (empty($css_map)) {
-			return '';
+		foreach ( $block['innerBlocks'] ?? array() as $inner_block ) {
+			$css .= $this->collect_css_from_block_tree( $inner_block, $block_names );
 		}
 
-		$output = '';
-
-		foreach (Utils::get_device_list() as $device) {
-			$slug = strtolower($device['slug'] ?? '');
-			$css  = trim($css_map[$slug] ?? '');
-
-			if ('' === $css) {
-				continue;
-			}
-
-			if ('base' === ($device['value'] ?? '')) {
-				$output .= $css;
-			} else {
-				$output .= "@media ({$device['direction']}-width:{$device['value']}px){{$css}}";
-			}
-		}
-
-		// Append any custom styles not covered by the device list.
-		if (! empty($css_map['customStyles'])) {
-			$output .= $css_map['customStyles'];
-		}
-
-		return $output;
+		return $css;
 	}
 
-	// Utilities
-	private function decode_json($value): array
-	{
-		if (! is_string($value)) {
-			return [];
-		}
-
-		$decoded = json_decode(wp_unslash($value), true);
-
-		return (JSON_ERROR_NONE === json_last_error() && is_array($decoded))
-			? $decoded
-			: [];
-	}
-
+	// -------------------------------------------------------------------------
 	// Asset Management
+	// -------------------------------------------------------------------------
+
 	private function block_enqueue_assets(): void
 	{
 		if (self::$assets_enqueued) {
@@ -318,52 +359,27 @@ class Shortcode
 		}
 
 		self::$assets_enqueued = true;
-
-		wp_enqueue_style(
-			'table-builder-global',
-			TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/tablebuilder/global.css',
-			[],
-			TABLE_BUILDER_BLOCK_PLUGIN_VERSION
-		);
-
-		wp_enqueue_style(
-			'table-builder-components',
-			TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/tablebuilder/components.css',
-			[],
-			TABLE_BUILDER_BLOCK_PLUGIN_VERSION
-		);
-
-		$style_handle  = $this->get_asset_handle('tablebuilder/table-builder', 'style');
-		$script_handle = $this->get_asset_handle('tablebuilder/table-builder', 'viewScript');
-
-		if ($style_handle) {
-			wp_enqueue_style($style_handle);
-		}
-
-		if ($script_handle) {
-			wp_enqueue_script($script_handle);
-		}
+		ShortcodeUtils::enqueue_shared_styles();
+		ShortcodeUtils::enqueue_block_assets('tablebuilder/table-builder');
 	}
 
-	/**
-	 * Returns the WordPress asset handle for a registered block asset type.
-	 */
-	private function get_asset_handle(string $block_name, string $asset_type): string
-	{
-		if (function_exists('generate_block_asset_handle')) {
-			return generate_block_asset_handle($block_name, $asset_type, 0);
-		}
-
-		$base = str_replace('/', '-', $block_name);
-
-		return 'style' === $asset_type
-			? "{$base}-style"
-			: "{$base}-view-script";
-	}
-
+	// -------------------------------------------------------------------------
 	// Public API
+	// -------------------------------------------------------------------------
+
 	public static function is_assets_enqueued(): bool
 	{
 		return self::$assets_enqueued;
+	}
+
+	private function sanitize_atts(array $atts): array
+	{
+		$atts['id']         = sanitize_text_field((string) ($atts['id'] ?? ''));
+		$atts['post_id']    = absint($atts['post_id'] ?? 0);
+		$atts['block_id']   = sanitize_text_field((string) ($atts['block_id'] ?? ''));
+		$atts['class']      = sanitize_text_field((string) ($atts['class'] ?? ''));
+		$atts['attrs_json'] = (string) ($atts['attrs_json'] ?? '');
+
+		return $atts;
 	}
 }

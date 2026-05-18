@@ -6,7 +6,7 @@
  * Requires PHP: 7.4
  * Plugin URI: https://wpmet.com/plugin/gutenkit/
  * Author: Wpmet
- * Version: 2.2.5
+ * Version: 2.2.6
  * Author URI: https://wpmet.com/
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 final class TableBuilder {
-	const VERSION = '2.2.5';
+	const VERSION = '2.2.6';
 
 	private static $instance = null;
 
@@ -41,6 +41,7 @@ final class TableBuilder {
 
 		// Make sure ADD AUTOLOAD is scoped/vendor/scoper-autoload.php file
 		require_once TABLE_BUILDER_BLOCK_PLUGIN_DIR . '/scoped/vendor/scoper-autoload.php';
+		require_once TABLE_BUILDER_BLOCK_INC_DIR . 'Elementor/TablekitElementor.php';
 
 		// Fires after initialization of the GutenKit plugin
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
@@ -83,9 +84,11 @@ final class TableBuilder {
 		TableBuilder\Hooks\AssetGenerator::instance();
 		TableBuilder\Core\Enqueue::instance();
 		TableBuilder\Core\RestApi::instance();
+		TableBuilder\Config\CPT\TableCPT::instance();
 		TableBuilder\Config\Blocks::instance();
 		TableBuilder\Shortcode\Shortcode::instance();
 		TableBuilder\Admin\Admin::instance();
+		TableKit_Elementor::init();
 
 		if ( is_admin() ) {
 			TableBuilder\Libs\UtilityPackages::instance();

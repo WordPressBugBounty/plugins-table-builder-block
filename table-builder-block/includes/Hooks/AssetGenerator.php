@@ -29,6 +29,7 @@ class AssetGenerator
     public function __construct()
     {
         add_action('save_post', array($this, 'save_post_hook'), 10, 3);
+        add_filter('wp_insert_post_data', array($this, 'persist_short_ids_in_content'), 10, 2);
         add_filter('render_block_data', array($this, 'set_blocks_css'), 10);
         add_filter('wp_resource_hints', array($this, 'fonts_resource_hints'), 10, 2);
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 10);
@@ -146,6 +147,83 @@ class AssetGenerator
                 $this->set_fonts($post_id, $parse_blocks);
             }
         }
+    }
+
+    /**
+     * Persist shortId into saved block content before WordPress writes the post.
+     */
+    public function persist_short_ids_in_content( array $data, array $postarr ): array
+    {
+        if ( empty( $data['post_content'] ) || false === strpos( (string) $data['post_content'], 'tablebuilder/' ) ) {
+            return $data;
+        }
+
+        $content = wp_unslash( (string) $data['post_content'] );
+        $blocks   = parse_blocks( $content );
+
+        if ( empty( $blocks ) ) {
+            return $data;
+        }
+
+        $updated_blocks = $this->ensure_short_ids_for_blocks( $blocks );
+        $updated_content = serialize_blocks( $updated_blocks );
+
+        if ( '' === $updated_content || $updated_content === $content ) {
+            return $data;
+        }
+
+        $data['post_content'] = wp_slash( $updated_content );
+
+        return $data;
+    }
+
+    /**
+     * Recursively walk blocks and populate missing shortId values for table blocks.
+     */
+    protected function ensure_short_ids_for_blocks( array $blocks ): array
+    {
+        $target_blocks = array( 'tablebuilder/table-builder', 'tablebuilder/data-table', 'tablebuilder/post-table' );
+
+        foreach ( $blocks as $index => $block ) {
+            if ( ! empty( $block['innerBlocks'] ) ) {
+                $block['innerBlocks'] = $this->ensure_short_ids_for_blocks( $block['innerBlocks'] );
+            }
+
+            if ( in_array( $block['blockName'] ?? '', $target_blocks, true ) ) {
+                $attrs = $block['attrs'] ?? array();
+
+                if ( empty( $attrs['shortId'] ) ) {
+                    $block_id = (string) ( $attrs['blockID'] ?? '' );
+
+                    if ( '' !== $block_id ) {
+                        $attrs['shortId'] = $this->generate_short_id( $block_id );
+                        $block['attrs']   = $attrs;
+                    }
+                }
+            }
+
+            $blocks[ $index ] = $block;
+        }
+
+        return $blocks;
+    }
+
+    /**
+     * Generate the same 6-digit shortId value used by the editor and list table.
+     */
+    protected function generate_short_id( string $block_id ): string
+    {
+        $hash = 0;
+
+        foreach ( str_split( $block_id ) as $character ) {
+            $hash = ( ( $hash * 31 ) + ord( $character ) ) & 0xffffffff;
+
+            if ( $hash > 0x7fffffff ) {
+                $hash -= 0x100000000;
+            }
+        }
+
+        return str_pad( (string) ( abs( $hash ) % 1000000 ), 6, '0', STR_PAD_LEFT );
     }
 
     /**
@@ -402,8 +480,8 @@ class AssetGenerator
     {
         global $post;
 
-        if (!wp_is_block_theme() && !empty($post->post_content)) {
-            do_blocks($post->post_content);
+        if ( ! wp_is_block_theme() && $post instanceof \WP_Post && ! empty( $post->post_content ) ) {
+            do_blocks( $post->post_content );
         }
 
         $fonts_url = $this->generate_fonts_url();
