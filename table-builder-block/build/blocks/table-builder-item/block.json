@@ -65,6 +65,27 @@
     "alignmentWideScreen": {
       "type": "string"
     },
+    "verticalAlignDesktop": {
+      "type": "string"
+    },
+    "verticalAlignTablet": {
+      "type": "string"
+    },
+    "verticalAlignMobile": {
+      "type": "string"
+    },
+    "verticalAlignMobileLandscape": {
+      "type": "string"
+    },
+    "verticalAlignTabletLandscape": {
+      "type": "string"
+    },
+    "verticalAlignLaptop": {
+      "type": "string"
+    },
+    "verticalAlignWideScreen": {
+      "type": "string"
+    },
     "tableBuilderItemWidthDesktop": {
       "type": "string"
     },

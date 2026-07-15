@@ -1,23 +1,25 @@
-=== TableKit: Table Builder Blocks for Gutenberg ===
+=== TableKit – WordPress Table Builder for Data Tables, WooCommerce Product Tables & Post Tables ===
 Contributors: Roxnor, Ataurr, aion11
-Tags: table, table builder block, product table for woocommerce, woocommerce product table, datatable, pricing table, post table
+Tags: table, table builder block, post table, woocommerce product table, datatable, pricing table,
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.6
+Stable tag: 2.2.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Powerful table builder block for Gutenberg block editor.
+Visually build any type of table in WordPress data tables, WooCommerce product tables, and post tables from scratch or use table templates.
 
 == Description ==
 
 **Fully Customizable. WooCommerce Product Table. Synch Any Data Files.  All Within Block Editor.**
 
-That’s **[TableKit - Table Builder Block](https://wpmet.com/plugin/tablekit/)** by Wpmet! An ultimate table builder solution for WordPress that is built from the ground up for the native Gutenberg Block Editor.
+**[TableKit – The WordPress Table Builder Plugin](https://wpmet.com/plugin/tablekit/)** by Wpmet is the most complete table builder solution for WordPress — trusted by 3,000,000+ Wpmet users. Build data tables, WooCommerce product tables, post tables, comparison tables, and pricing tables directly in the block editor or Elementor.
 
-TableKit isn’t a typical table builder plugin that only displays data and text. It gives you the highest level of flexibility like no other table builder. TableKit combines pixel-perfect design control with powerful data features, all inside a seamless Gutenberg experience.
+Unlike any other WordPress table plugin, TableKit combines pixel-perfect design control, live data sync from Google Sheets, CSV, JSON and REST APIs, and WooCommerce product table functionality — all in one plugin with zero coding required.
 
+
+ 
 https://youtu.be/a4CZZjHkG14?si=sxrrrHDtnDXB5gC4
 
 **So, A New Era in WordPress Table Building!**
@@ -47,33 +49,56 @@ Speed up your table building workflow dramatically. TableKit lets you duplicate 
 ### Display anywhere
 Another fun part of TableKit is its flexibility—it can be inserted anywhere on your webpage, allowing you to place it where it will most impact the content flow.
 
+### TableKit Elementor Widget
+Build tables once and display them inside Elementor using the TableKit widget — same design, same formatting, no manual rebuilding required.
+
 ### Zero Efforts for Responsiveness
 Making responsive table designs shouldn’t be a challenge for WordPress users! And, that’s what the TableKit team believes, offering multiple pre-defined responsive breakpoints for different screens. You can set a custom width for each breakpoint ensuring the table looks great on any device.
 
 ## You Should Use TableKit if You Want to Create...
-**🔶 Data Table:** Organize and present large datasets in a structured format.
 
-**🔶 Comparison Table:** Compare metrics and categories for services or products.
+**🔶 WordPress Data Table:** Connect to Google Sheets, CSV, JSON, or REST APIs and display live-syncing data tables — no coding, no manual updates.
 
-**🔶 Pricing Table:**
+**🔶 WooCommerce Product Table:** Show all product details — title, SKU, price, stock, ratings — with Add to Cart directly in the table row.
 
-**🔶 Inventory Table:** Track product stock, quantities, and statuses.
+**🔶 WordPress Post Table:** Display posts, pages, and custom post types in a searchable, filterable, sortable table with ACF field support.
 
-**🔶 Image Gallery Table:** List contact details by department and location.
+**🔶 Comparison Table:** Show feature differences side by side with conditional formatting — highlight winners automatically in green, gaps in red.
 
-**🔶 Financial Report Table:** Present frequently asked questions and answers.
+**🔶 Pricing Table:** Build clear, structured pricing tables with highlighted recommended plans and one-click column duplication.
 
-**🔶 Team Member Table:** Showcase employee directories with roles, photos, and contact info.
+**🔶 Inventory Table:** Track stock levels with conditional formatting that flags low inventory automatically.
 
-**🔶 Property Listing Table:**
+**🔶 Image Gallery Table:** Embed images, videos, and media directly inside table cells using native block support.
 
-**🔶 Pros & Cons Table:**
+**🔶 Financial Report Table:** Display financial data with row grouping, column sorting, and export to CSV, Excel, or PDF.
 
-**🔶 WordPress Post Table:**
+**🔶 Team Member Table:** Showcase team profiles with photos, roles, and contact links in a clean, responsive table layout.
+
+**🔶 Property Listing Table:** List properties with images, prices, locations, and availability — filterable and sortable by any column.
+
+**🔶 Pros & Cons Table:** Easily highlight the pros and cons of your products or services.
+
+
+### 📚 TABLEKIT TEMPLATE LIBRARY
+
+Skip the blank canvas. Start with **ready-made table templates** and customize only what matters:
+
+**Available Template Types:**
+- **Pricing Tables** – Professional pricing grids with highlight columns
+- **Comparison Tables** – Side-by-side feature comparisons
+- **Product Tables** – WooCommerce product showcases
+- **Data Tables** – Structured data displays
+- **Post Tables** – Blog post listings and directories
+
+**One-Click Import:** Browse templates directly in the block editor and import with a single click. All templates are fully customizable.
+
+[View Template Library](https://wpmet.com/plugin/tablekit/templates/)
 
 The possibilities for creating diverse website table formats with TableKit are endless…
 
-## WooCommerce Product Table
+### WooCommerce Product Table — Build a Searchable Product Catalog
+
 Turn your WooCommerce store into a high-converting product catalog. TableKit's **WooCommerce Product Table** displays your products in a clean, filterable, searchable table layout — giving customers everything they need to make a purchase decision at a glance.
 
 https://youtu.be/2SimfItbR_4?si=f9lqrRiuCfHi60fX
@@ -86,7 +111,9 @@ https://youtu.be/2SimfItbR_4?si=f9lqrRiuCfHi60fX
 
 **✅ Search, Filter, Paginate, and Export:** Enable live search, column filtering, pagination, and customizable row limits for a smooth browsing experience. Export table data anytime in CSV, Excel, or PDF formats.
 
-## WordPress Post Table
+
+### WordPress Post Table — Display Posts, Pages & Custom Post Types
+
 Display any WordPress content type in a beautiful, queryable table. TableKit's **Post Table** is a powerful way to present posts, pages, media files, custom post types, and templates — searchable, filterable, and paginated.
 
 **Show any content type:**
@@ -155,11 +182,11 @@ If you like using PopupKit plugin by Wpmet, then consider checking out our other
 
 [GutenKit](https://wpgutenkit.com/) – Build websites **10x Faster** with ZERO coding in the Gutenberg Block Editor.
 
-[EmailKit](https://wpmet.com/plugin/emailkit/) – The most complete WooCommerce solution for Elementor.
+[EmailKit](https://wpmet.com/plugin/emailkit/) – The most complete no-code Email Template designer for WordPress.
 
 [Wp Social](https://wpmet.com/plugin/wp-social/) – Leverage Wp Social to add Social Login, Social Counter, and Social Login to your website.
 
-[Wp Fundraising](https://products.wpmet.com/crowdfunding/) – Employ the power of Wp Fundraising to create a crowdfunding and donation site with WordPress.
+[Rox Appointment Booking](https://wordpress.org/plugins/rox-appointment-booking/) – Multipurpose appointment & booking solution plugin for WordPress. 
 
 [Wp Ultimate Review](https://products.wpmet.com/review/) – Manage customer reviews with the Wp Ultimate Review plugin.
 
@@ -194,10 +221,27 @@ Yes, it is fully responsive for all devices and tested for cross-browser compati
 = Is TableKit Right for You? =
 TableKit is the ultimate solution for building various tables on WordPress websites, including product tables, FAQs, data tables, reviews, team directories, comparisons, inventories, schedules, and more.
 
+= Does TableKit work with Elementor? =
+Yes. TableKit includes a dedicated Elementor widget. Build your table once in the block editor and display it inside any Elementor page — same design, no rebuilding required.
+
+= Can I sync a WordPress table with Google Sheets? =
+Yes. TableKit's Data Table module connects directly to Google Sheets with live sync — your table updates automatically whenever your sheet changes.
+
+= Does TableKit support WooCommerce product tables? =
+Yes. TableKit's WooCommerce product table displays any product data — title, price, SKU, stock, ratings — with Add to Cart directly from the table row.
+
+= Can I export WordPress table data? =
+Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single click.
+
+
 == Screenshots ==
 
 
 == Changelog ==
+
+= TableKit 2.2.7 (2026-07-14) =
+* Added: A new global control to set vertical alignment (top, middle, bottom) for content across all table cells.
+* Improved: Better display and usability of tables on mobile devices.
 
 = TableKit 2.2.6 (2026-05-17) =
 * Added: New Table custom post type for easier table management.

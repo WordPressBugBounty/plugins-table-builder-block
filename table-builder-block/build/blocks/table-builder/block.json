@@ -44,6 +44,10 @@
       "type": "boolean",
       "default": true
     },
+    "responsiveBreakpoint": {
+      "type": "number",
+      "default": 768
+    },
     "caption": {
       "type": "string"
     },
@@ -351,6 +355,16 @@
       "type": "string"
     },
     "alignmentMobile": {
+      "type": "string"
+    },
+    "commonVerticalAlignDesktop": {
+      "type": "string",
+      "default": "center"
+    },
+    "commonVerticalAlignTablet": {
+      "type": "string"
+    },
+    "commonVerticalAlignMobile": {
       "type": "string"
     },
     "cellTypography": {
