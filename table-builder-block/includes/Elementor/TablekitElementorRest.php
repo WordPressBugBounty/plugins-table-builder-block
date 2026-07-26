@@ -50,10 +50,18 @@ class TableKit_Elementor_Rest
 		$content = null;
 
 		if ($post) {
+			if ('publish' !== $post->post_status && !current_user_can('read_post', $table_id)) {
+				return new \WP_Error(
+					'tablekit_forbidden',
+					__('You are not allowed to view this table.', 'tablekit'),
+					array('status' => 403)
+				);
+			}
+
 			$content = $post->post_content;
-		} elseif (class_exists('\\TableBuilder\\Config\\CPT\\TableCPT')) {
+		} elseif (class_exists('\\TableBuilder\\Config\\CPT\\TableCPT') && method_exists('\\TableBuilder\\Config\\CPT\\TableCPT', 'get_inline_table_content')) {
 			$inline = \TableBuilder\Config\CPT\TableCPT::instance()
-				->get_inline_table_content($table_id); 
+				->get_inline_table_content($table_id);
 			$content = $inline ?? null;
 		}
 

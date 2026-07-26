@@ -93,7 +93,7 @@ class Shortcode
 
 		$post = get_post( $post_id );
 
-		if ( ! $post || empty( $post->post_content ) ) {
+		if ( ! $post || empty( $post->post_content ) || ! $this->can_view_post( $post ) ) {
 			return '';
 		}
 		$this->block_enqueue_assets();
@@ -248,11 +248,25 @@ class Shortcode
 	{
 		$post = get_post($post_id);
 
-		if (! $post || empty($post->post_content)) {
+		if (! $post || empty($post->post_content) || ! $this->can_view_post($post)) {
 			return [];
 		}
 
 		return $this->find_table_block(parse_blocks($post->post_content), $block_id);
+	}
+
+	/**
+	 * Whether the current request is allowed to see a post's content.
+	 * Prevents the [tableKit] shortcode from being used to pull table
+	 * content out of private/draft/pending posts the viewer can't read.
+	 */
+	private function can_view_post(\WP_Post $post): bool
+	{
+		if ('publish' === $post->post_status) {
+			return true;
+		}
+
+		return current_user_can('read_post', $post->ID);
 	}
 
 	/**

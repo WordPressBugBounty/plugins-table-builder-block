@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, datatab
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.7
+Stable tag: 2.2.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,12 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+
+= TableKit 2.2.8 (2026-07-26) =
+* Added: Plugin deactivation feedback modal to gather user insights and help improve future releases.
+* Improved: JavaScript internationalization (i18n) support for translated editor and frontend experiences.
+* Improved: Core architecture and performance for faster execution and better maintainability.
+* Improved: Security by enhancing input validation, sanitization, escaping, and overall code quality.
 
 = TableKit 2.2.7 (2026-07-14) =
 * Added: A new global control to set vertical alignment (top, middle, bottom) for content across all table cells.

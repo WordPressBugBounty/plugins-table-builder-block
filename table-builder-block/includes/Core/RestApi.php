@@ -32,7 +32,7 @@ class RestApi {
         register_rest_route('tablekit/v1', '/table-manager-api/check-plugins', array(
             'methods'             => 'POST',
             'callback'            => array($this, 'check_plugins_status'),
-            'permission_callback' => '__return_true',
+            'permission_callback' => function() { return current_user_can('edit_posts'); },
         ));
 
         register_rest_route('tablekit/v1', '/table-manager-api/activate-plugins', array(

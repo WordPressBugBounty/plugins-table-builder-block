@@ -15,7 +15,7 @@ class SettingsData {
 				array(
 					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => array( $this, 'action_get_settings' ),
-					'permission_callback' => '__return_true',
+					'permission_callback' => array( $this, 'check_permission' ),
 				)
 			);
 		});
@@ -25,30 +25,38 @@ class SettingsData {
 				array(
 					'methods'             => \WP_REST_Server::EDITABLE,
 					'callback'            => array( $this, 'action_edit_settings' ),
-					'permission_callback' => '__return_true',
+					'permission_callback' => array( $this, 'check_permission' ),
 				)
 			);
 		});
 	}
 
-	public function action_get_settings($request) {
-		/**
-		* Enable this section when fully functional from frontend and need Nonce & Permission check
-		*/
+	/**
+	 * Verify nonce and capability before either callback runs.
+	 * Doing this in permission_callback (rather than inside the action)
+	 * ensures WordPress returns a proper 401/403 status on failure.
+	 */
+	public function check_permission($request) {
 		if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
-			return array(
-				'status'  => 'fail',
-				'message' => array(__('Nonce mismatch.', 'table-builder-block')),
+			return new \WP_Error(
+				'rest_cookie_invalid_nonce',
+				__('Nonce mismatch.', 'table-builder-block'),
+				array('status' => 403)
 			);
 		}
 
 		if (!is_user_logged_in() || !current_user_can('manage_options')) {
-			return array(
-				'status'  => 'fail',
-				'message' => array(__('Access denied.', 'table-builder-block')),
+			return new \WP_Error(
+				'rest_forbidden',
+				__('Access denied.', 'table-builder-block'),
+				array('status' => 403)
 			);
 		}
 
+		return true;
+	}
+
+	public function action_get_settings($request) {
 		$result_data = get_option('gutenkit_settings_list');
 
 		return array(
@@ -59,23 +67,6 @@ class SettingsData {
 	}
 
 	public function action_edit_settings($request) {
-		/**
-		* Enable this section when fully functional from frontend and need Nonce & Permission check
-		*/
-		if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
-			return array(
-				'status'  => 'fail',
-				'message' => array(__('Nonce mismatch.', 'table-builder-block')),
-			);
-		}
-
-		if (!is_user_logged_in() || !current_user_can('manage_options')) {
-			return array(
-				'status'  => 'fail',
-				'message' => array(__('Access denied.', 'table-builder-block')),
-			);
-		}
-
 		$req_data = $request->get_params();
 
 		if (array_key_exists('settings', $req_data)) {

@@ -6,7 +6,7 @@
  * Requires PHP: 7.4
  * Plugin URI: https://wpmet.com/plugin/gutenkit/
  * Author: Wpmet
- * Version: 2.2.7
+ * Version: 2.2.8
  * Author URI: https://wpmet.com/
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 final class TableBuilder {
-	const VERSION = '2.2.7';
+	const VERSION = '2.2.8';
 
 	private static $instance = null;
 
@@ -46,9 +46,33 @@ final class TableBuilder {
 		// Fires after initialization of the GutenKit plugin
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
 		add_action( 'admin_init', [ $this, 'maybe_redirect_to_onboard' ] );
+
+		// Load translated strings for PHP (.mo). JS/React strings are handled
+		// separately per-script via wp_set_script_translations() in Enqueue.php.
+		add_action( 'init', [ $this, 'load_textdomain' ] );
+	}
+
+	/**
+	 * Loads the plugin's PHP translation file.
+	 *
+	 * WordPress 5.9+ can auto-discover this from the "Text Domain"/"Domain Path"
+	 * plugin headers, but declaring it explicitly is the standard, version-safe
+	 * pattern and is required for translations shipped under
+	 * wp-content/languages/plugins/ instead of this plugin's own /languages folder.
+	 */
+	public function load_textdomain(): void {
+		load_plugin_textdomain(
+			'table-builder-block',
+			false,
+			dirname( plugin_basename( __FILE__ ) ) . '/languages'
+		);
 	}
 
 	public static function activate(): void {
+		if ( ! get_option( 'tablebuilder_installed_time' ) ) {
+			add_option( 'tablebuilder_installed_time', time() );
+		}
+
 		if ( get_transient( 'tablekit_skip_activation_redirect' ) ) {
 			return;
 		}
@@ -81,7 +105,10 @@ final class TableBuilder {
 	public function on_plugins_loaded(): void {
 		do_action( 'tablebuilder/before_init' );
 
+		load_plugin_textdomain( 'table-builder-block', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
 		TableBuilder\Hooks\AssetGenerator::instance();
+		TableBuilder\I18n\ScriptTranslationMerger::instance();
 		TableBuilder\Core\Enqueue::instance();
 		TableBuilder\Core\RestApi::instance();
 		TableBuilder\Config\CPT\TableCPT::instance();
@@ -89,6 +116,9 @@ final class TableBuilder {
 		TableBuilder\Shortcode\Shortcode::instance();
 		TableBuilder\Admin\Admin::instance();
 		TableKit_Elementor::init();
+
+		// Receive deactivation reason data from the plugins-page modal.
+		new TableBuilder\Routes\DeactivationFeedback();
 
 		if ( is_admin() ) {
 			TableBuilder\Libs\UtilityPackages::instance();

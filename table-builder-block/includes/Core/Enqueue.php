@@ -26,6 +26,7 @@ class Enqueue
     public function __construct()
     {
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_deactivation_popup_scripts'));
         add_action('enqueue_block_editor_assets', array($this, 'blocks_editor_scripts'));
         add_action('wp_head', array($this, 'print_device_script_for_window'));
         add_filter('body_class', array($this, 'add_body_class'));
@@ -102,6 +103,8 @@ class Enqueue
                     $assets['version']
                 );
 
+                wp_set_script_translations('tablebuilder-admin-dashboard', 'table-builder-block', TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'languages');
+
                 wp_localize_script(
                     'tablebuilder-admin-dashboard',
                     'tableBuilder',
@@ -117,6 +120,55 @@ class Enqueue
                 );
             }
         }
+    }
+
+    /**
+     * Enqueue the deactivation feedback popup on the plugins.php screen.
+     *
+     * @param string $hook The current admin page.
+     * @return void
+     */
+    public function enqueue_deactivation_popup_scripts($hook)
+    {
+        if ('plugins.php' !== $hook) {
+            return;
+        }
+
+        $asset_file = TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'build/admin/deactivation-popup/index.asset.php';
+        if (!file_exists($asset_file)) {
+            return;
+        }
+
+        $assets = include $asset_file;
+
+        wp_enqueue_script(
+            'tablebuilder-deactivation-popup',
+            TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/admin/deactivation-popup/index.js',
+            $assets['dependencies'],
+            $assets['version'],
+            true
+        );
+
+        wp_set_script_translations(
+            'tablebuilder-deactivation-popup',
+            'table-builder-block',
+            TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'languages'
+        );
+
+        wp_localize_script(
+            'tablebuilder-deactivation-popup',
+            'tableBuilderDeactivation',
+            array(
+                'pluginUrl' => TABLE_BUILDER_BLOCK_PLUGIN_URL,
+            )
+        );
+
+        wp_enqueue_style(
+            'tablebuilder-deactivation-popup',
+            TABLE_BUILDER_BLOCK_PLUGIN_URL . 'build/admin/deactivation-popup/index.css',
+            array(),
+            $assets['version']
+        );
     }
 
     /**
@@ -180,6 +232,7 @@ class Enqueue
 
         foreach ($scripts as $name => $handle) {
             if (in_array($handle, $shared_handles) && wp_script_is($handle, 'registered')) {
+                wp_set_script_translations($handle, 'table-builder-block', TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'languages');
                 continue;
             }
 
@@ -211,6 +264,8 @@ class Enqueue
                     $asset_data['version'],
                     true
                 );
+
+                wp_set_script_translations($handle, 'table-builder-block', TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'languages');
             }
         }
     }

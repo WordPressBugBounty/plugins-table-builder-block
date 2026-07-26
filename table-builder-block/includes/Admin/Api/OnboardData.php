@@ -37,7 +37,7 @@ class OnboardData {
 			[
 				'methods'             => \WP_REST_Server::READABLE,
 				'callback'            => [ $this, 'action_get_onboard' ],
-				'permission_callback' => '__return_true',
+				'permission_callback' => [ $this, 'is_request_allowed' ],
 			]
 		);
 
@@ -47,31 +47,38 @@ class OnboardData {
 			[
 				'methods'             => \WP_REST_Server::EDITABLE,
 				'callback'            => [ $this, 'action_update_onboard' ],
-				'permission_callback' => '__return_true',
+				'permission_callback' => [ $this, 'is_request_allowed' ],
 			]
 		);
 	}
 
-	private function is_request_allowed( $request ): bool {
+	/**
+	 * Verify nonce and capability. Used as permission_callback so
+	 * WordPress returns a proper 401/403 status on failure.
+	 *
+	 * @return true|\WP_Error
+	 */
+	public function is_request_allowed( $request ) {
 		if ( ! wp_verify_nonce( $request->get_header( 'X-WP-Nonce' ), 'wp_rest' ) ) {
-			return false;
+			return new \WP_Error(
+				'rest_cookie_invalid_nonce',
+				__( 'Nonce mismatch.', 'table-builder-block' ),
+				[ 'status' => 403 ]
+			);
 		}
 
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
-			return false;
+			return new \WP_Error(
+				'rest_forbidden',
+				__( 'Access denied.', 'table-builder-block' ),
+				[ 'status' => 403 ]
+			);
 		}
 
 		return true;
 	}
 
 	public function action_get_onboard( $request ) {
-		if ( ! $this->is_request_allowed( $request ) ) {
-			return [
-				'status'  => 'fail',
-				'message' => [ __( 'Access denied.', 'table-builder-block' ) ],
-			];
-		}
-
 		return [
 			'status'  => 'success',
 			'onboard' => [
@@ -82,13 +89,6 @@ class OnboardData {
 	}
 
 	public function action_update_onboard( $request ) {
-		if ( ! $this->is_request_allowed( $request ) ) {
-			return [
-				'status'  => 'fail',
-				'message' => [ __( 'Access denied.', 'table-builder-block' ) ],
-			];
-		}
-
 		$completed = (bool) $request->get_param( 'completed' );
 		$user_mail = sanitize_email( wp_unslash( (string) $request->get_param( 'userMail' ) ) );
 
