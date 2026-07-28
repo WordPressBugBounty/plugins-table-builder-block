@@ -1,10 +1,10 @@
 === TableKit – WordPress Table Builder for Data Tables, WooCommerce Product Tables & Post Tables ===
 Contributors: Roxnor, Ataurr, aion11
-Tags: table, table builder block, post table, woocommerce product table, datatable, pricing table,
+Tags: table, table builder block, post table, woocommerce product table, data table, pricing table,
 Requires at least: 6.1
-Tested up to: 7.0
+Tested up to: 7.2
 Requires PHP: 7.4
-Stable tag: 2.2.8
+Stable tag: 2.2.9
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,14 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+
+= TableKit 2.2.9 (2026-07-28) =
+* Added: PHPDoc and JSDoc documentation across PHP classes and JS files for better maintainability.
+* Improved: JavaScript/PHP internationalization — consistent text domain usage across editor and frontend strings.
+* Improved: Security — sanitized post_type and other request inputs before use.
+* Improved: Code style normalized (array syntax, coding standards checks) across Admin, Config, and CPT classes.
+* Improved: Plugin filters documented with PHPDoc for developer reference.
+* Improved: JavaScript translation support across the editor and frontend.
 
 = TableKit 2.2.8 (2026-07-26) =
 * Added: Plugin deactivation feedback modal to gather user insights and help improve future releases.

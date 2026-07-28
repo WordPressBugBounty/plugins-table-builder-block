@@ -1,61 +1,84 @@
 <?php
+/**
+ * REST endpoints for the plugin's onboarding flow
+ *
+ * @package TableKit
+ */
 
 namespace TableBuilder\Admin\Api;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Registers and serves the tablebuilder/v1/onboard REST routes.
+ */
 class OnboardData {
 	private const PLUGIN_SUBSCRIBE_URL = 'https://api.wpmet.com/public/plugin-subscribe/';
 
+	/**
+	 * Hooks onboarding REST route registration into WordPress.
+	 */
 	public function __construct() {
-		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
+		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 	}
 
+	/**
+	 * Sends the user's email to Wpmet's subscribe endpoint when onboarding completes.
+	 *
+	 * @param string $email User email to subscribe.
+	 * @return void
+	 */
 	private function send_email_subscribe_data( string $email ): void {
 		wp_remote_post(
 			self::PLUGIN_SUBSCRIBE_URL,
-			[
+			array(
 				'method'  => 'POST',
-				'headers' => [
+				'headers' => array(
 					'Accept'       => '*/*',
 					'Content-Type' => 'application/json',
-				],
+				),
 				'body'    => wp_json_encode(
-					[
+					array(
 						'email' => $email,
 						'slug'  => 'tablekit',
-					]
+					)
 				),
-			]
-		);
-	}
-
-	public function register_routes(): void {
-		register_rest_route(
-			'tablebuilder/v1',
-			'onboard',
-			[
-				'methods'             => \WP_REST_Server::READABLE,
-				'callback'            => [ $this, 'action_get_onboard' ],
-				'permission_callback' => [ $this, 'is_request_allowed' ],
-			]
-		);
-
-		register_rest_route(
-			'tablebuilder/v1',
-			'onboard',
-			[
-				'methods'             => \WP_REST_Server::EDITABLE,
-				'callback'            => [ $this, 'action_update_onboard' ],
-				'permission_callback' => [ $this, 'is_request_allowed' ],
-			]
+			)
 		);
 	}
 
 	/**
-	 * Verify nonce and capability. Used as permission_callback so
+	 * Registers the tablebuilder/v1/onboard GET/POST REST routes.
+	 *
+	 * @return void
+	 */
+	public function register_routes(): void {
+		register_rest_route(
+			'tablebuilder/v1',
+			'onboard',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'action_get_onboard' ),
+				'permission_callback' => array( $this, 'is_request_allowed' ),
+			)
+		);
+
+		register_rest_route(
+			'tablebuilder/v1',
+			'onboard',
+			array(
+				'methods'             => \WP_REST_Server::EDITABLE,
+				'callback'            => array( $this, 'action_update_onboard' ),
+				'permission_callback' => array( $this, 'is_request_allowed' ),
+			)
+		);
+	}
+
+	/**
+	 * Verifies nonce and capability. Used as permission_callback so
 	 * WordPress returns a proper 401/403 status on failure.
 	 *
+	 * @param \WP_REST_Request $request Request; only its nonce header is used.
 	 * @return true|\WP_Error
 	 */
 	public function is_request_allowed( $request ) {
@@ -63,7 +86,7 @@ class OnboardData {
 			return new \WP_Error(
 				'rest_cookie_invalid_nonce',
 				__( 'Nonce mismatch.', 'table-builder-block' ),
-				[ 'status' => 403 ]
+				array( 'status' => 403 )
 			);
 		}
 
@@ -71,23 +94,36 @@ class OnboardData {
 			return new \WP_Error(
 				'rest_forbidden',
 				__( 'Access denied.', 'table-builder-block' ),
-				[ 'status' => 403 ]
+				array( 'status' => 403 )
 			);
 		}
 
 		return true;
 	}
 
-	public function action_get_onboard( $request ) {
-		return [
+	/**
+	 * REST callback: get current onboarding completion status.
+	 *
+	 * @param \WP_REST_Request $request Unused; no params required.
+	 * @return array{status:string,onboard:array{completed:bool,completedAt:string}}
+	 */
+	public function action_get_onboard( $request ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- required by the register_rest_route() "callback" signature; not needed in the body.
+		return array(
 			'status'  => 'success',
-			'onboard' => [
+			'onboard' => array(
 				'completed'   => (bool) get_option( 'tablebuilder_onboard_completed', false ),
 				'completedAt' => get_option( 'tablebuilder_onboard_completed_at', '' ),
-			],
-		];
+			),
+		);
 	}
 
+	/**
+	 * REST callback: mark onboarding completed/incomplete, optionally
+	 * subscribing the given email when marking it completed.
+	 *
+	 * @param \WP_REST_Request $request Request with "completed" (bool) and optional "userMail" params.
+	 * @return array{status:string,onboard:array{completed:bool,completedAt:string}}
+	 */
 	public function action_update_onboard( $request ) {
 		$completed = (bool) $request->get_param( 'completed' );
 		$user_mail = sanitize_email( wp_unslash( (string) $request->get_param( 'userMail' ) ) );
@@ -103,12 +139,12 @@ class OnboardData {
 			delete_transient( 'tablebuilder_show_onboard' );
 		}
 
-		return [
+		return array(
 			'status'  => 'success',
-			'onboard' => [
+			'onboard' => array(
 				'completed'   => $completed,
 				'completedAt' => get_option( 'tablebuilder_onboard_completed_at', '' ),
-			],
-		];
+			),
+		);
 	}
 }

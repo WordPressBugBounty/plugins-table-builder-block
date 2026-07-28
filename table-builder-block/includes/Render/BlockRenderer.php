@@ -1,13 +1,27 @@
 <?php
+/**
+ * Server-side rendering for the table-builder block and its rows/cells
+ *
+ * @package TableKit
+ */
 
 namespace TableBuilder\Render;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Renders table-builder block markup in PHP (used by the shortcode and
+ * dynamic-block rendering paths).
+ */
 class BlockRenderer {
 
 	/**
-	 * Render static table-builder block structure in PHP.
+	 * Renders static table-builder block structure in PHP.
+	 *
+	 * @param array  $attributes    Block attributes.
+	 * @param array  $row_blocks    Parsed row inner blocks to render as tbody content.
+	 * @param string $tbody_content Pre-rendered tbody HTML; used instead of $row_blocks when given.
+	 * @return string Rendered block HTML.
 	 */
 	public static function render_table_builder( array $attributes = array(), array $row_blocks = array(), string $tbody_content = '' ): string {
 		$caption      = $attributes['caption'] ?? '';
@@ -37,7 +51,7 @@ class BlockRenderer {
 		$figure_classes = trim( 'wp-block-tablebuilder-table-builder table-builder-block ' . $block_class );
 		$figure_id      = ! empty( $block_id ) ? 'block-' . sanitize_html_class( $block_id ) : '';
 
-		$has_widths = ! empty( $col_widths ) && array_sum( array_map( 'floatval', $col_widths ) ) > 0;
+		$has_widths  = ! empty( $col_widths ) && array_sum( array_map( 'floatval', $col_widths ) ) > 0;
 		$table_style = $has_widths ? 'table-layout:fixed;width:100%;' : '';
 
 		$rendered_tbody = '';
@@ -65,7 +79,7 @@ class BlockRenderer {
 						</thead>
 					<?php endif; ?>
 
-					<tbody class="gkit-table__body"><?php echo $rendered_tbody;?></tbody>
+					<tbody class="gkit-table__body"><?php echo $rendered_tbody; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above via wp_kses_post() or from esc_attr()-escaped attributes plus core's render_block(). ?></tbody>
 
 					<?php if ( $has_footer ) : ?>
 						<tfoot class="gkit-table__footer">
@@ -92,7 +106,10 @@ class BlockRenderer {
 	}
 
 	/**
-	 * Render row and cell inner blocks for tbody markup.
+	 * Renders row and cell inner blocks for tbody markup.
+	 *
+	 * @param array $row_blocks Parsed "tablebuilder/table-builder-row" inner blocks.
+	 * @return string Rendered <tr> markup.
 	 */
 	private static function render_table_rows( array $row_blocks ): string {
 		$output = '';
@@ -122,7 +139,10 @@ class BlockRenderer {
 	}
 
 	/**
-	 * Render nested inner blocks of a cell.
+	 * Renders nested inner blocks of a cell.
+	 *
+	 * @param array $blocks Parsed inner blocks to render via core's render_block().
+	 * @return string Combined rendered HTML.
 	 */
 	private static function render_nested_inner_blocks( array $blocks ): string {
 		$output = '';
@@ -135,7 +155,11 @@ class BlockRenderer {
 	}
 
 	/**
-	 * Convert stored column widths into percentages for saved frontend parity.
+	 * Converts stored column widths into percentages for saved frontend parity.
+	 *
+	 * @param array $column_widths Stored column width values, keyed by column index.
+	 * @param int   $index         Column index to compute the style for.
+	 * @return string An inline "width:N%;" style, or an empty string if not applicable.
 	 */
 	private static function get_column_style( array $column_widths, int $index ): string {
 		if ( empty( $column_widths[ $index ] ) ) {

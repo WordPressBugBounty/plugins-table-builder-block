@@ -2,24 +2,25 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TableKit 2.2.7\n"
+"Project-Id-Version: TableKit 2.2.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/table-builder-block\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-21T04:09:32+00:00\n"
+"POT-Creation-Date: 2026-07-28T11:10:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: table-builder-block\n"
 
 #. Plugin Name of the plugin
 #: table-builder-block.php
-#: includes/Admin/Admin.php:35
-#: includes/Admin/Admin.php:36
-#: includes/Admin/Admin.php:46
-#: includes/Admin/Admin.php:47
+#: includes/Admin/Admin.php:57
+#: includes/Admin/Admin.php:58
+#: includes/Admin/Admin.php:68
+#: includes/Admin/Admin.php:69
+#: includes/Elementor/TablekitWidget.php:68
 #: src/global/template-library/TableBuilderPlaceholder.js:19
 msgid "TableKit"
 msgstr ""
@@ -44,206 +45,387 @@ msgstr ""
 msgid "https://wpmet.com/"
 msgstr ""
 
-#: includes/Admin/Admin.php:56
-#: includes/Admin/Admin.php:57
+#: includes/Admin/Admin.php:78
+#: includes/Admin/Admin.php:79
 msgid "Welcome"
 msgstr ""
 
-#: includes/Admin/Admin.php:66
-#: includes/Admin/Admin.php:67
+#: includes/Admin/Admin.php:88
+#: includes/Admin/Admin.php:89
 #: src/admin/dashboard/components/Header.js:40
 msgid "Features"
 msgstr ""
 
-#: includes/Admin/Api/OnboardData.php:71
 #: includes/Admin/Api/OnboardData.php:88
-#: includes/Admin/Api/SettingsData.php:48
-#: includes/Admin/Api/SettingsData.php:75
-msgid "Access denied."
-msgstr ""
-
-#: includes/Admin/Api/SettingsData.php:41
-#: includes/Admin/Api/SettingsData.php:68
+#: includes/Admin/Api/SettingsData.php:84
 msgid "Nonce mismatch."
 msgstr ""
 
-#: includes/Admin/Api/SettingsData.php:57
+#: includes/Admin/Api/OnboardData.php:96
+#: includes/Admin/Api/SettingsData.php:92
+msgid "Access denied."
+msgstr ""
+
+#: includes/Admin/Api/SettingsData.php:112
 msgid "Settings list has been fetched successfully."
 msgstr ""
 
-#: includes/Admin/Api/SettingsData.php:88
+#: includes/Admin/Api/SettingsData.php:132
 msgid "Settings list has been updated successfully."
 msgstr ""
 
-#: includes/Admin/Api/SettingsData.php:93
+#: includes/Admin/Api/SettingsData.php:137
 msgid "Something went wrong."
 msgstr ""
 
-#: includes/Config/CPT/InlineTableScanner.php:34
-#: includes/Config/CPT/VirtualPostBuilder.php:142
+#: includes/Config/Blocks.php:78
+#: src/table-builder-components/components/placeholder/TableBuilderPlaceholder.js:24
+msgid "Table Builder"
+msgstr ""
+
+#. translators: %2$s = source post title.
+#: includes/Config/CPT/InlineTableScanner.php:47
+#: includes/Config/CPT/VirtualPostBuilder.php:209
 #, php-format
 msgid "Table in: %2$s"
 msgid_plural "Tables in: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:31
+#. translators: %s: Singular label for the "Table" post type.
+#: includes/Config/CPT/TableCPT.php:202
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#. translators: %s: Singular label for the "Table" post type.
+#: includes/Config/CPT/TableCPT.php:202
+#: includes/Config/CPT/TableCPT.php:204
+#: includes/Config/CPT/TableCPT.php:206
+#: includes/Config/CPT/TableCPT.php:208
+#: includes/Config/CPT/TableCPT.php:222
+#: includes/Config/CPT/TableCPT.php:224
+#: includes/Elementor/TablekitWidget.php:122
+#: src/blocks/table-builder/edit.js:185
+msgid "Table"
+msgstr ""
+
+#. translators: %s: Singular label for the "Table" post type.
+#: includes/Config/CPT/TableCPT.php:204
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#. translators: %s: Singular label for the "Table" post type.
+#: includes/Config/CPT/TableCPT.php:206
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#. translators: %s: Singular label for the "Table" post type.
+#: includes/Config/CPT/TableCPT.php:208
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#. translators: %s: Plural label for the "Tables" post type.
+#: includes/Config/CPT/TableCPT.php:210
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#. translators: %s: Plural label for the "Tables" post type.
+#. translators: %s: Lowercase plural label for the "Tables" post type.
+#: includes/Config/CPT/TableCPT.php:210
+#: includes/Config/CPT/TableCPT.php:212
+#: includes/Config/CPT/TableCPT.php:214
+#: includes/Config/CPT/TableCPT.php:216
+#: includes/Config/CPT/TableCPT.php:218
+#: includes/Config/CPT/TableCPT.php:221
+#: includes/Config/CPT/TableCPT.php:223
+msgid "Tables"
+msgstr ""
+
+#. translators: %s: Plural label for the "Tables" post type.
+#: includes/Config/CPT/TableCPT.php:212
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#. translators: %s: Lowercase plural label for the "Tables" post type.
+#: includes/Config/CPT/TableCPT.php:214
+#, php-format
+msgid "Filter %s list"
+msgstr ""
+
+#. translators: %s: Plural label for the "Tables" post type.
+#: includes/Config/CPT/TableCPT.php:216
+#, php-format
+msgid "%s list navigation"
+msgstr ""
+
+#. translators: %s: Plural label for the "Tables" post type.
+#: includes/Config/CPT/TableCPT.php:218
+#, php-format
+msgid "%s list"
+msgstr ""
+
+#: includes/Config/CPT/TableCPT.php:225
+msgid "Add New"
+msgstr ""
+
+#: includes/Config/CPT/TableCPT.php:232
+msgid "No tables found."
+msgstr ""
+
+#: includes/Config/CPT/TableCPT.php:233
+msgid "No tables found in Trash."
+msgstr ""
+
+#: includes/Config/CPT/TableCPTAdmin.php:60
 msgid "TableKit supports multiple tables in the same page. However, to keep your content easier to manage and improve compatibility, performance, and shortcode handling, we recommend creating a single table whenever possible."
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:96
+#: includes/Config/CPT/TableCPTAdmin.php:151
 msgid "Shortcode"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:97
+#: includes/Config/CPT/TableCPTAdmin.php:152
 msgid "Child Shortcodes"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:100
+#: includes/Config/CPT/TableCPTAdmin.php:155
 msgid "Source"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:101
+#: includes/Config/CPT/TableCPTAdmin.php:156
 msgid "Author"
 msgstr ""
 
+#. translators: %s: Title of the source post the table belongs to.
+#: includes/Config/CPT/TableCPTAdmin.php:227
+#, php-format
+msgid "Edit &#8220;%s&#8221;"
+msgstr ""
+
+#: includes/Config/CPT/TableCPTAdmin.php:228
+msgid "Edit"
+msgstr ""
+
+#. translators: %s: Title of the source post the table belongs to.
 #: includes/Config/CPT/TableCPTAdmin.php:240
+#, php-format
+msgid "View &#8220;%s&#8221;"
+msgstr ""
+
+#: includes/Config/CPT/TableCPTAdmin.php:241
+msgid "View"
+msgstr ""
+
+#. translators: %s: Title of the source post the table belongs to.
+#: includes/Config/CPT/TableCPTAdmin.php:253
+#: includes/Config/CPT/TableCPTAdmin.php:271
+#, php-format
+msgid "Delete &#8220;%s&#8221; permanently"
+msgstr ""
+
+#: includes/Config/CPT/TableCPTAdmin.php:254
+#: includes/Config/CPT/TableCPTAdmin.php:272
+msgid "Delete Permanently"
+msgstr ""
+
+#. translators: %s: Title of the source post the table belongs to.
+#: includes/Config/CPT/TableCPTAdmin.php:261
+#, php-format
+msgid "Move &#8220;%s&#8221; to the Trash"
+msgstr ""
+
+#: includes/Config/CPT/TableCPTAdmin.php:262
+msgctxt "verb"
+msgid "Trash"
+msgstr ""
+
+#: includes/Config/CPT/TableCPTAdmin.php:319
 #: src/table-builder-components/controls/short-code/ShortCode.js:71
 msgid "Copied!"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:241
+#: includes/Config/CPT/TableCPTAdmin.php:320
 msgid "Copy failed"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:307
+#: includes/Config/CPT/TableCPTAdmin.php:414
 msgid "All Tables"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:313
+#: includes/Config/CPT/TableCPTAdmin.php:420
 msgid "No table blocks found"
 msgstr ""
 
-#: includes/Config/CPT/VirtualPostBuilder.php:60
+#: includes/Config/CPT/VirtualPostBuilder.php:97
 msgid "Copy shortcode"
 msgstr ""
 
-#: includes/Config/CPT/VirtualPostBuilder.php:76
-#: includes/Config/CPT/VirtualPostBuilder.php:84
+#. translators: %d: Number of child shortcodes.
+#: includes/Config/CPT/VirtualPostBuilder.php:122
+#: includes/Config/CPT/VirtualPostBuilder.php:133
 #, php-format
 msgid "&#9654; Child shortcodes (%d)"
 msgstr ""
 
-#: includes/Config/CPT/VirtualPostBuilder.php:77
+#. translators: %d: Number of child shortcodes.
+#: includes/Config/CPT/VirtualPostBuilder.php:124
 #, php-format
 msgid "&#9660; Child shortcodes (%d)"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:25
+#: includes/Elementor/TablekitElementorEditor.php:61
+#: includes/Elementor/TablekitWidget.php:145
+msgid "— All Blocks —"
+msgstr ""
+
+#: includes/Elementor/TablekitElementorEditor.php:62
+msgid "Loading blocks…"
+msgstr ""
+
+#: includes/Elementor/TablekitElementorRest.php:73
+msgid "You are not allowed to view this table."
+msgstr ""
+
+#: includes/Elementor/TablekitElementorRest.php:88
+#: includes/Elementor/TablekitWidget.php:185
+msgid "Table not found."
+msgstr ""
+
+#: includes/Elementor/TablekitWidget.php:130
+msgid "Select Table"
+msgstr ""
+
+#: includes/Elementor/TablekitWidget.php:136
+msgid "Create and manage tables under TableKit → Tables in the WP admin."
+msgstr ""
+
+#: includes/Elementor/TablekitWidget.php:143
+msgid "Select Block"
+msgstr ""
+
+#: includes/Elementor/TablekitWidget.php:149
+msgid "Choose a specific block to display. Or select — All Blocks — to show all blocks."
+msgstr ""
+
+#: includes/Elementor/TablekitWidget.php:178
+msgid "Select a table to display."
+msgstr ""
+
+#: includes/Elementor/TablekitWidget.php:393
+msgid "-- Select a Table --"
+msgstr ""
+
+#: includes/Libs/UtilityPackages.php:42
 msgid "Our Plugins"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:28
+#: includes/Libs/UtilityPackages.php:45
 msgid "Take Your WordPress Website To Next Level!"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:31
+#: includes/Libs/UtilityPackages.php:48
 msgid "Our diverse range of plugins has every solution for WordPress, Gutenberg, Elementor, and WooCommerce."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:37
+#: includes/Libs/UtilityPackages.php:54
 msgid "ElementsKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:40
+#: includes/Libs/UtilityPackages.php:57
 msgid "All-in-one Elementor addon trusted by 1 Million+ users, makes your website builder process easier with ultimate freedom."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:44
+#: includes/Libs/UtilityPackages.php:61
 msgid "GutenKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:47
+#: includes/Libs/UtilityPackages.php:64
 msgid "Page Builder Blocks, Patterns, and Templates for Gutenberg Block Editor."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:51
+#: includes/Libs/UtilityPackages.php:68
 msgid "PopupKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:54
+#: includes/Libs/UtilityPackages.php:71
 msgid "Create stunning popups with ease using our drag-and-drop builder, pre-designed templates, and advanced targeting options."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:58
+#: includes/Libs/UtilityPackages.php:75
 msgid "GetGenie AI"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:61
+#: includes/Libs/UtilityPackages.php:78
 msgid "Your personal AI assistant for content and SEO. Write content that ranks on Google with NLP keywords and SERP analysis data."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:65
+#: includes/Libs/UtilityPackages.php:82
 msgid "ShopEngine"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:68
+#: includes/Libs/UtilityPackages.php:85
 msgid "Complete WooCommerce solution for Elementor to fully customize any pages including cart, checkout, shop page, and so on."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:72
+#: includes/Libs/UtilityPackages.php:89
 msgid "MetForm"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:75
+#: includes/Libs/UtilityPackages.php:92
 msgid "Drag & drop form builder for Elementor to create contact forms, multi-step forms, and more - smoother, faster, and better!"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:79
+#: includes/Libs/UtilityPackages.php:96
 msgid "EmailKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:82
+#: includes/Libs/UtilityPackages.php:99
 msgid "Advanced email customizer for WooCommerce and WordPress. Build, customize, and send emails from WordPress to boost your sales!"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:86
+#: includes/Libs/UtilityPackages.php:103
 msgid "WP Social"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:89
+#: includes/Libs/UtilityPackages.php:106
 msgid "Add social share, login, and engagement counter - unified solution for all social media with tons of different styles for your website."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:93
+#: includes/Libs/UtilityPackages.php:110
 msgid "WP Ultimate Review"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:96
+#: includes/Libs/UtilityPackages.php:113
 msgid "Collect and showcase reviews on your website to build brand credibility and social proof with the easiest solution."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:100
+#: includes/Libs/UtilityPackages.php:117
 msgid "FundEngine"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:103
+#: includes/Libs/UtilityPackages.php:120
 msgid "Create fundraising, crowdfunding, and donation websites with PayPal and Stripe payment gateway integration."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:107
+#: includes/Libs/UtilityPackages.php:124
 msgid "Blocks for ShopEngine"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:110
+#: includes/Libs/UtilityPackages.php:127
 msgid "All in one WooCommerce solution for Gutenberg! Build your WooCommerce pages in a block editor with full customization."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:114
+#: includes/Libs/UtilityPackages.php:131
 msgid "Genie Image"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:117
+#: includes/Libs/UtilityPackages.php:134
 msgid "AI-powered text-to-image generator for WordPress with OpenAI's DALL-E 2 technology to generate high-quality images in one click."
 msgstr ""
 
@@ -684,6 +866,98 @@ msgstr ""
 msgid "Upgrade to PRO"
 msgstr ""
 
+#: src/admin/deactivation-popup/DeactivationModal.js:9
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:10
+msgid "Tell us more..."
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:14
+msgid "I found a better plugin"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:15
+msgid "Which plugin are you using instead?"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:19
+msgid "I couldn't get the plugin to work"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:20
+msgid "What specific issue did you face?"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:25
+msgid "It's missing a specific feature"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:26
+msgid "What feature do you need?"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:30
+msgid "The plugin affects site performance"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:31
+msgid "Please share details about the performance issues you experienced."
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:35
+msgid "It's a temporary deactivation"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:40
+msgid "Other"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:41
+msgid "Please tell us why..."
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:107
+msgid "Quick Feedback"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:113
+msgid "Close"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:122
+msgid "Please select a reason first."
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:127
+msgid "Before you go, what made you deactivate TableKit?"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:164
+msgid "💡 Need help before deactivating?"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:171
+msgid "Contact Support Team"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:185
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:192
+msgid "Submitting…"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:192
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:193
+msgid "Submitted"
+msgstr ""
+
 #: src/blocks/table-builder-item/edit.js:161
 msgid "Insert row before"
 msgstr ""
@@ -888,10 +1162,6 @@ msgstr ""
 #: src/table-builder-components/controls/search/SearchStyle.js:367
 #: src/table-builder-components/controls/search/SearchStyle.js:400
 msgid "Border"
-msgstr ""
-
-#: src/blocks/table-builder/edit.js:185
-msgid "Table"
 msgstr ""
 
 #: src/blocks/table-builder/edit.js:187
@@ -1560,10 +1830,6 @@ msgstr ""
 
 #: src/table-builder-components/components/placeholder/components/TableTemplatePicker.js:107
 msgid "No patterns found."
-msgstr ""
-
-#: src/table-builder-components/components/placeholder/TableBuilderPlaceholder.js:24
-msgid "Table Builder"
 msgstr ""
 
 #: src/table-builder-components/components/placeholder/TableBuilderPlaceholder.js:25

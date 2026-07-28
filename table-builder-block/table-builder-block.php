@@ -1,18 +1,19 @@
 <?php
 /**
- * Plugin Name: TableKit
- * Description: Powerful Table Builder for Gutenberg block editor.
+ * Plugin Name:       TableKit
+ * Plugin URI:        https://wpmet.com/plugin/gutenkit/
+ * Description:       Powerful Table Builder for Gutenberg block editor.
+ * Version:           2.2.9
  * Requires at least: 6.1
- * Requires PHP: 7.4
- * Plugin URI: https://wpmet.com/plugin/gutenkit/
- * Author: Wpmet
- * Version: 2.2.8
- * Author URI: https://wpmet.com/
- * License: GPL-3.0-or-later
- * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Requires PHP:      7.4
+ * Author:            Wpmet
+ * Author URI:        https://wpmet.com/
+ * License:           GPL-3.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       table-builder-block
+ * Domain Path:       /languages
  *
- * Text Domain: table-builder-block
- * Domain Path: /languages
+ * @package TableKit
  */
 
 // Exit if accessed directly.
@@ -20,11 +21,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Main plugin bootstrap class for TableKit.
+ */
 final class TableBuilder {
-	const VERSION = '2.2.8';
+	const VERSION = '2.2.9';
 
+	/**
+	 * Singleton instance.
+	 *
+	 * @var TableBuilder|null
+	 */
 	private static $instance = null;
 
+	/**
+	 * Gets (and lazily creates) the singleton plugin instance.
+	 *
+	 * @return TableBuilder
+	 */
 	public static function get_instance(): TableBuilder {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
@@ -32,24 +46,27 @@ final class TableBuilder {
 		return self::$instance;
 	}
 
+	/**
+	 * Defines plugin constants and registers the plugin's core hooks.
+	 */
 	private function __construct() {
 		$this->define_constants();
 
-		 // Prevent redirects during programmatic plugin activation
-		 // This hook runs very early to intercept activation redirects from other plugins
-		add_action( 'admin_init', [ $this, 'prevent_activation_redirect' ], 1 );
+		// Prevent redirects during programmatic plugin activation.
+		// This hook runs very early to intercept activation redirects from other plugins.
+		add_action( 'admin_init', array( $this, 'prevent_activation_redirect' ), 1 );
 
-		// Make sure ADD AUTOLOAD is scoped/vendor/scoper-autoload.php file
+		// Make sure ADD AUTOLOAD is scoped/vendor/scoper-autoload.php file.
 		require_once TABLE_BUILDER_BLOCK_PLUGIN_DIR . '/scoped/vendor/scoper-autoload.php';
 		require_once TABLE_BUILDER_BLOCK_INC_DIR . 'Elementor/TablekitElementor.php';
 
-		// Fires after initialization of the GutenKit plugin
-		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
-		add_action( 'admin_init', [ $this, 'maybe_redirect_to_onboard' ] );
+		// Fires after initialization of the GutenKit plugin.
+		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
+		add_action( 'admin_init', array( $this, 'maybe_redirect_to_onboard' ) );
 
 		// Load translated strings for PHP (.mo). JS/React strings are handled
 		// separately per-script via wp_set_script_translations() in Enqueue.php.
-		add_action( 'init', [ $this, 'load_textdomain' ] );
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 	}
 
 	/**
@@ -61,6 +78,7 @@ final class TableBuilder {
 	 * wp-content/languages/plugins/ instead of this plugin's own /languages folder.
 	 */
 	public function load_textdomain(): void {
+		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- kept for translation delivery outside the WordPress.org directory (e.g. wp-content/languages/table-builder-block/ or a bundled distribution); WordPress.org itself auto-loads by slug since 4.6 and doesn't need this call.
 		load_plugin_textdomain(
 			'table-builder-block',
 			false,
@@ -68,6 +86,12 @@ final class TableBuilder {
 		);
 	}
 
+	/**
+	 * Plugin activation callback: records the install time and, on first
+	 * activation, primes the transients that trigger the onboarding redirect.
+	 *
+	 * @return void
+	 */
 	public static function activate(): void {
 		if ( ! get_option( 'tablebuilder_installed_time' ) ) {
 			add_option( 'tablebuilder_installed_time', time() );
@@ -83,6 +107,11 @@ final class TableBuilder {
 		}
 	}
 
+	/**
+	 * Defines the plugin's path/URL/version constants.
+	 *
+	 * @return void
+	 */
 	private function define_constants(): void {
 		define( 'TABLE_BUILDER_BLOCK_PLUGIN_VERSION', self::VERSION );
 		define( 'TABLE_BUILDER_BLOCK_PLUGIN_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
@@ -93,8 +122,12 @@ final class TableBuilder {
 	}
 
 
-	// Prevent activation redirects when plugins are activated programmatically.
-	// Intercepts wp_redirect/wp_safe_redirect during REST API activation.
+	/**
+	 * Prevents activation redirects when plugins are activated programmatically.
+	 * Intercepts wp_redirect/wp_safe_redirect during REST API activation.
+	 *
+	 * @return void
+	 */
 	public function prevent_activation_redirect(): void {
 		if ( get_transient( 'tablekit_skip_activation_redirect' ) ) {
 			add_filter( 'wp_redirect', '__return_empty_string', 999 );
@@ -102,13 +135,26 @@ final class TableBuilder {
 		}
 	}
 
+	/**
+	 * Boots the plugin's core classes once all plugins have loaded.
+	 *
+	 * @return void
+	 */
 	public function on_plugins_loaded(): void {
+		/**
+		 * Fires right before TableKit's core classes are instantiated, on "plugins_loaded".
+		 *
+		 * @since Unknown
+		 */
+		// phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores -- slash-namespaced hook name is this plugin's established public API (used by the Pro add-on); renaming would be a breaking change.
 		do_action( 'tablebuilder/before_init' );
 
-		load_plugin_textdomain( 'table-builder-block', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		// Note: translations are already loaded via load_textdomain(), hooked to 'init'
+		// in the constructor above (which runs before the 'init' callbacks registered
+		// by the classes below) — no need to call load_plugin_textdomain() again here.
 
 		TableBuilder\Hooks\AssetGenerator::instance();
-		TableBuilder\I18n\ScriptTranslationMerger::instance();
+		TableBuilder\Core\ScriptTranslationMerger::instance();
 		TableBuilder\Core\Enqueue::instance();
 		TableBuilder\Core\RestApi::instance();
 		TableBuilder\Config\CPT\TableCPT::instance();
@@ -124,13 +170,18 @@ final class TableBuilder {
 			TableBuilder\Libs\UtilityPackages::instance();
 		}
 
-		// Data migration
-		// TODO:: WIll be removed in next upcoming version
-		(new TableBuilder\Core\DataMigration());
+		// Data migration.
+		// TODO:: Will be removed in next upcoming version.
+		( new TableBuilder\Core\DataMigration() );
 
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [ $this, 'plugin_action_link' ] );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_link' ) );
 	}
 
+	/**
+	 * Redirects to the onboarding screen right after activation, when eligible.
+	 *
+	 * @return void
+	 */
 	public function maybe_redirect_to_onboard(): void {
 		if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -140,6 +191,7 @@ final class TableBuilder {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check (same pattern WP core uses internally) to skip a redirect during bulk activation; no state change.
 		if ( isset( $_GET['activate-multi'] ) ) {
 			delete_transient( 'tablebuilder_do_activation_redirect' );
 			return;
@@ -150,6 +202,12 @@ final class TableBuilder {
 		exit;
 	}
 
+	/**
+	 * Filter callback for the plugin's row action links (currently a no-op passthrough).
+	 *
+	 * @param array $plugin_actions Existing action links.
+	 * @return array Unmodified action links.
+	 */
 	public function plugin_action_link( array $plugin_actions ): array {
 		return $plugin_actions;
 	}
@@ -159,4 +217,4 @@ if ( class_exists( 'TableBuilder' ) ) {
 	TableBuilder::get_instance();
 }
 
-register_activation_hook( __FILE__, [ 'TableBuilder', 'activate' ] );
+register_activation_hook( __FILE__, array( 'TableBuilder', 'activate' ) );
