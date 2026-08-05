@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TableKit 2.2.8\n"
+"Project-Id-Version: TableKit 2.2.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/table-builder-block\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-28T11:10:31+00:00\n"
+"POT-Creation-Date: 2026-08-05T08:51:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: table-builder-block\n"
@@ -429,6 +429,30 @@ msgstr ""
 msgid "AI-powered text-to-image generator for WordPress with OpenAI's DALL-E 2 technology to generate high-quality images in one click."
 msgstr ""
 
+#: scoped/vendor/wpmet/utility-package/src/Emailkit/Emailkit.php:179
+#: scoped/vendor/wpmet/utility-package/src/Plugins/Plugins.php:303
+#: src/onboard/pages/PowerUp.js:19
+msgid "Activated"
+msgstr ""
+
+#: scoped/vendor/wpmet/utility-package/src/Emailkit/Emailkit.php:182
+#: scoped/vendor/wpmet/utility-package/src/Plugins/Plugins.php:306
+msgid "Activate Now"
+msgstr ""
+
+#: scoped/vendor/wpmet/utility-package/src/Emailkit/Emailkit.php:187
+#: scoped/vendor/wpmet/utility-package/src/Plugins/Plugins.php:311
+msgid "Install Now"
+msgstr ""
+
+#: scoped/vendor/wpmet/utility-package/src/Plugins/Plugins.php:367
+msgid "Activate"
+msgstr ""
+
+#: scoped/vendor/wpmet/utility-package/src/Plugins/Plugins.php:373
+msgid "Read Docs"
+msgstr ""
+
 #: src/admin/dashboard/assets/js/welcome.js:6
 msgid "TableKit Templates"
 msgstr ""
@@ -633,6 +657,7 @@ msgstr ""
 #: src/admin/dashboard/assets/js/welcome.js:242
 #: src/admin/dashboard/assets/js/welcome.js:292
 #: src/blocks/table-builder/settings.js:61
+#: src/gkit-components/components/suspense/index.js:15
 msgid "Advanced"
 msgstr ""
 
@@ -790,6 +815,7 @@ msgid "Version: %s"
 msgstr ""
 
 #: src/admin/dashboard/components/Header.js:34
+#: src/gkit-components/components/pro-switcher-notice/notice-popup.js:14
 msgid "Pro"
 msgstr ""
 
@@ -989,6 +1015,7 @@ msgstr ""
 #: src/blocks/table-builder-item/settings.js:17
 #: src/blocks/table-builder-row/settings.js:16
 #: src/blocks/table-builder/settings.js:57
+#: src/gkit-components/components/suspense/index.js:14
 msgid "Style"
 msgstr ""
 
@@ -998,6 +1025,7 @@ msgstr ""
 
 #: src/blocks/table-builder-item/settings.js:31
 #: src/blocks/table-builder/settings.js:184
+#: src/gkit-components/components/swiper/dot.js:151
 #: src/table-builder-components/controls/caption/CaptionStyle.js:12
 #: src/table-builder-components/controls/cell/CellStyle.js:20
 #: src/table-builder-components/controls/common/CommonStyle.js:14
@@ -1013,6 +1041,7 @@ msgstr ""
 
 #: src/blocks/table-builder-item/settings.js:71
 #: src/blocks/table-builder/settings.js:146
+#: src/gkit-components/components/dual-slider/index.js:44
 #: src/table-builder-components/controls/common/CommonStyle.js:30
 msgid "Top"
 msgstr ""
@@ -1029,11 +1058,16 @@ msgstr ""
 
 #: src/blocks/table-builder-item/settings.js:73
 #: src/blocks/table-builder/settings.js:150
+#: src/gkit-components/components/dual-slider/index.js:43
 #: src/table-builder-components/controls/common/CommonStyle.js:32
 msgid "Bottom"
 msgstr ""
 
 #: src/blocks/table-builder-item/settings.js:85
+#: src/gkit-components/components/swiper/arrow.js:281
+#: src/gkit-components/components/swiper/dot.js:241
+#: src/gkit-components/components/swiper/dot.js:377
+#: src/gkit-components/components/text-stroke/index.js:29
 #: src/table-builder-components/controls/search/SearchStyle.js:86
 #: src/table-builder-components/controls/search/SearchStyle.js:115
 #: src/table-builder-components/controls/search/SearchStyle.js:280
@@ -1064,6 +1098,11 @@ msgstr ""
 #: src/blocks/table-builder-row/settings.js:42
 #: src/blocks/table-builder-row/settings.js:52
 #: src/blocks/table-builder/settings.js:226
+#: src/gkit-components/components/swiper/arrow.js:338
+#: src/gkit-components/components/swiper/arrow.js:364
+#: src/gkit-components/components/swiper/dot.js:234
+#: src/gkit-components/components/swiper/dot.js:321
+#: src/gkit-components/components/swiper/dot.js:370
 #: src/table-builder-components/components/advanced-column-style/index.js:70
 #: src/table-builder-components/components/freeze-table/index.js:101
 #: src/table-builder-components/components/freeze-table/index.js:139
@@ -1104,6 +1143,9 @@ msgstr ""
 #: src/blocks/table-builder-item/settings.js:159
 #: src/blocks/table-builder-row/settings.js:30
 #: src/blocks/table-builder-row/settings.js:68
+#: src/gkit-components/components/blend-mode/index.js:14
+#: src/gkit-components/components/swiper/arrow.js:321
+#: src/gkit-components/components/swiper/dot.js:216
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:40
 #: src/table-builder-components/controls/common/CommonStyle.js:52
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:33
@@ -1121,6 +1163,8 @@ msgstr ""
 #: src/blocks/table-builder-item/settings.js:163
 #: src/blocks/table-builder-row/settings.js:34
 #: src/blocks/table-builder-row/settings.js:72
+#: src/gkit-components/components/swiper/arrow.js:325
+#: src/gkit-components/components/swiper/dot.js:220
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:44
 #: src/table-builder-components/controls/common/CommonStyle.js:56
 #: src/table-builder-components/controls/export/ExportButtonStyle.js:37
@@ -1141,6 +1185,11 @@ msgstr ""
 #: src/blocks/table-builder-row/settings.js:81
 #: src/blocks/table-builder-row/settings.js:93
 #: src/blocks/table-builder/settings.js:245
+#: src/gkit-components/components/border-control/index.js:67
+#: src/gkit-components/components/swiper/arrow.js:345
+#: src/gkit-components/components/swiper/dot.js:282
+#: src/gkit-components/components/swiper/dot.js:327
+#: src/gkit-components/components/swiper/dot.js:418
 #: src/table-builder-components/controls/caption/CaptionStyle.js:39
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:70
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:108
@@ -1193,6 +1242,7 @@ msgid "Caption for Table"
 msgstr ""
 
 #: src/blocks/table-builder/settings.js:53
+#: src/gkit-components/components/suspense/index.js:13
 #: src/table-builder-components/components/Conditional-Formatting/Options.js:12
 #: src/table-builder-components/controls/pagination/PaginationContent.js:42
 #: src/table-builder-components/controls/pagination/PaginationContent.js:62
@@ -1261,6 +1311,7 @@ msgid "Footer"
 msgstr ""
 
 #: src/blocks/table-builder/settings.js:195
+#: src/gkit-components/components/typography/index.js:68
 #: src/table-builder-components/controls/caption/CaptionStyle.js:23
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:23
 #: src/table-builder-components/controls/cell/CellStyle.js:31
@@ -1274,6 +1325,12 @@ msgid "Typography"
 msgstr ""
 
 #: src/blocks/table-builder/settings.js:210
+#: src/gkit-components/components/background/index.js:192
+#: src/gkit-components/components/blend-mode/index.js:70
+#: src/gkit-components/components/color/index.js:17
+#: src/gkit-components/components/swiper/arrow.js:333
+#: src/gkit-components/components/swiper/arrow.js:359
+#: src/gkit-components/components/text-stroke/index.js:44
 #: src/table-builder-components/components/advanced-column-style/index.js:66
 #: src/table-builder-components/components/freeze-table/index.js:91
 #: src/table-builder-components/components/freeze-table/index.js:129
@@ -1302,6 +1359,8 @@ msgid "Color"
 msgstr ""
 
 #: src/blocks/table-builder/settings.js:260
+#: src/gkit-components/components/swiper/arrow.js:307
+#: src/gkit-components/components/swiper/dot.js:288
 #: src/table-builder-components/controls/caption/CaptionStyle.js:45
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:76
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:114
@@ -1336,12 +1395,630 @@ msgstr ""
 msgid "Allow resizing table columns and rows in the editor."
 msgstr ""
 
-#: src/global/global-components.js:40
-msgid "Get Table Builder Pro for advanced blocks and features."
+#: src/gkit-components/components/advanced-url/index.js:128
+msgid "URL"
 msgstr ""
 
+#: src/gkit-components/components/advanced-url/index.js:180
+msgid "Open in new tab"
+msgstr ""
+
+#: src/gkit-components/components/advanced-url/index.js:187
+msgid "No follow"
+msgstr ""
+
+#: src/gkit-components/components/advanced-url/index.js:195
+msgid "Custom Attributes"
+msgstr ""
+
+#: src/gkit-components/components/advanced-url/index.js:199
+msgid "Set custom attributes for the link element. Separate attribute keys from values using the | (pipe) character like ( link|text ). Separate key-value pairs with a comma."
+msgstr ""
+
+#: src/gkit-components/components/animation/index.js:43
+msgid "Motion Effects"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:197
+#: src/gkit-components/components/background/index.js:154
+msgid "Classic"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:204
+#: src/gkit-components/components/background-overlay/index.js:388
+#: src/gkit-components/components/background/index.js:163
+#: src/gkit-components/components/background/index.js:203
+msgid "Gradient"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:220
+#: src/gkit-components/components/background/index.js:172
+#: src/gkit-components/components/background/index.js:215
+msgid "Image"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:235
+#: src/gkit-components/components/background/index.js:226
+#: src/gkit-components/components/media/index.js:128
+msgid "Image Size"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:245
+#: src/gkit-components/components/background/index.js:237
+msgid "Position"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:248
+#: src/gkit-components/components/background/index.js:240
+#: src/gkit-components/components/border-control/index.js:49
+#: src/gkit-components/components/font-family/index.js:50
+#: src/gkit-components/components/typography/font-weights.js:4
+msgid "Default"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:249
+#: src/gkit-components/components/background/index.js:241
+msgid "Center Center"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:250
+#: src/gkit-components/components/background/index.js:242
+msgid "Center Left"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:251
+#: src/gkit-components/components/background/index.js:243
+msgid "Center Right"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:252
+#: src/gkit-components/components/background/index.js:244
+msgid "Top Center"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:253
+#: src/gkit-components/components/background/index.js:245
+msgid "Top Left"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:254
+#: src/gkit-components/components/background/index.js:246
+msgid "Top Right"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:255
+#: src/gkit-components/components/background/index.js:247
+msgid "Bottom Center"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:256
+#: src/gkit-components/components/background/index.js:248
+msgid "Bottom Left"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:257
+#: src/gkit-components/components/background/index.js:249
+msgid "Bottom Right"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:258
+#: src/gkit-components/components/background-overlay/index.js:353
+#: src/gkit-components/components/background/index.js:250
+#: src/gkit-components/components/background/index.js:347
+#: src/gkit-components/components/border-control/index.js:50
+#: src/gkit-components/components/box-shadow/index.js:179
+msgid "Custom"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:270
+#: src/gkit-components/components/background/index.js:262
+msgid "Position X"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:283
+#: src/gkit-components/components/background/index.js:276
+msgid "Position Y"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:298
+#: src/gkit-components/components/background/index.js:292
+msgid "Attachment"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:301
+#: src/gkit-components/components/background/index.js:295
+msgid "Scroll"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:305
+#: src/gkit-components/components/background/index.js:299
+msgid "Fixed"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:314
+#: src/gkit-components/components/background/index.js:308
+msgid "Repeat"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:317
+#: src/gkit-components/components/background/index.js:311
+msgid "Yes"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:321
+#: src/gkit-components/components/background/index.js:315
+msgid "X"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:325
+#: src/gkit-components/components/background/index.js:319
+msgid "Y"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:329
+#: src/gkit-components/components/background/index.js:323
+msgid "No"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:338
+#: src/gkit-components/components/background/index.js:332
+msgid "Display Size"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:341
+#: src/gkit-components/components/background/index.js:335
+msgid "Cover"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:345
+#: src/gkit-components/components/background/index.js:339
+msgid "Contain"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:349
+#: src/gkit-components/components/background/index.js:343
+msgid "Auto"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:365
+#: src/gkit-components/components/background/index.js:359
+msgid "Custom Size"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:400
+#: src/gkit-components/components/swiper/dot.js:300
+#: src/gkit-components/components/swiper/dot.js:349
+msgid "Opacity"
+msgstr ""
+
+#: src/gkit-components/components/background-overlay/index.js:412
+#: src/gkit-components/components/css-filters/index.js:30
+msgid "CSS Filters"
+msgstr ""
+
+#: src/gkit-components/components/background/index.js:181
+#: src/gkit-components/components/background/index.js:392
+msgid "Video"
+msgstr ""
+
+#: src/gkit-components/components/background/index.js:376
+msgid "Scrolling Effects"
+msgstr ""
+
+#: src/gkit-components/components/background/index.js:377
+msgid "Add exclusive Scrolling Effects for Background Image with Gutenkit Pro."
+msgstr ""
+
+#: src/gkit-components/components/background/index.js:403
+msgid "Video Scroller"
+msgstr ""
+
+#: src/gkit-components/components/background/index.js:404
+msgid "Add exclusive Video Scroller for Background Video with Gutenkit Pro."
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:9
+msgid "Blend Mode"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:18
+msgid "Multiply"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:22
+msgid "Screen"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:26
+msgid "Overlay"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:30
+msgid "Darken"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:34
+msgid "Lighten"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:38
+msgid "Color Dodge"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:42
+msgid "Color Burn"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:46
+msgid "Hard Light"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:50
+msgid "Soft Light"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:54
+msgid "Difference"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:58
+msgid "Exclusion"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:62
+#: src/gkit-components/components/css-filters/index.js:116
+msgid "Hue"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:66
+#: src/gkit-components/components/css-filters/index.js:101
+msgid "Saturation"
+msgstr ""
+
+#: src/gkit-components/components/blend-mode/index.js:74
+msgid "Luminosity"
+msgstr ""
+
+#: src/gkit-components/components/border-control/index.js:48
+msgid "Theme"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/index.js:195
+msgid "Preset"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/index.js:205
+msgid "Reset"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/popover.js:63
+msgid "Outset"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/popover.js:67
+msgid "Inset"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/popover.js:74
+msgid "X Position"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/popover.js:86
+msgid "Y Position"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/popover.js:98
+#: src/gkit-components/components/css-filters/index.js:39
+msgid "Blur"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/popover.js:109
+msgid "Spread"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/shadow-presets.js:28
+msgid "Unset"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/shadow-presets.js:39
+msgid "No presets found"
+msgstr ""
+
+#: src/gkit-components/components/box-shadow/shadow-presets.js:56
+msgid "Presets"
+msgstr ""
+
+#: src/gkit-components/components/container-placeholder/index.js:29
+msgid "Choose Container Layout"
+msgstr ""
+
+#: src/gkit-components/components/container-placeholder/index.js:30
+msgid "Select a container layout to start with."
+msgstr ""
+
+#: src/gkit-components/components/css-filters/index.js:55
+msgid "Brightness"
+msgstr ""
+
+#: src/gkit-components/components/css-filters/index.js:70
+msgid "Contrast"
+msgstr ""
+
+#: src/gkit-components/components/css-filters/index.js:85
+msgid "Grayscale"
+msgstr ""
+
+#: src/gkit-components/components/css-filters/index.js:131
+msgid "Invert"
+msgstr ""
+
+#: src/gkit-components/components/css-filters/index.js:147
+msgid "Sepia"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:4
+#: src/gkit-components/components/typography/font-weights.js:8
+#: src/table-builder-components/controls/pagination/PaginationContent.js:54
+msgid "100"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:8
+#: src/gkit-components/components/typography/font-weights.js:12
+msgid "200"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:12
+#: src/gkit-components/components/typography/font-weights.js:16
+msgid "300"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:16
+#: src/gkit-components/components/typography/font-weights.js:20
+msgid "400"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:20
+#: src/gkit-components/components/typography/font-weights.js:24
+msgid "500"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:24
+#: src/gkit-components/components/typography/font-weights.js:28
+msgid "600"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:28
+#: src/gkit-components/components/typography/font-weights.js:32
+msgid "700"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:32
+#: src/gkit-components/components/typography/font-weights.js:36
+msgid "800"
+msgstr ""
+
+#: src/gkit-components/components/font-family/default-fonts-weights.js:36
+#: src/gkit-components/components/typography/font-weights.js:40
+msgid "900"
+msgstr ""
+
+#: src/gkit-components/components/font-family/index.js:52
+#: src/gkit-components/components/typography/font-weights.js:44
+msgid "Initial"
+msgstr ""
+
+#: src/gkit-components/components/font-family/index.js:53
+#: src/gkit-components/components/typography/font-weights.js:48
+msgid "Inherit"
+msgstr ""
+
+#: src/gkit-components/components/font-family/index.js:201
+msgid "Font Family"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:223
+msgid "Icon Library"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:235
+#: src/gkit-components/components/icon-picker/index.js:256
+msgid "Upload SVG"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:240
+msgid "Enable SVG File Upload"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:241
+msgid "Before you enable SVG file upload, be aware that such files include a security vulnerability."
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:241
+msgid "Reload"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:241
+msgid "the editor once after clicking the \"Enable\" button to finish the process"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:243
+msgid "Cancel"
+msgstr ""
+
+#: src/gkit-components/components/icon-picker/index.js:244
+msgid "Enable"
+msgstr ""
+
+#: src/gkit-components/components/link-with-parent/index.js:13
+#: src/gkit-components/components/link-with-parent/index.js:16
+msgid "Go to Parent"
+msgstr ""
+
+#: src/gkit-components/components/media/index.js:83
+msgid "Choose Media"
+msgstr ""
+
+#: src/gkit-components/components/pro-switcher-notice/notice-popup.js:25
 #: src/global/global-components.js:41
 msgid "Upgrade Now"
+msgstr ""
+
+#: src/gkit-components/components/pro-upgrade-notice/index.js:39
+msgid "Your Design Deserves More!"
+msgstr ""
+
+#: src/gkit-components/components/pro-upgrade-notice/index.js:47
+msgid "To enjoy advanced blocks and features activate your license"
+msgstr ""
+
+#: src/gkit-components/components/pro-upgrade-notice/index.js:48
+msgid "Get GutenKit Pro for advanced blocks and features."
+msgstr ""
+
+#: src/gkit-components/components/pro-upgrade-notice/index.js:56
+msgid "Activate License"
+msgstr ""
+
+#: src/gkit-components/components/pro-upgrade-notice/index.js:56
+msgid "Go Premium"
+msgstr ""
+
+#: src/gkit-components/components/range-unit/index.js:86
+msgid "Gkit Range Unit"
+msgstr ""
+
+#: src/gkit-components/components/repeater/index.js:162
+msgid "Add Item"
+msgstr ""
+
+#: src/gkit-components/components/responsive/index.js:38
+msgid "Select a device"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:76
+msgid "Left Arrow position"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:80
+#: src/gkit-components/components/swiper/arrow.js:126
+msgid "position (X)"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:102
+#: src/gkit-components/components/swiper/arrow.js:148
+msgid "position (Y)"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:122
+msgid "Right Arrow position"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:244
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:29
+#: src/table-builder-components/controls/export/ExportButtonStyle.js:22
+msgid "Icon Size"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:263
+#: src/gkit-components/components/swiper/dot.js:262
+#: src/gkit-components/components/swiper/dot.js:398
+#: src/table-builder-components/controls/search/SearchStyle.js:127
+#: src/table-builder-components/controls/search/SearchStyle.js:292
+msgid "Height"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:300
+msgid "Arrow position"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:350
+#: src/gkit-components/components/swiper/arrow.js:375
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:82
+#: src/table-builder-components/controls/cart/CartButtonStyle.js:120
+#: src/table-builder-components/controls/common/CommonStyle.js:109
+#: src/table-builder-components/controls/header/HeaderStyle.js:61
+#: src/table-builder-components/controls/search/SearchStyle.js:181
+#: src/table-builder-components/controls/search/SearchStyle.js:214
+#: src/table-builder-components/controls/search/SearchStyle.js:247
+#: src/table-builder-components/controls/search/SearchStyle.js:346
+#: src/table-builder-components/controls/search/SearchStyle.js:379
+#: src/table-builder-components/controls/search/SearchStyle.js:412
+msgid "Box Shadow"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:370
+msgid "Border Color"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:382
+msgid "Rotate"
+msgstr ""
+
+#: src/gkit-components/components/swiper/arrow.js:389
+msgid "Transition Duration"
+msgstr ""
+
+#: src/gkit-components/components/swiper/dot.js:181
+msgid "Space Between"
+msgstr ""
+
+#: src/gkit-components/components/swiper/dot.js:197
+msgid "Spacing Top To Bottom"
+msgstr ""
+
+#: src/gkit-components/components/swiper/dot.js:224
+#: src/table-builder-components/controls/search/SearchStyle.js:149
+#: src/table-builder-components/controls/search/SearchStyle.js:314
+msgid "Active"
+msgstr ""
+
+#: src/gkit-components/components/swiper/dot.js:333
+#: src/gkit-components/components/swiper/dot.js:424
+msgid "Scale"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:75
+msgid "Slides per view"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:92
+msgid "Slides per group"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:109
+msgid "Spacing"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:121
+msgid "Speed (ms)"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:131
+msgid "Autoplay"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:137
+msgid "Delay (ms)"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:145
+msgid "Pause on Hover"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:153
+msgid "Enable Loop"
+msgstr ""
+
+#: src/gkit-components/components/swiper/setting.js:156
+msgid "Loop is disabled in editor for better user experience."
+msgstr ""
+
+#: src/gkit-components/components/text-stroke/index.js:23
+msgid "Text Stroke"
+msgstr ""
+
+#: src/global/global-components.js:40
+msgid "Get Table Builder Pro for advanced blocks and features."
 msgstr ""
 
 #: src/global/template-library/components/common/Empty.js:11
@@ -1539,10 +2216,6 @@ msgstr ""
 
 #: src/onboard/pages/Finalize.js:149
 msgid "Go to WP Dashboard"
-msgstr ""
-
-#: src/onboard/pages/PowerUp.js:19
-msgid "Activated"
 msgstr ""
 
 #: src/onboard/pages/PowerUp.js:43
@@ -1853,28 +2526,10 @@ msgstr ""
 msgid "Cart Button"
 msgstr ""
 
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:29
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:22
-msgid "Icon Size"
-msgstr ""
-
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:58
 #: src/table-builder-components/controls/pagination/PaginationStyle.js:29
 #: src/table-builder-components/controls/pagination/PaginationStyle.js:85
 msgid "Icon Color"
-msgstr ""
-
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:82
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:120
-#: src/table-builder-components/controls/common/CommonStyle.js:109
-#: src/table-builder-components/controls/header/HeaderStyle.js:61
-#: src/table-builder-components/controls/search/SearchStyle.js:181
-#: src/table-builder-components/controls/search/SearchStyle.js:214
-#: src/table-builder-components/controls/search/SearchStyle.js:247
-#: src/table-builder-components/controls/search/SearchStyle.js:346
-#: src/table-builder-components/controls/search/SearchStyle.js:379
-#: src/table-builder-components/controls/search/SearchStyle.js:412
-msgid "Box Shadow"
 msgstr ""
 
 #: src/table-builder-components/controls/cart/CartButtonStyle.js:132
@@ -2001,10 +2656,6 @@ msgstr ""
 msgid "50"
 msgstr ""
 
-#: src/table-builder-components/controls/pagination/PaginationContent.js:54
-msgid "100"
-msgstr ""
-
 #: src/table-builder-components/controls/pagination/PaginationContent.js:60
 msgid "Pagination Range"
 msgstr ""
@@ -2070,16 +2721,6 @@ msgstr ""
 
 #: src/table-builder-components/controls/search/SearchStyle.js:107
 msgid "Individual Search Button"
-msgstr ""
-
-#: src/table-builder-components/controls/search/SearchStyle.js:127
-#: src/table-builder-components/controls/search/SearchStyle.js:292
-msgid "Height"
-msgstr ""
-
-#: src/table-builder-components/controls/search/SearchStyle.js:149
-#: src/table-builder-components/controls/search/SearchStyle.js:314
-msgid "Active"
 msgstr ""
 
 #: src/table-builder-components/controls/search/SearchStyle.js:272
