@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, data ta
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.10
+Stable tag: 2.2.11
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,9 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+= TableKit 2.2.11 (2026-08-11) =
+* Fixed: Translated tab titles affecting the CSS classes.
+
 = TableKit 2.2.10 (2026-08-05) =
 * Improved: Multi-language support (i18n) implementation in JavaScript, enabling localized editor and frontend user experiences.
 

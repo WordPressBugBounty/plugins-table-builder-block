@@ -3,7 +3,7 @@
  * Plugin Name:       TableKit
  * Plugin URI:        https://wpmet.com/plugin/gutenkit/
  * Description:       Powerful Table Builder for Gutenberg block editor.
- * Version:           2.2.10
+ * Version:           2.2.11
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            Wpmet
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main plugin bootstrap class for TableKit.
  */
 final class TableBuilder {
-	const VERSION = '2.2.10';
+	const VERSION = '2.2.11';
 
 	/**
 	 * Singleton instance.
