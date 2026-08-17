@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, data ta
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.11
+Stable tag: 2.2.12
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,12 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+= TableKit 2.2.12 (2026-08-17) =
+* Added: Chart View — switch between table and chart (bar, line, pie, radar, and more) display of your data.
+* Improved: Security — sanitized and escaped output across print export, UI, and admin utilities.
+* Fixed: Strings from the plugin's shared utility library were not available for translation on WordPress.org.
+* Fixed: Column resizing and freeze functionality were being forced on small/mobile screens; now respects a mobile breakpoint.
+
 = TableKit 2.2.11 (2026-08-11) =
 * Fixed: Translated tab titles affecting the CSS classes.
 

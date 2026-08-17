@@ -267,6 +267,8 @@ class ShortcodeUtils {
 				continue;
 			}
 
+			$css = self::sanitize_css( $css );
+
 			if ( 'base' === ( $device['value'] ?? '' ) ) {
 				$output .= $css;
 			} else {
@@ -275,9 +277,18 @@ class ShortcodeUtils {
 		}
 
 		if ( ! empty( $css_map['customStyles'] ) ) {
-			$output .= $css_map['customStyles'];
+			$output .= self::sanitize_css( $css_map['customStyles'] );
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Strips any HTML-tag-like sequences from a stored CSS string before it's
+	 * @param string $css Raw CSS string from a block attribute.
+	 * @return string Sanitized CSS string.
+	 */
+	private static function sanitize_css( string $css ): string {
+		return preg_replace( '/<[^>]*>?/', '', $css );
 	}
 }

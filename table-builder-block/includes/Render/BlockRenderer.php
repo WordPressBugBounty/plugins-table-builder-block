@@ -46,6 +46,7 @@ class BlockRenderer {
 			'rowHeights'             => is_array( $attributes['rowHeights'] ?? null ) ? $attributes['rowHeights'] : array(),
 			'headerHeight'           => absint( $attributes['headerHeight'] ?? 0 ),
 			'resizerEnabled'         => isset( $attributes['resizerEnabled'] ) ? (bool) $attributes['resizerEnabled'] : true,
+			'mobileBreakpoint'       => absint( $attributes['responsiveBreakpoint'] ?? 768 ),
 		);
 
 		$figure_classes = trim( 'wp-block-tablebuilder-table-builder table-builder-block ' . $block_class );

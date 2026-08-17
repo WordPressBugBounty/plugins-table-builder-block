@@ -347,7 +347,7 @@ class AssetGenerator {
 					}
 
 					if ( is_string( $css ) ) {
-						$blocks_css[ $device ] .= $css;
+						$blocks_css[ $device ] .= preg_replace( '/<[^>]*>?/', '', $css );
 					}
 				}
 			}
@@ -362,7 +362,9 @@ class AssetGenerator {
 						$blocks_css[ $device ] = '';
 					}
 
-					$blocks_css[ $device ] .= $css;
+					if ( is_string( $css ) ) {
+						$blocks_css[ $device ] .= preg_replace( '/<[^>]*>?/', '', $css );
+					}
 				}
 			}
 		}

@@ -22,10 +22,42 @@ class UtilityPackages {
 	/**
 	 * UtilityPackages class constructor.
 	 *
+	 * Wires up the same Wpmet shared widgets GutenKit uses
+	 * (see gutenkit-blocks-addon/includes/Libs/UtilityPackages.php):
+	 * cross-promotion menu, dismissible Notice AJAX handler, the
+	 * Stories dashboard widget, the Banner ("jhanda") admin notice,
+	 * and the "ask for rating" prompt.
+	 *
 	 * @return void
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_cross_promotion_menu' ) );
+
+		// Powers the dismiss button on Banner/Notice widgets below.
+		UtilityPackage\Notice\Notice::init();
+
+		// Show Wpmet stories widget in the Dashboard.
+		UtilityPackage\Stories\Stories::instance( 'table-builder-block' )
+			->set_plugin( 'TableKit', 'https://wpmet.com/plugin/table-builder-block/' )
+			->set_api_url( 'https://api.wpmet.com/public/stories/' )
+			->call();
+
+		// Show Wpmet banner (codename: jhanda) on TableKit's own admin screens.
+		UtilityPackage\Banner\Banner::instance( 'table-builder-block' )
+			->set_api_url( 'https://api.wpmet.com/public/jhanda' )
+			->set_plugin_screens( 'toplevel_page_tablebuilder' )
+			->call();
+
+		// Ask for a WordPress.org rating after the plugin has been in use for a while.
+		UtilityPackage\Rating\Rating::instance( 'table-builder-block' )
+			->set_plugin_logo( 'https://ps.w.org/table-builder-block/assets/icon-128x128.png' )
+			->set_plugin( 'TableKit', 'https://wordpress.org/support/plugin/table-builder-block/reviews/#new-post' )
+			->set_allowed_screens( 'toplevel_page_tablebuilder' )
+			->set_priority( 30 )
+			->set_first_appear_day( 7 )
+			->set_condition( true )
+			->set_support_url( 'https://wpmet.com/support-ticket-form/' )
+			->call();
 	}
 
 	/**
