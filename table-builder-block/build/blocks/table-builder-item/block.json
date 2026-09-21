@@ -119,6 +119,27 @@
     "tableBuilderItemHoverBorder": {
       "type": "object"
     },
+    "tableBuilderItemBorderRadiusDesktop": {
+      "type": "object"
+    },
+    "tableBuilderItemBorderRadiusTablet": {
+      "type": "object"
+    },
+    "tableBuilderItemBorderRadiusMobile": {
+      "type": "object"
+    },
+    "tableBuilderItemBorderRadiusTabletLandscape": {
+      "type": "object"
+    },
+    "tableBuilderItemBorderRadiusMobileLandscape": {
+      "type": "object"
+    },
+    "tableBuilderItemBorderRadiusLaptop": {
+      "type": "object"
+    },
+    "tableBuilderItemBorderRadiusWideScreen": {
+      "type": "object"
+    },
     "tableBuilderBorderItemHoverTransition": {
       "type": "object"
     }

@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, data ta
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.13
+Stable tag: 2.2.14
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,12 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+= TableKit 2.2.14 (2026-09-20) =
+* Improved: Border styles and search behavior for Table Builder blocks
+* Improved: Removed incompatible row actions for virtual posts to prevent unexpected behavior
+* Fixed: Table border not properly overriding theme default borders
+* Fixed: Missing text domain for translatable strings in the bundled utility-package.
+
 = TableKit 2.2.13 (2026-08-31) =
 * Fixed: Dashboard "Need Help?" / "Blog" / "Facebook Community" links weren't translatable — they used a different plugin's text domain (elementskit-lite); now resolved with TableKit's own text domain.
 * Improved: Bundled dependencies refreshed.

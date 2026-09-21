@@ -546,37 +546,42 @@ class Utils {
 			return array( 'border' => null );
 		}
 
-		$key_length = count( $key );
+		// Per-side border box: keys are direction names (top/right/bottom/left),
+		// each holding its own {width, style, color}.
+		$sides       = array( 'top', 'right', 'bottom', 'left' );
+		$is_per_side = count( array_intersect( array_keys( $key ), $sides ) ) > 0;
 
-		if ( $key_length < 3 ) {
-			$properties   = array( 'style', 'color', 'width' );
-			$border_parts = array();
-
-			foreach ( $properties as $property ) {
-				if ( isset( $key[ $property ] ) ) {
-					$border_parts[] = $key[ $property ];
-				}
-			}
-
-			return array( 'border' => implode( ' ', $border_parts ) );
-
-		}
-
-		if ( 3 === $key_length ) {
-			if ( isset( $key['style'] ) ) {
-				return array( 'border' => "{$key['width']} {$key['style']} {$key['color']}" );
-			}
-		}
-
-		if ( 4 === $key_length || 3 === $key_length ) {
+		if ( $is_per_side ) {
 			$border = array();
 			foreach ( $key as $direction => $value ) {
-				if ( isset( $value['style'] ) ) {
-					$border[ "border-{$direction}" ] = "{$value['width']} {$value['style']} {$value['color']}";
+				if ( ! is_array( $value ) ) {
+					continue;
+				}
+				if ( isset( $value['width'] ) && '' !== $value['width'] ) {
+					$color = ! empty( $value['color'] ) ? $value['color'] : 'currentColor';
+					$style = ! empty( $value['style'] ) ? $value['style'] : 'solid';
+					$border[ "border-{$direction}" ] = "{$value['width']} {$style} {$color}";
 				}
 			}
 			return $border;
 		}
+
+		// Flat border: a defined width alone is enough to emit a declaration —
+		// this ensures an explicit 0 always produces `border-width: 0` instead
+		// of being silently dropped when style/color weren't also set (which
+		// let a theme's/Elementor's default table border show through).
+		if ( isset( $key['width'] ) && '' !== $key['width'] ) {
+			$color = ! empty( $key['color'] ) ? $key['color'] : 'currentColor';
+			$style = ! empty( $key['style'] ) ? $key['style'] : 'solid';
+			return array( 'border' => "{$key['width']} {$style} {$color}" );
+		}
+
+		if ( ! empty( $key['color'] ) ) {
+			$style = ! empty( $key['style'] ) ? $key['style'] : 'solid';
+			return array( 'border' => "1px {$style} {$key['color']}" );
+		}
+
+		return array( 'border' => null );
 	}
 
 	/**

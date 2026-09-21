@@ -34,6 +34,34 @@ class VirtualPostBuilder {
 	 */
 	public function __construct( InlineTableScanner $scanner ) {
 		$this->scanner = $scanner;
+		add_filter( 'post_row_actions', array( $this, 'strip_incompatible_row_actions' ), 1, 2 );
+	}
+
+	/**
+	 * @param array   $actions Row action links, keyed by action name.
+	 * @param WP_Post $post    The row's post (real or virtual).
+	 * @return array Unmodified row actions (only third-party hook state is changed).
+	 */
+	public function strip_incompatible_row_actions( array $actions, WP_Post $post ): array {
+		if ( empty( $post->tablekit_is_virtual ) ) {
+			return $actions;
+		}
+
+		global $wp_filter;
+		if ( ! isset( $wp_filter['post_row_actions'] ) || ! ( $wp_filter['post_row_actions'] instanceof \WP_Hook ) ) {
+			return $actions;
+		}
+
+		foreach ( $wp_filter['post_row_actions']->callbacks as $priority => $callbacks ) {
+			foreach ( $callbacks as $callback ) {
+				$fn = $callback['function'];
+				if ( is_string( $fn ) && false !== strpos( $fn, '_collaboration_row_actions' ) ) {
+					remove_filter( 'post_row_actions', $fn, $priority );
+				}
+			}
+		}
+
+		return $actions;
 	}
 
 	/**

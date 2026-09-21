@@ -34,6 +34,27 @@
     },
     "tableBuilderRowHoverBorder": {
       "type": "object"
+    },
+    "tableBuilderRowBorderRadiusDesktop": {
+      "type": "object"
+    },
+    "tableBuilderRowBorderRadiusTablet": {
+      "type": "object"
+    },
+    "tableBuilderRowBorderRadiusMobile": {
+      "type": "object"
+    },
+    "tableBuilderRowBorderRadiusTabletLandscape": {
+      "type": "object"
+    },
+    "tableBuilderRowBorderRadiusMobileLandscape": {
+      "type": "object"
+    },
+    "tableBuilderRowBorderRadiusLaptop": {
+      "type": "object"
+    },
+    "tableBuilderRowBorderRadiusWideScreen": {
+      "type": "object"
     }
   },
   "usesContext": [

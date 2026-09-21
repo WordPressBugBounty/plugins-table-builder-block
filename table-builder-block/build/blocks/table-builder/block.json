@@ -227,6 +227,27 @@
         "color": "#000"
       }
     },
+    "borderRadiusDesktop": {
+      "type": "object"
+    },
+    "borderRadiusTablet": {
+      "type": "object"
+    },
+    "borderRadiusMobile": {
+      "type": "object"
+    },
+    "borderRadiusTabletLandscape": {
+      "type": "object"
+    },
+    "borderRadiusMobileLandscape": {
+      "type": "object"
+    },
+    "borderRadiusLaptop": {
+      "type": "object"
+    },
+    "borderRadiusWideScreen": {
+      "type": "object"
+    },
     "backgroundHover": {
       "type": "object"
     },
