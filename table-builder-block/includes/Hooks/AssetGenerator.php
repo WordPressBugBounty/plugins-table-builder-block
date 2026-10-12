@@ -33,6 +33,50 @@ class AssetGenerator {
 	protected $fonts = array();
 
 	/**
+	 * Handle used for the theme-stylesheet backward-compat fallback (frontend only).
+	 *
+	 * @var string
+	 */
+	const THEME_STYLESHEET_FALLBACK_HANDLE = 'tablekit-theme-stylesheet-fallback';
+
+	/**
+	 * Max nesting depth when following synced patterns / registered patterns.
+	 *
+	 * @var int
+	 */
+	const MAX_PATTERN_DEPTH = 10;
+
+	/**
+	 * Keys of table blocks whose CSS has already been collected/output this request.
+	 *
+	 * @var array<string,bool>
+	 */
+	protected $emitted_blocks = array();
+
+	/**
+	 * CSS of table blocks rendered after the <head> CSS was finalised, keyed by
+	 * block key, waiting to be printed right before that block's markup.
+	 *
+	 * @var array<string,string>
+	 */
+	protected $pending_late_css = array();
+
+	/**
+	 * Whether the collected CSS has already been handed to WordPress for <head>.
+	 *
+	 * @var bool
+	 */
+	protected $head_css_added = false;
+
+	/**
+	 * Nesting counter for renders that print their own CSS (e.g. [tableKit]
+	 * shortcode, Elementor widget). While > 0, late CSS is not printed.
+	 *
+	 * @var int
+	 */
+	protected $late_css_suspended = 0;
+
+	/**
 	 * AssetGenerator class constructor.
 	 * private for singleton
 	 *
@@ -46,6 +90,8 @@ class AssetGenerator {
 		add_filter( 'wp_resource_hints', array( $this, 'fonts_resource_hints' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_theme_stylesheet_fallback' ), 999 );
+		add_filter( 'render_block', array( $this, 'prepend_late_block_css' ), 1000, 2 );
 
 		// Clear FSE cache when templates are saved.
 		add_action( 'save_post_wp_template', array( $this, 'clear_fse_cache' ) );
@@ -477,11 +523,282 @@ class AssetGenerator {
 	 * @return array The modified parsed block data.
 	 */
 	public function set_blocks_css( $parsed_block ) {
-		$css_content = $this->combine_blocks_assets( $parsed_block );
-		if ( ! empty( $css_content ) ) {
-			$this->css .= $css_content;
+		if ( ! is_array( $parsed_block ) || ! $this->is_table_block( $parsed_block ) ) {
+			return $parsed_block;
 		}
+
+		$key = $this->get_block_key( $parsed_block );
+
+		if ( isset( $this->emitted_blocks[ $key ] ) ) {
+			return $parsed_block;
+		}
+
+		// Before the <head> CSS is finalised (block themes render templates early,
+		// classic themes are pre-collected in enqueue_scripts()): add to the inline CSS.
+		if ( ! $this->head_css_added ) {
+			$this->emitted_blocks[ $key ] = true;
+
+			$css_content = $this->combine_blocks_assets( $parsed_block );
+			if ( ! empty( $css_content ) ) {
+				$this->css .= $css_content;
+			}
+
+			return $parsed_block;
+		}
+
+		// Rendered after <head> (widgets, archive loops, nested queries...): collect
+		// this block's whole subtree once and print it before the block markup.
+		$late_css = $this->collect_late_tree_css( $parsed_block );
+
+		if ( '' !== $late_css && 0 === $this->late_css_suspended ) {
+			$this->pending_late_css[ $key ] = $late_css;
+		}
+
 		return $parsed_block;
+	}
+
+	/**
+	 * Collects CSS for a table block and all its inner table blocks that haven't
+	 * been output yet, marking each one as output.
+	 *
+	 * @param array $parsed_block Parsed block.
+	 * @return string Combined CSS.
+	 */
+	protected function collect_late_tree_css( array $parsed_block ): string {
+		$css = '';
+
+		if ( $this->is_table_block( $parsed_block ) ) {
+			$key = $this->get_block_key( $parsed_block );
+
+			if ( ! isset( $this->emitted_blocks[ $key ] ) ) {
+				$this->emitted_blocks[ $key ] = true;
+				$css                         .= $this->combine_blocks_assets( $parsed_block );
+			}
+		}
+
+		foreach ( $parsed_block['innerBlocks'] ?? array() as $inner_block ) {
+			if ( is_array( $inner_block ) ) {
+				$css .= $this->collect_late_tree_css( $inner_block );
+			}
+		}
+
+		return $css;
+	}
+
+	/**
+	 * Prints CSS collected for a late-rendered table block right before its markup.
+	 * Hooked to "render_block" at a late priority so other markup filters
+	 * (which target the block's first tag) run first.
+	 *
+	 * @param string $block_content Rendered block HTML.
+	 * @param array  $parsed_block  Parsed block data.
+	 * @return string
+	 */
+	public function prepend_late_block_css( $block_content, $parsed_block ) {
+		if ( empty( $this->pending_late_css ) || ! is_array( $parsed_block ) || ! $this->is_table_block( $parsed_block ) ) {
+			return $block_content;
+		}
+
+		$key = $this->get_block_key( $parsed_block );
+
+		if ( ! isset( $this->pending_late_css[ $key ] ) ) {
+			return $block_content;
+		}
+
+		$css = $this->pending_late_css[ $key ];
+		unset( $this->pending_late_css[ $key ] );
+
+		return '<style id="tablekit-css-' . esc_attr( sanitize_html_class( $key ) ) . '">' . $css . '</style>' . $block_content;
+	}
+
+	/**
+	 * Suspends late CSS printing, for renderers that print their own CSS
+	 * (e.g. the [tableKit] shortcode or the Elementor widget). Must be paired
+	 * with resume_late_css().
+	 *
+	 * @return void
+	 */
+	public function suspend_late_css(): void {
+		++$this->late_css_suspended;
+	}
+
+	/**
+	 * Resumes late CSS printing after suspend_late_css().
+	 *
+	 * @return void
+	 */
+	public function resume_late_css(): void {
+		$this->late_css_suspended = max( 0, $this->late_css_suspended - 1 );
+	}
+
+	/**
+	 * Whether a parsed block is one of TableKit's blocks.
+	 *
+	 * @param array $parsed_block Parsed block.
+	 * @return bool
+	 */
+	protected function is_table_block( array $parsed_block ): bool {
+		return isset( $parsed_block['blockName'] ) && is_string( $parsed_block['blockName'] ) && false !== strpos( $parsed_block['blockName'], 'tablebuilder' );
+	}
+
+	/**
+	 * Stable per-request key for a table block (its blockID, or a hash of its attributes).
+	 *
+	 * @param array $parsed_block Parsed block.
+	 * @return string
+	 */
+	protected function get_block_key( array $parsed_block ): string {
+		$block_id = $parsed_block['attrs']['blockID'] ?? '';
+
+		if ( is_string( $block_id ) && '' !== $block_id ) {
+			return $parsed_block['blockName'] . ':' . $block_id;
+		}
+
+		return $parsed_block['blockName'] . ':' . md5( (string) wp_json_encode( $parsed_block['attrs'] ?? array() ) );
+	}
+
+	/**
+	 * Collects TableKit CSS (and enqueues block assets) for the current post on
+	 * classic themes WITHOUT rendering any block.
+	 *
+	 * IMPORTANT: never render blocks here (no do_blocks, render_block or the_content). Rendering
+	 * third-party blocks early triggers their one-time side effects (e.g. Formidable
+	 * Forms prints and marks its stylesheet as loaded inside the discarded output,
+	 * so forms lose their styling) and processes form submissions twice.
+	 *
+	 * @param \WP_Post $post Post to collect CSS for.
+	 * @return void
+	 */
+	protected function collect_post_css( \WP_Post $post ): void {
+		$content = (string) $post->post_content;
+
+		if ( '' === $content
+			|| ( false === strpos( $content, 'tablebuilder' )
+				&& false === strpos( $content, '<!-- wp:block ' )
+				&& false === strpos( $content, '<!-- wp:pattern ' ) )
+		) {
+			return;
+		}
+
+		$seen = array();
+		$this->collect_css_from_blocks( parse_blocks( $content ), $seen, 0 );
+	}
+
+	/**
+	 * Walks a parsed block tree (following synced patterns and registered
+	 * patterns) and collects CSS for every TableKit block, in document order.
+	 *
+	 * @param array $blocks Parsed blocks.
+	 * @param array $seen   Pattern references already followed (loop guard).
+	 * @param int   $depth  Current pattern nesting depth.
+	 * @return void
+	 */
+	protected function collect_css_from_blocks( array $blocks, array &$seen, int $depth ): void {
+		foreach ( $blocks as $block ) {
+			if ( ! is_array( $block ) ) {
+				continue;
+			}
+
+			$name = $block['blockName'] ?? '';
+
+			if ( $this->is_table_block( $block ) ) {
+				$this->set_blocks_css( $block );
+				$this->enqueue_table_block_assets( $name );
+			}
+
+			if ( ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
+				$this->collect_css_from_blocks( $block['innerBlocks'], $seen, $depth );
+			}
+
+			if ( $depth >= self::MAX_PATTERN_DEPTH ) {
+				continue;
+			}
+
+			$pattern_content = $this->get_pattern_content( $block, $seen );
+
+			if ( '' !== $pattern_content ) {
+				$this->collect_css_from_blocks( parse_blocks( $pattern_content ), $seen, $depth + 1 );
+			}
+		}
+	}
+
+	/**
+	 * Returns the content of a synced pattern (core/block) or registered pattern
+	 * (core/pattern) block, once per request.
+	 *
+	 * @param array $block Parsed block.
+	 * @param array $seen  Pattern references already followed (loop guard).
+	 * @return string Pattern content, or an empty string.
+	 */
+	protected function get_pattern_content( array $block, array &$seen ): string {
+		$name = $block['blockName'] ?? '';
+
+		if ( 'core/block' === $name && ! empty( $block['attrs']['ref'] ) ) {
+			$ref = 'ref:' . absint( $block['attrs']['ref'] );
+
+			if ( isset( $seen[ $ref ] ) ) {
+				return '';
+			}
+			$seen[ $ref ] = true;
+
+			$pattern = get_post( absint( $block['attrs']['ref'] ) );
+
+			if ( $pattern instanceof \WP_Post && 'wp_block' === $pattern->post_type && 'publish' === $pattern->post_status ) {
+				return (string) $pattern->post_content;
+			}
+
+			return '';
+		}
+
+		if ( 'core/pattern' === $name && ! empty( $block['attrs']['slug'] ) && class_exists( '\\WP_Block_Patterns_Registry' ) ) {
+			$slug = 'slug:' . (string) $block['attrs']['slug'];
+
+			if ( isset( $seen[ $slug ] ) ) {
+				return '';
+			}
+			$seen[ $slug ] = true;
+
+			$registered = \WP_Block_Patterns_Registry::get_instance()->get_registered( (string) $block['attrs']['slug'] );
+
+			return is_array( $registered ) && ! empty( $registered['content'] ) ? (string) $registered['content'] : '';
+		}
+
+		return '';
+	}
+
+	/**
+	 * Enqueues a TableKit block's registered frontend style/view-script handles
+	 * up front, so they still print in <head> exactly as they did when the block
+	 * was rendered early (prevents a flash of unstyled table).
+	 *
+	 * @param string $block_name Block name, e.g. "tablebuilder/table-builder".
+	 * @return void
+	 */
+	protected function enqueue_table_block_assets( string $block_name ): void {
+		static $done = array();
+
+		if ( isset( $done[ $block_name ] ) ) {
+			return;
+		}
+		$done[ $block_name ] = true;
+
+		$block_type = \WP_Block_Type_Registry::get_instance()->get_registered( $block_name );
+
+		if ( ! $block_type ) {
+			return;
+		}
+
+		foreach ( (array) ( $block_type->style_handles ?? array() ) as $handle ) {
+			if ( is_string( $handle ) && wp_style_is( $handle, 'registered' ) ) {
+				wp_enqueue_style( $handle );
+			}
+		}
+
+		foreach ( (array) ( $block_type->view_script_handles ?? array() ) as $handle ) {
+			if ( is_string( $handle ) && wp_script_is( $handle, 'registered' ) ) {
+				wp_enqueue_script( $handle );
+			}
+		}
 	}
 
 	/**
@@ -511,8 +828,10 @@ class AssetGenerator {
 	public function enqueue_scripts() {
 		global $post;
 
+		// Classic themes render the post after <head>, so collect its TableKit CSS
+		// now by reading block attributes only, never by rendering (see collect_post_css()).
 		if ( ! wp_is_block_theme() && $post instanceof \WP_Post && ! empty( $post->post_content ) ) {
-			do_blocks( $post->post_content );
+			$this->collect_post_css( $post );
 		}
 
 		$fonts_url = $this->generate_fonts_url();
@@ -522,7 +841,51 @@ class AssetGenerator {
 
 		if ( $this->css ) {
 			wp_add_inline_style( 'table-builder-style', $this->css );
+			$this->print_inline_css_after_block_styles();
 		}
+
+		$this->head_css_added = true;
+	}
+
+	/**
+	 * Makes TableKit's per-block inline CSS print AFTER the TableKit block
+	 * stylesheets (style-index.css) that are enqueued on this page.
+	 *
+	 * The per-block CSS generated from block settings uses selectors with the
+	 * same specificity as the block's base stylesheet, so it only wins when it
+	 * comes later in the page. Classic themes (e.g. Kadence) enqueue things in
+	 * an order where the inline CSS was printed first, so user-chosen colours,
+	 * paddings etc. were silently overridden by the defaults.
+	 *
+	 * @return void
+	 */
+	protected function print_inline_css_after_block_styles(): void {
+		$styles = wp_styles();
+
+		if ( empty( $styles->registered['table-builder-style'] ) ) {
+			return;
+		}
+
+		$deps = array();
+
+		foreach ( \WP_Block_Type_Registry::get_instance()->get_all_registered() as $block_name => $block_type ) {
+			if ( false === strpos( (string) $block_name, 'tablebuilder' ) ) {
+				continue;
+			}
+
+			foreach ( (array) ( $block_type->style_handles ?? array() ) as $handle ) {
+				if ( is_string( $handle ) && 'table-builder-style' !== $handle && wp_style_is( $handle, 'enqueued' ) ) {
+					$deps[] = $handle;
+				}
+			}
+		}
+
+		if ( empty( $deps ) ) {
+			return;
+		}
+
+		$style       = $styles->registered['table-builder-style'];
+		$style->deps = array_values( array_unique( array_merge( (array) $style->deps, $deps ) ) );
 	}
 
 	/**
@@ -531,6 +894,83 @@ class AssetGenerator {
 	 * @return void
 	 */
 	public function block_assets() {
-		wp_enqueue_style( 'table-builder-style', get_stylesheet_uri(), array(), TABLE_BUILDER_BLOCK_PLUGIN_VERSION );
+		// Block editor: unchanged behaviour.
+		if ( is_admin() ) {
+			wp_enqueue_style( 'table-builder-style', get_stylesheet_uri(), array(), TABLE_BUILDER_BLOCK_PLUGIN_VERSION );
+			return;
+		}
+
+		/**
+		 * Frontend backward-compat: some (child) themes never enqueue their own
+		 * style.css and may have relied on TableKit loading it. It is enqueued here
+		 * (same position as before) and dequeued again in
+		 * maybe_dequeue_theme_stylesheet_fallback() when the theme loads it itself,
+		 * so it is never printed twice.
+		 *
+		 * @since 2.2.15
+		 *
+		 * @param bool $load Whether to load the theme stylesheet as a fallback. Default true.
+		 */
+		if ( apply_filters( 'tablekit_load_theme_stylesheet_fallback', true ) ) {
+			wp_enqueue_style( self::THEME_STYLESHEET_FALLBACK_HANDLE, get_stylesheet_uri(), array(), TABLE_BUILDER_BLOCK_PLUGIN_VERSION );
+		}
+
+		// Source-less handle that only carries TableKit's inline CSS.
+		wp_register_style( 'table-builder-style', false, array(), TABLE_BUILDER_BLOCK_PLUGIN_VERSION );
+		wp_enqueue_style( 'table-builder-style' );
+	}
+
+	/**
+	 * Dequeues the theme-stylesheet fallback when the theme (or anything else)
+	 * already enqueues the same stylesheet, directly or as a dependency.
+	 *
+	 * @return void
+	 */
+	public function maybe_dequeue_theme_stylesheet_fallback() {
+		if ( is_admin() || ! wp_style_is( self::THEME_STYLESHEET_FALLBACK_HANDLE, 'enqueued' ) ) {
+			return;
+		}
+
+		$target = $this->normalize_style_src( get_stylesheet_uri() );
+		$styles = wp_styles();
+		$stack  = (array) $styles->queue;
+		$seen   = array();
+
+		while ( ! empty( $stack ) ) {
+			$handle = array_pop( $stack );
+
+			if ( ! is_string( $handle ) || isset( $seen[ $handle ] ) || self::THEME_STYLESHEET_FALLBACK_HANDLE === $handle ) {
+				continue;
+			}
+			$seen[ $handle ] = true;
+
+			$style = $styles->registered[ $handle ] ?? null;
+
+			if ( ! $style ) {
+				continue;
+			}
+
+			if ( is_string( $style->src ) && '' !== $style->src && $this->normalize_style_src( $style->src ) === $target ) {
+				wp_dequeue_style( self::THEME_STYLESHEET_FALLBACK_HANDLE );
+				return;
+			}
+
+			foreach ( (array) $style->deps as $dep ) {
+				$stack[] = $dep;
+			}
+		}
+	}
+
+	/**
+	 * Normalises a stylesheet URL for comparison (drops scheme, host and query).
+	 *
+	 * @param string $src Stylesheet URL (absolute, protocol-relative or root-relative).
+	 * @return string
+	 */
+	protected function normalize_style_src( string $src ): string {
+		$src = strtok( $src, '?#' );
+		$src = preg_replace( '#^(?:https?:)?//[^/]+#i', '', (string) $src );
+
+		return strtolower( untrailingslashit( (string) $src ) );
 	}
 }

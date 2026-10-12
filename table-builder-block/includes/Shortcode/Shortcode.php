@@ -7,6 +7,7 @@
 
 namespace TableBuilder\Shortcode;
 
+use TableBuilder\Hooks\AssetGenerator;
 use TableBuilder\Shortcode\ShortcodeUtils;
 use TableBuilder\Render\BlockRenderer;
 use TableBuilder\Traits\Singleton;
@@ -76,20 +77,29 @@ class Shortcode {
 		$atts = $this->sanitize_atts( shortcode_atts( self::DEFAULT_ATTS, (array) $raw_atts, 'tableKit' ) );
 		$ids  = $this->parse_ids( $atts );
 
+		// The shortcode prints its own table CSS, so the generic late-CSS
+		// printer (AssetGenerator) must not print it a second time.
+		$asset_generator = AssetGenerator::instance();
+		$asset_generator->suspend_late_css();
+
 		ob_start();
 
-		if ( empty( $ids['block_id'] ) && empty( $ids['raw_id'] ) ) {
-			echo $this->render_all_blocks( $ids, $atts, $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from the_content filter output and esc_*()-escaped pieces, see render_all_blocks().
+		try {
+			if ( empty( $ids['block_id'] ) && empty( $ids['raw_id'] ) ) {
+				echo $this->render_all_blocks( $ids, $atts, $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from the_content filter output and esc_*()-escaped pieces, see render_all_blocks().
+				return (string) ob_get_clean();
+			}
+
+			$block = $this->locate_block( $ids['post_id'], $ids['block_id'], $ids['raw_id'] );
+
+			if ( ! empty( $block ) ) {
+				echo $this->render_single_block( $block, $atts, $ids, $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- delegates to BlockRenderer::render_table_builder(), which escapes/kses's its own output.
+			}
+
 			return (string) ob_get_clean();
+		} finally {
+			$asset_generator->resume_late_css();
 		}
-
-		$block = $this->locate_block( $ids['post_id'], $ids['block_id'], $ids['raw_id'] );
-
-		if ( ! empty( $block ) ) {
-			echo $this->render_single_block( $block, $atts, $ids, $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- delegates to BlockRenderer::render_table_builder(), which escapes/kses's its own output.
-		}
-
-		return (string) ob_get_clean();
 	}
 
 	// -------------------------------------------------------------------------

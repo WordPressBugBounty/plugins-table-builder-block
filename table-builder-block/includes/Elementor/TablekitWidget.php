@@ -207,9 +207,22 @@ class TableKit_Elementor_Widget extends \Elementor\Widget_Base {
 		$this->print_shared_styles( $block_names );
 		$this->print_table_styles( $table_id, $post->post_content );
 
+		// This widget prints its own table CSS above, so the generic late-CSS
+		// printer (AssetGenerator) must not print it a second time.
+		$asset_generator = class_exists( '\\TableBuilder\\Hooks\\AssetGenerator' ) ? \TableBuilder\Hooks\AssetGenerator::instance() : null;
+		if ( $asset_generator ) {
+			$asset_generator->suspend_late_css();
+		}
+
 		echo '<div class="tablekit-elementor-wrap">';
-		foreach ( $blocks_to_render as $block ) {
-			echo ( new WP_Block( $block ) )->render(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard core block-rendering output, same as render_block().
+		try {
+			foreach ( $blocks_to_render as $block ) {
+				echo ( new WP_Block( $block ) )->render(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard core block-rendering output, same as render_block().
+			}
+		} finally {
+			if ( $asset_generator ) {
+				$asset_generator->resume_late_css();
+			}
 		}
 		echo '</div>';
 

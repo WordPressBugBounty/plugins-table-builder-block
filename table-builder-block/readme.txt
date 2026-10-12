@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, data ta
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.14
+Stable tag: 2.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,16 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+= TableKit 2.3.0 (2026-10-11) =
+* Added: Configurable scroll height, mobile freeze options, and frozen-edge shadows.
+* Improved: Freeze Table behavior, including sticky positioning, column resizing, conditional formatting, and transparent cell backgrounds.
+* Improved: Horizontal scrolling, scrollbar styling, and frozen-column performance.
+* Fixed: Unwanted borders when Freeze Table is enabled.
+* Fixed: Compatibility issues with Formidable Forms and themes such as Kadence.
+* Fixed: Table styling conflicts caused by global theme styles.
+* Fixed: Duplicate CSS loading and incorrect style order to ensure user-defined table styles take precedence.
+* Fixed: Editor error when selecting the parent block before the editor iframe body is available.
+
 = TableKit 2.2.14 (2026-09-20) =
 * Improved: Border styles and search behavior for Table Builder blocks
 * Improved: Removed incompatible row actions for virtual posts to prevent unexpected behavior

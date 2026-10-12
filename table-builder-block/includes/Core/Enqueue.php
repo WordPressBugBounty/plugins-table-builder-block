@@ -9,8 +9,6 @@ namespace TableBuilder\Core;
 
 defined( 'ABSPATH' ) || exit;
 
-use TableBuilder\Helpers\Utils;
-
 /**
  * Enqueue registrar.
  *
@@ -32,7 +30,6 @@ class Enqueue {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_deactivation_popup_scripts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'blocks_editor_scripts' ) );
-		add_action( 'wp_head', array( $this, 'print_device_script_for_window' ) );
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_filter( 'admin_body_class', array( $this, 'add_body_class' ) );
 	}
@@ -307,16 +304,15 @@ class Enqueue {
 	}
 
 	/**
-	 * Prints device script in the header for responsive behavior.
+	 * Deprecated no-op, kept only so external callers don't fatal.
 	 *
+	 * It used to attach a "breakpoints" global to the "wp-block-editor" script
+	 * on the frontend, which no frontend script reads.
+	 *
+	 * @deprecated 2.2.15
 	 * @return void
 	 */
-	public function print_device_script_for_window() {
-		if ( ! is_admin() ) {
-			$devices = Utils::get_device_list();
-			wp_add_inline_script( 'wp-block-editor', 'var breakpoints = ' . wp_json_encode( $devices ) . ';', 'before' );
-		}
-	}
+	public function print_device_script_for_window() {}
 
 	/**
 	 * Adds a tableBuilder class to the admin/editor body.

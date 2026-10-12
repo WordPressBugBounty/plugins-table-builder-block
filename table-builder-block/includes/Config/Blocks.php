@@ -26,7 +26,7 @@ class Blocks {
 	protected function __construct() {
 		add_action( 'init', array( $this, 'register_blocks' ) );
 		add_action( 'block_categories_all', array( $this, 'register_block_categories' ), 10, 2 );
-		add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'maybe_enqueue_block_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_assets' ), 5 );
 		add_filter( 'render_block', array( $this, 'save_block_element' ), 10, 3 );
 	}
@@ -84,7 +84,28 @@ class Blocks {
 
 
 	/**
-	 * Enqueues the shared global/component stylesheets on both the editor and frontend.
+	 * Hooked to "enqueue_block_assets": loads the shared global/component
+	 * stylesheets only in the block editor (incl. its iframe canvas).
+	 *
+	 * These files only style editor UI (inspector controls, template library,
+	 * placeholders); the frontend table never uses them, so loading them on every
+	 * frontend page only added ~120KB of render-blocking CSS and global selectors.
+	 * Contexts that need them outside the editor (Elementor widget, [tableKit]
+	 * shortcode) enqueue/print them explicitly.
+	 *
+	 * @return void
+	 */
+	public function maybe_enqueue_block_assets() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		$this->enqueue_block_assets();
+	}
+
+	/**
+	 * Enqueues the shared global/component stylesheets. Public so other render
+	 * paths (e.g. the Elementor widget) can request them explicitly.
 	 *
 	 * @return void
 	 */
