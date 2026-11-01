@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, data ta
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,15 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+= TableKit 2.4.0 (2026-11-01) =
+* Added: Table menu on cells, blocks inside cells and the table.
+* Added: Insert and delete rows and columns from the Table menu.
+* Improved: Header, footer, column widths, row heights stay in sync when rows or columns change.
+* Improved: One-step undo for row and column changes.
+* Improved: Existing tables keep their content and block validation.
+* Removed: Separate column manager and header-based column selection.
+* Removed: Unused code and files.
+
 = TableKit 2.3.0 (2026-10-11) =
 * Added: Configurable scroll height, mobile freeze options, and frozen-edge shadows.
 * Improved: Freeze Table behavior, including sticky positioning, column resizing, conditional formatting, and transparent cell backgrounds.

@@ -47,6 +47,10 @@ class DeactivationFeedback {
 						'required'          => false,
 						'sanitize_callback' => 'sanitize_textarea_field',
 					),
+					'share_details' => array(
+						'required'          => false,
+						'sanitize_callback' => 'rest_sanitize_boolean',
+					),
 				),
 			)
 		);
@@ -62,11 +66,16 @@ class DeactivationFeedback {
 	}
 
 	/**
-	 * REST callback: send the plugin's deactivation feedback (reason, environment,
-	 * and anonymous usage stats) to Wpmet's unsubscribe endpoint (fire-and-forget).
+	 * REST callback: send the plugin's deactivation feedback to Wpmet's endpoint
+	 * (fire-and-forget). The reason, message, plugin slug and version are always
+	 * sent. The admin email, site URL, environment and usage details are sent
+	 * only when "share_details" is true, which the popup's "Submit & Deactivate"
+	 * button sends (the popup names that data next to the button). "Skip &
+	 * Deactivate" never calls this route.
 	 *
 	 * @param \WP_REST_Request $request Request with "reason_key" (required), "reason_label"
-	 *                                  (required), and "message" (optional) params.
+	 *                                  (required, English), "message" (optional) and
+	 *                                  "share_details" (optional bool) params.
 	 * @return \WP_REST_Response Always a 200 success response.
 	 */
 	public function handle_feedback( $request ) {
@@ -76,26 +85,30 @@ class DeactivationFeedback {
 			'plugin_slug'    => 'table-builder-block',
 			'plugin_name'    => 'TableKit',
 			'plugin_version' => defined( 'TABLE_BUILDER_BLOCK_PLUGIN_VERSION' ) ? TABLE_BUILDER_BLOCK_PLUGIN_VERSION : '',
-			'user'           => array(
-				'email' => wp_get_current_user()->user_email,
-			),
 			'feedback'       => array(
 				'reason_key'   => (string) $request->get_param( 'reason_key' ),
 				'reason_label' => (string) $request->get_param( 'reason_label' ),
 				'message'      => (string) $request->get_param( 'message' ),
 			),
-			'usage'          => array(
+		);
+
+		// Personal and site details leave the site only with the user's consent.
+		if ( $request->get_param( 'share_details' ) ) {
+			$data['user']        = array(
+				'email' => wp_get_current_user()->user_email,
+			);
+			$data['usage']       = array(
 				'active_widgets' => $this->get_active_widgets(),
 				'user_type'      => $this->get_user_type(),
 				'active_days'    => $this->get_days_active(),
-			),
-			'environment'    => array(
+			);
+			$data['environment'] = array(
 				'multisite_status' => is_multisite(),
 				'wp_version'       => get_bloginfo( 'version' ),
 				'php_version'      => PHP_VERSION,
 				'site_url'         => get_site_url(),
-			),
-		);
+			);
+		}
 
 		wp_remote_post(
 			'https://api.wpmet.com/public/plugin-unsubscribe/',
@@ -103,6 +116,8 @@ class DeactivationFeedback {
 				'method'   => 'POST',
 				'timeout'  => 20,
 				'blocking' => false,
+				// WordPress' default user agent carries the site URL, which is shared only on opt-in.
+				'user-agent' => 'TableKit',
 				'headers'  => array( 'Content-Type' => 'application/json' ),
 				'body'     => wp_json_encode( $data ),
 			)
@@ -127,32 +142,18 @@ class DeactivationFeedback {
 	}
 
 	/**
-	 * Determines the user type based on the pro plugin and license status.
+	 * Determines the user type. Defaults to 'free'; the pro plugin supplies its own
+	 * value via the "tablekit_deactivation_feedback_user_type" filter.
 	 *
-	 * @return string One of 'pro_valid', 'pro' or 'free'.
+	 * @return string User type, e.g. 'free' or 'pro'.
 	 */
 	public function get_user_type() {
-		if ( ! $this->is_pro_installed() ) {
-			return 'free';
-		}
-
-		$is_licensed = class_exists( '\TableBuilder\Helpers\Utils' )
-			&& \TableBuilder\Helpers\Utils::status() === 'valid';
-
-		return $is_licensed ? 'pro_valid' : 'pro';
-	}
-
-	/**
-	 * Checks whether the TableKit Pro plugin is installed (regardless of active state).
-	 *
-	 * @return bool
-	 */
-	protected function is_pro_installed() {
-		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-
-		return array_key_exists( 'table-builder-block-pro/table-builder-block-pro.php', get_plugins() );
+		/**
+		 * Filters the user type sent with the deactivation feedback.
+		 *
+		 * @param string $user_type Default user type: 'free'.
+		 */
+		return (string) apply_filters( 'tablekit_deactivation_feedback_user_type', 'free' );
 	}
 
 	/**

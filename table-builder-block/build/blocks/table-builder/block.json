@@ -591,8 +591,5 @@
   ],
   "style": [
     "file:./style-index.css"
-  ],
-  "viewScript": [
-    "file:./frontend.js"
   ]
 }

@@ -111,72 +111,6 @@ class VirtualPostBuilder {
 	}
 
 	/**
-	 * Renders a read-only shortcode text field with a copy-to-clipboard button.
-	 *
-	 * @param string $shortcode The shortcode text to display, e.g. `[tableKit post_id="12"]`.
-	 * @return void
-	 */
-	public function render_shortcode_input( string $shortcode ): void {
-		echo '<div class="tablekit-shortcode-wrap" style="position:relative;">';
-		printf(
-			'<input type="text" class="tablekit-shortcode-field" readonly value="%s" style="width:100%%;padding-right:32px;" />',
-			esc_attr( $shortcode )
-		);
-		$copy_label = esc_attr__( 'Copy shortcode', 'table-builder-block' );
-		printf(
-			'<button type="button" class="tablekit-copy-shortcode" data-copy-text="%s" aria-label="%s" title="%s" style="position:absolute;right:6px;top:50%%;transform:translateY(-50%%);border:0;background:transparent;color:#2271b1;cursor:pointer;padding:0;line-height:1;">'
-				. '<span class="tablekit-copy-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><rect x="7" y="5" width="9" height="11" rx="2"></rect><path d="M4 12.5V4a2 2 0 0 1 2-2h7.5"></path></svg></span>'
-				. '</button>',
-			esc_attr( $shortcode ),
-			$copy_label, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already run through esc_attr__() above.
-			$copy_label // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already run through esc_attr__() above.
-		);
-		echo '</div>';
-	}
-
-	/**
-	 * Renders a collapsible panel listing shortcodes for each child table
-	 * block found within a source post.
-	 *
-	 * @param array $blocks    Child block descriptors (block_name/block_id/shortcode_id).
-	 * @param int   $post_id   The (real or virtual) post ID this panel belongs to.
-	 * @param int   $source_id The real source post ID the shortcodes should target.
-	 * @return void
-	 */
-	public function render_child_shortcode_panel( array $blocks, int $post_id, int $source_id ): void {
-		$panel_id = 'tablekit-children-' . absint( $post_id );
-		$count    = count( $blocks );
-		/* translators: %d: Number of child shortcodes. */
-		$label_open = esc_js( sprintf( __( '&#9654; Child shortcodes (%d)', 'table-builder-block' ), $count ) );
-		/* translators: %d: Number of child shortcodes. */
-		$label_close = esc_js( sprintf( __( '&#9660; Child shortcodes (%d)', 'table-builder-block' ), $count ) );
-		?>
-		<div class="tablekit-child-shortcode-toggle-wrap">
-			<button
-				type="button"
-				onclick="(function(btn){var p=document.getElementById('<?php echo esc_js( $panel_id ); ?>');var o=p.style.display!=='none';p.style.display=o?'none':'block';btn.innerHTML=o?'<?php echo $label_open; /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped via esc_js() above. */ ?>':'<?php echo $label_close; /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped via esc_js() above. */ ?>';})(this)"
-				class="tablekit-child-shortcode-toggle">
-				<?php
-				/* translators: %d: Number of child shortcodes. */
-				echo wp_kses_post( sprintf( __( '&#9654; Child shortcodes (%d)', 'table-builder-block' ), $count ) );
-				?>
-			</button>
-		</div>
-		<div id="<?php echo esc_attr( $panel_id ); ?>" class="tablekit-child-shortcode-panel" style="display:none;">
-			<?php foreach ( $blocks as $block ) : ?>
-				<div class="tablekit-child-shortcode-item">
-					<span class="tablekit-child-shortcode-label">
-						<?php echo esc_html( TableCPT::get_block_label( $block['block_name'] ) ); ?>
-					</span>
-					<?php $child_shortcode = $this->build_child_shortcode( $block, $source_id ); ?>
-					<?php $this->render_shortcode_input( $child_shortcode ); ?>
-				</div>
-			<?php endforeach; ?>
-		</div>
-		<?php
-	}
-
-	/**
 	 * Checks whether a query is the main admin list-table query for the Tables CPT.
 	 *
 	 * @param WP_Query $query The query to check.
@@ -271,20 +205,5 @@ class VirtualPostBuilder {
 		$virtual_post->tablekit_blocks        = $group['blocks'];
 
 		return $virtual_post;
-	}
-
-	/**
-	 * Builds the [tableKit] shortcode text for a single child block.
-	 *
-	 * @param array $block     Block descriptor with a "shortcode_id" key.
-	 * @param int   $source_id Real source post ID to fall back to when the block has no shortcode_id.
-	 * @return string The shortcode text.
-	 */
-	private function build_child_shortcode( array $block, int $source_id ): string {
-		if ( '' !== $block['shortcode_id'] ) {
-			return sprintf( '[tableKit id="%s"]', $block['shortcode_id'] );
-		}
-
-		return sprintf( '[tableKit post_id="%d"]', $source_id );
 	}
 }

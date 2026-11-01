@@ -24,29 +24,16 @@ class UtilityPackages {
 	 *
 	 * Wires up the same Wpmet shared widgets GutenKit uses
 	 * (see gutenkit-blocks-addon/includes/Libs/UtilityPackages.php):
-	 * cross-promotion menu, dismissible Notice AJAX handler, the
-	 * Stories dashboard widget, the Banner ("jhanda") admin notice,
-	 * and the "ask for rating" prompt.
+	 * cross-promotion menu, dismissible Notice AJAX handler, and the
+	 * "ask for rating" prompt.
 	 *
 	 * @return void
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_cross_promotion_menu' ) );
 
-		// Powers the dismiss button on Banner/Notice widgets below.
+		// Powers the dismiss button on the rating prompt below.
 		UtilityPackage\Notice\Notice::init();
-
-		// Show Wpmet stories widget in the Dashboard.
-		UtilityPackage\Stories\Stories::instance( 'table-builder-block' )
-			->set_plugin( 'TableKit', 'https://wpmet.com/plugin/table-builder-block/' )
-			->set_api_url( 'https://api.wpmet.com/public/stories/' )
-			->call();
-
-		// Show Wpmet banner (codename: jhanda) on TableKit's own admin screens.
-		UtilityPackage\Banner\Banner::instance( 'table-builder-block' )
-			->set_api_url( 'https://api.wpmet.com/public/jhanda' )
-			->set_plugin_screens( 'toplevel_page_tablebuilder' )
-			->call();
 
 		// Ask for a WordPress.org rating after the plugin has been in use for a while.
 		UtilityPackage\Rating\Rating::instance( 'table-builder-block' )
@@ -57,6 +44,52 @@ class UtilityPackages {
 			->set_first_appear_day( 7 )
 			->set_condition( true )
 			->set_support_url( 'https://wpmet.com/support-ticket-form/' )
+			->call();
+
+		// Remote promotional content (Wpmet Stories widget + Banner) is fetched only after opt-in.
+		if ( $this->has_user_consent() ) {
+			$this->register_stories_and_banner();
+		}
+	}
+
+	/**
+	 * Whether the admin has allowed promotional banners and stories from the dashboard settings.
+	 *
+	 * Reads the "gutenkit_user_consent" entry of the "gutenkit_settings_list" option, the
+	 * same store the tablebuilder/v1/settings route reads and writes (see SettingsData).
+	 * Anything other than an explicit "active" status counts as no consent.
+	 *
+	 * @return bool
+	 */
+	private function has_user_consent() {
+		$settings = get_option( 'gutenkit_settings_list' );
+
+		return is_array( $settings )
+			&& isset( $settings['gutenkit_user_consent']['status'] )
+			&& 'active' === $settings['gutenkit_user_consent']['status'];
+	}
+
+	/**
+	 * Registers the Wpmet Stories dashboard widget and the Banner on the TableKit admin screen.
+	 *
+	 * @return void
+	 */
+	private function register_stories_and_banner() {
+		$filter_string  = '';
+		$filter_string .= in_array( 'elementskit/elementskit.php', (array) apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ? ',elementskit' : ''; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- "active_plugins" is a WordPress core filter.
+		$filter_string .= class_exists( '\MetForm\Plugin' ) ? ',metform' : '';
+		$filter_string .= class_exists( '\MetForm_Pro\Plugin' ) ? ',metform-pro' : '';
+
+		UtilityPackage\Stories\Stories::instance( 'table-builder-block' )
+			->set_filter( $filter_string )
+			->set_plugin( 'TableKit', 'https://wpmet.com/plugin/tablekit/' )
+			->set_api_url( 'https://api.wpmet.com/public/stories/' )
+			->call();
+
+		UtilityPackage\Banner\Banner::instance( 'table-builder-block' )
+			->set_filter( ltrim( $filter_string, ',' ) )
+			->set_api_url( 'https://api.wpmet.com/public/jhanda' )
+			->set_plugin_screens( 'toplevel_page_tablebuilder' )
 			->call();
 	}
 

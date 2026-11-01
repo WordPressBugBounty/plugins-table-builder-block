@@ -189,7 +189,16 @@ class Shortcode {
 		$this->block_enqueue_assets();
 		$style = $css ? '<style id="tb-' . esc_attr( $attrs['blockID'] ) . '">' . $css . '</style>' : '';
 
-		return $style . BlockRenderer::render_table_builder( $attrs, $rows, $content );
+		$html = BlockRenderer::render_table_builder( $attrs, $rows, $content );
+		/**
+		 * Filters the table HTML rendered by the [tableKit] shortcode.
+		 *
+		 * @param string $html  Table markup.
+		 * @param array  $attrs Block attributes.
+		 */
+		$html = apply_filters( 'tablekit/table_html', $html, $attrs );
+
+		return $style . $html;
 	}
 
 	// -------------------------------------------------------------------------

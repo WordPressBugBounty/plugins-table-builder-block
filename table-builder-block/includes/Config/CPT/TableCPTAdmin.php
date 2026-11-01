@@ -130,8 +130,7 @@ class TableCPTAdmin {
 	}
 
 	/**
-	 * Adds TableKit-specific columns (source/author, and shortcode columns when
-	 * Pro is active) to the Tables admin list table, dropping the default "author" column.
+	 * Adds TableKit-specific columns (source/author) to the Tables admin list table, dropping the default "author" column.
 	 *
 	 * @param array $columns Existing list table columns.
 	 * @return array Modified columns.
@@ -147,11 +146,6 @@ class TableCPTAdmin {
 			$updated[ $key ] = $label;
 
 			if ( 'title' === $key ) {
-				if ( $this->is_pro_active() ) {
-					$updated['tablekit_shortcode']       = __( 'Shortcode', 'table-builder-block' );
-					$updated['tablekit_child_shortcode'] = __( 'Child Shortcodes', 'table-builder-block' );
-				}
-
 				$updated['tablekit_source'] = __( 'Source', 'table-builder-block' );
 				$updated['tablekit_author'] = __( 'Author', 'table-builder-block' );
 			}
@@ -175,20 +169,6 @@ class TableCPTAdmin {
 		}
 
 		switch ( $column ) {
-			case 'tablekit_shortcode':
-				if ( ! $this->is_pro_active() ) {
-					break;
-				}
-
-				$this->render_column_shortcode( $post );
-				break;
-			case 'tablekit_child_shortcode':
-				if ( ! $this->is_pro_active() ) {
-					break;
-				}
-
-				$this->render_column_child_shortcodes( $post );
-				break;
 			case 'tablekit_source':
 				$this->render_column_source( $post );
 				break;
@@ -295,7 +275,6 @@ class TableCPTAdmin {
 		}
 
 		$style_path  = TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'assets/css/table-cpt-admin.css';
-		$script_path = TABLE_BUILDER_BLOCK_PLUGIN_DIR . 'assets/js/table-cpt-admin.js';
 
 		wp_enqueue_style(
 			'tablekit-cpt-admin',
@@ -303,62 +282,6 @@ class TableCPTAdmin {
 			array(),
 			file_exists( $style_path ) ? (string) filemtime( $style_path ) : TABLE_BUILDER_BLOCK_PLUGIN_VERSION
 		);
-
-		wp_enqueue_script(
-			'tablekit-cpt-admin',
-			TABLE_BUILDER_BLOCK_PLUGIN_URL . 'assets/js/table-cpt-admin.js',
-			array(),
-			file_exists( $script_path ) ? (string) filemtime( $script_path ) : TABLE_BUILDER_BLOCK_PLUGIN_VERSION,
-			true
-		);
-
-		wp_localize_script(
-			'tablekit-cpt-admin',
-			'tablekitCptAdmin',
-			array(
-				'copiedText' => __( 'Copied!', 'table-builder-block' ),
-				'failedText' => __( 'Copy failed', 'table-builder-block' ),
-			)
-		);
-	}
-
-	/**
-	 * Renders the "Shortcode" column: a copyable `[tableKit post_id="..."]` shortcode.
-	 *
-	 * @param WP_Post $post The row's post (real or virtual).
-	 * @return void
-	 */
-	private function render_column_shortcode( WP_Post $post ): void {
-		if ( ! empty( $post->tablekit_is_virtual ) ) {
-			$this->virtual_posts->render_shortcode_input(
-				sprintf( '[tableKit post_id="%d"]', (int) $post->tablekit_source_id )
-			);
-			return;
-		}
-
-		$this->virtual_posts->render_shortcode_input( sprintf( '[tableKit post_id="%d"]', (int) $post->ID ) );
-	}
-
-	/**
-	 * Renders the "Child Shortcodes" column: a collapsible panel listing shortcodes
-	 * for each child table block found in the row's post.
-	 *
-	 * @param WP_Post $post The row's post (real or virtual).
-	 * @return void
-	 */
-	private function render_column_child_shortcodes( WP_Post $post ): void {
-		$child_blocks = $this->get_child_shortcode_blocks( $post );
-
-		if ( empty( $child_blocks ) ) {
-			echo '&mdash;';
-			return;
-		}
-
-		$source_id = ! empty( $post->tablekit_is_virtual )
-			? (int) $post->tablekit_source_id
-			: (int) $post->ID;
-
-		$this->virtual_posts->render_child_shortcode_panel( $child_blocks, (int) $post->ID, $source_id );
 	}
 
 	/**
@@ -509,14 +432,5 @@ class TableCPTAdmin {
 		}
 
 		return $counts;
-	}
-
-	/**
-	 * Whether the Pro add-on plugin is active.
-	 *
-	 * @return bool
-	 */
-	private function is_pro_active(): bool {
-		return defined( 'TABLE_BUILDER_BLOCK_PRO_PLUGIN_VERSION' );
 	}
 }

@@ -80,16 +80,6 @@ class RestApi {
 			)
 		);
 
-		register_rest_route(
-			'tablekit/v1',
-			'/table-manager-api/check-pro-license',
-			array(
-				'methods'             => 'POST',
-				'callback'            => array( $this, 'check_pro_license' ),
-				'permission_callback' => function () {
-					return current_user_can( 'activate_plugins' ); },
-			)
-		);
 	}
 
 	/**
@@ -354,73 +344,6 @@ class RestApi {
 			array(
 				'status' => empty( $failed ) ? 'success' : 'partial',
 				'failed' => $failed,
-			),
-			200
-		);
-	}
-
-	/**
-	 * REST callback: check whether GutenKit Pro's license is active
-	 * (license checks are currently only supported for that plugin).
-	 *
-	 * @param \WP_REST_Request $request Request with a JSON "plugins" array param.
-	 * @return \WP_REST_Response License status.
-	 */
-	public function check_pro_license( $request ) {
-		$plugins = $request->get_json_params()['plugins'] ?? array();
-		if ( empty( $plugins ) ) {
-			return new \WP_REST_Response(
-				array(
-					'status'  => 'error',
-					'message' => 'No plugins specified.',
-				),
-				400
-			);
-		}
-
-		// Check if this is gutenkit-blocks-addon-pro.
-		$is_gutenkit_pro = false;
-		foreach ( $plugins as $slug ) {
-			if ( strpos( $slug, 'gutenkit-blocks-addon-pro' ) !== false ) {
-				$is_gutenkit_pro = true;
-				break;
-			}
-		}
-
-		if ( ! $is_gutenkit_pro ) {
-			return new \WP_REST_Response(
-				array(
-					'status'        => 'error',
-					'license_valid' => false,
-					'message'       => 'License check is only available for GutenKit Pro.',
-				),
-				400
-			);
-		}
-
-		// Check GutenKit license status.
-		// GutenKit uses these options to store license info.
-		$oppai = get_option( '__gutenkit_oppai__', '' );
-		$key   = get_option( '__gutenkit_license_key__', '' );
-
-		$license_valid = ! empty( $oppai ) && ! empty( $key );
-
-		if ( ! $license_valid ) {
-			return new \WP_REST_Response(
-				array(
-					'status'        => 'error',
-					'license_valid' => false,
-					'message'       => 'Pro plugin license is not active. Please activate your license at GutenKit → Settings → License to use pro features.',
-				),
-				200
-			);
-		}
-
-		return new \WP_REST_Response(
-			array(
-				'status'        => 'success',
-				'license_valid' => true,
-				'message'       => 'License is valid.',
 			),
 			200
 		);

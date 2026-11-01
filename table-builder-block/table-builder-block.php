@@ -3,7 +3,7 @@
  * Plugin Name:       TableKit
  * Plugin URI:        https://wpmet.com/plugin/gutenkit/
  * Description:       Powerful Table Builder for Gutenberg block editor.
- * Version:           2.3.0
+ * Version:           2.4.0
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            Wpmet
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main plugin bootstrap class for TableKit.
  */
 final class TableBuilder {
-	const VERSION = '2.3.0';
+	const VERSION = '2.4.0';
 
 	/**
 	 * Singleton instance.
@@ -58,7 +58,6 @@ final class TableBuilder {
 
 		// Make sure ADD AUTOLOAD is scoped/deps/scoper-autoload.php file.
 		require_once TABLE_BUILDER_BLOCK_PLUGIN_DIR . '/scoped/deps/scoper-autoload.php';
-		require_once TABLE_BUILDER_BLOCK_INC_DIR . 'Elementor/TablekitElementor.php';
 
 		// Fires after initialization of the GutenKit plugin.
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
@@ -161,7 +160,7 @@ final class TableBuilder {
 		TableBuilder\Config\Blocks::instance();
 		TableBuilder\Shortcode\Shortcode::instance();
 		TableBuilder\Admin\Admin::instance();
-		TableKit_Elementor::init();
+		TableBuilder\Admin\ProUpdateNotice::instance();
 
 		// Receive deactivation reason data from the plugins-page modal.
 		new TableBuilder\Routes\DeactivationFeedback();
