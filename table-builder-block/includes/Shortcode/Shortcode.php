@@ -74,6 +74,22 @@ class Shortcode {
 	 * @return string Rendered HTML.
 	 */
 	public function render( $raw_atts, string $content = '' ): string {
+		/**
+		 * Lets an add-on print its own output for this shortcode before any asset or
+		 * block work. Return null to keep the default rendering.
+		 *
+		 * @since 2.4.1
+		 *
+		 * @param string|null $pre      Output, or null.
+		 * @param array       $raw_atts Raw shortcode attributes.
+		 * @param string      $content  Shortcode enclosed content.
+		 */
+		// phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores -- slash-namespaced hook name is this plugin's established public API (used by the Pro add-on); renaming would be a breaking change.
+		$pre = apply_filters( 'tablekit/shortcode_pre_render', null, is_array( $raw_atts ) ? $raw_atts : array(), $content );
+		if ( null !== $pre ) {
+			return (string) $pre;
+		}
+
 		$atts = $this->sanitize_atts( shortcode_atts( self::DEFAULT_ATTS, (array) $raw_atts, 'tableKit' ) );
 		$ids  = $this->parse_ids( $atts );
 
@@ -341,6 +357,18 @@ class Shortcode {
 	 * @return array The located block, or an empty array if not found.
 	 */
 	private function locate_block( int $post_id, string $block_id, string $raw_id ): array {
+		// An all-digit "id" is a short ID as often as a post ID (short IDs are six digits, maybe with leading
+		// zeros), so the post of that number only counts when it really holds the table with that short ID.
+		// Otherwise the short ID is searched for, and the post's first table stays the last resort.
+		if ( $post_id && '' === $block_id && '' !== $raw_id && ctype_digit( $raw_id ) && (int) $raw_id === $post_id ) {
+			$block = $this->get_block_from_post( $post_id, $raw_id );
+			if ( ! $block ) {
+				$block = $this->search_block_by_id( $raw_id );
+			}
+
+			return $block ? $block : $this->get_block_from_post( $post_id, '' );
+		}
+
 		if ( $post_id ) {
 			$block = $this->get_block_from_post( $post_id, $block_id );
 			if ( $block ) {
@@ -376,9 +404,14 @@ class Shortcode {
 	 * content out of private/draft/pending posts the viewer can't read.
 	 *
 	 * @param \WP_Post $post Post to check.
-	 * @return bool True if the post is published, or the viewer has "read_post" capability on it.
+	 * @return bool True if the post is published (and not password protected), or the viewer has "read_post" capability on it.
 	 */
-	private function can_view_post( \WP_Post $post ): bool {
+	public static function can_view_post( \WP_Post $post ): bool {
+		// A password protected post is not public until the visitor has entered the password.
+		if ( post_password_required( $post ) ) {
+			return false;
+		}
+
 		if ( 'publish' === $post->post_status ) {
 			return true;
 		}

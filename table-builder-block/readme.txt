@@ -4,7 +4,7 @@ Tags: table, table builder block, post table, woocommerce product table, data ta
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,6 +238,11 @@ Yes. Every TableKit table supports export to CSV, Excel, and PDF with a single c
 
 
 == Changelog ==
+= TableKit 2.4.1 (2026-11-04) =
+* Added: A new filter lets an add-on change what the [tableKit] shortcode shows.
+* Fixed: A table on a password protected post showed up before the password was typed.
+* Fixed: [tableKit id="..."] showed the post with that number, not the table with that ID.
+
 = TableKit 2.4.0 (2026-11-01) =
 * Added: Table menu on cells, blocks inside cells and the table.
 * Added: Insert and delete rows and columns from the Table menu.
