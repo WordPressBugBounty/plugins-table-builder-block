@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TableKit 2.2.12\n"
+"Project-Id-Version: TableKit 2.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/table-builder-block\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-17T06:15:37+00:00\n"
+"POT-Creation-Date: 2026-11-17T09:50:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: table-builder-block\n"
@@ -20,7 +20,6 @@ msgstr ""
 #: includes/Admin/Admin.php:58
 #: includes/Admin/Admin.php:68
 #: includes/Admin/Admin.php:69
-#: includes/Elementor/TablekitWidget.php:68
 #: src/global/template-library/TableBuilderPlaceholder.js:19
 msgid "TableKit"
 msgstr ""
@@ -52,16 +51,16 @@ msgstr ""
 
 #: includes/Admin/Admin.php:88
 #: includes/Admin/Admin.php:89
-#: src/admin/dashboard/components/Header.js:40
+#: src/admin/dashboard/components/Header.js:41
 msgid "Features"
 msgstr ""
 
-#: includes/Admin/Api/OnboardData.php:88
+#: includes/Admin/Api/OnboardData.php:228
 #: includes/Admin/Api/SettingsData.php:84
 msgid "Nonce mismatch."
 msgstr ""
 
-#: includes/Admin/Api/OnboardData.php:96
+#: includes/Admin/Api/OnboardData.php:236
 #: includes/Admin/Api/SettingsData.php:92
 msgid "Access denied."
 msgstr ""
@@ -78,6 +77,16 @@ msgstr ""
 msgid "Something went wrong."
 msgstr ""
 
+#: includes/Admin/ProUpdateNotice.php:67
+msgid "TableKit Pro needs an update."
+msgstr ""
+
+#. translators: 1: installed TableKit Pro version, 2: TableKit (free) version, 3: minimum TableKit Pro version.
+#: includes/Admin/ProUpdateNotice.php:71
+#, php-format
+msgid "TableKit Pro %1$s is not compatible with TableKit %2$s. Please update TableKit Pro to version %3$s or newer, otherwise Pro features may not work correctly."
+msgstr ""
+
 #: includes/Config/Blocks.php:78
 #: src/table-builder-components/components/placeholder/TableBuilderPlaceholder.js:24
 msgid "Table Builder"
@@ -85,7 +94,7 @@ msgstr ""
 
 #. translators: %2$s = source post title.
 #: includes/Config/CPT/InlineTableScanner.php:47
-#: includes/Config/CPT/VirtualPostBuilder.php:209
+#: includes/Config/CPT/VirtualPostBuilder.php:171
 #, php-format
 msgid "Table in: %2$s"
 msgid_plural "Tables in: %2$s"
@@ -105,9 +114,8 @@ msgstr ""
 #: includes/Config/CPT/TableCPT.php:208
 #: includes/Config/CPT/TableCPT.php:222
 #: includes/Config/CPT/TableCPT.php:224
-#: includes/Elementor/TablekitWidget.php:122
-#: src/blocks/table-builder/edit.js:185
-#: src/table-builder-components/components/chart-view/ChartSettings.js:104
+#: src/blocks/table-builder/components/TableMenu.js:107
+#: src/blocks/table-builder/edit.js:179
 msgid "Table"
 msgstr ""
 
@@ -187,246 +195,170 @@ msgstr ""
 msgid "TableKit supports multiple tables in the same page. However, to keep your content easier to manage and improve compatibility, performance, and shortcode handling, we recommend creating a single table whenever possible."
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:151
-msgid "Shortcode"
-msgstr ""
-
-#: includes/Config/CPT/TableCPTAdmin.php:152
-msgid "Child Shortcodes"
-msgstr ""
-
-#: includes/Config/CPT/TableCPTAdmin.php:155
+#: includes/Config/CPT/TableCPTAdmin.php:149
 msgid "Source"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:156
+#: includes/Config/CPT/TableCPTAdmin.php:150
 msgid "Author"
 msgstr ""
 
 #. translators: %s: Title of the source post the table belongs to.
-#: includes/Config/CPT/TableCPTAdmin.php:227
+#: includes/Config/CPT/TableCPTAdmin.php:207
 #, php-format
 msgid "Edit &#8220;%s&#8221;"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:228
+#: includes/Config/CPT/TableCPTAdmin.php:208
 msgid "Edit"
 msgstr ""
 
 #. translators: %s: Title of the source post the table belongs to.
-#: includes/Config/CPT/TableCPTAdmin.php:240
+#: includes/Config/CPT/TableCPTAdmin.php:220
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:241
+#: includes/Config/CPT/TableCPTAdmin.php:221
 msgid "View"
 msgstr ""
 
 #. translators: %s: Title of the source post the table belongs to.
-#: includes/Config/CPT/TableCPTAdmin.php:253
-#: includes/Config/CPT/TableCPTAdmin.php:271
+#: includes/Config/CPT/TableCPTAdmin.php:233
+#: includes/Config/CPT/TableCPTAdmin.php:251
 #, php-format
 msgid "Delete &#8220;%s&#8221; permanently"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:254
-#: includes/Config/CPT/TableCPTAdmin.php:272
+#: includes/Config/CPT/TableCPTAdmin.php:234
+#: includes/Config/CPT/TableCPTAdmin.php:252
 msgid "Delete Permanently"
 msgstr ""
 
 #. translators: %s: Title of the source post the table belongs to.
-#: includes/Config/CPT/TableCPTAdmin.php:261
+#: includes/Config/CPT/TableCPTAdmin.php:241
 #, php-format
 msgid "Move &#8220;%s&#8221; to the Trash"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:262
+#: includes/Config/CPT/TableCPTAdmin.php:242
 msgctxt "verb"
 msgid "Trash"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:319
-#: src/table-builder-components/controls/short-code/ShortCode.js:71
-msgid "Copied!"
-msgstr ""
-
-#: includes/Config/CPT/TableCPTAdmin.php:320
-msgid "Copy failed"
-msgstr ""
-
-#: includes/Config/CPT/TableCPTAdmin.php:414
+#: includes/Config/CPT/TableCPTAdmin.php:337
 msgid "All Tables"
 msgstr ""
 
-#: includes/Config/CPT/TableCPTAdmin.php:420
+#: includes/Config/CPT/TableCPTAdmin.php:343
 msgid "No table blocks found"
 msgstr ""
 
-#: includes/Config/CPT/VirtualPostBuilder.php:97
-msgid "Copy shortcode"
-msgstr ""
-
-#. translators: %d: Number of child shortcodes.
-#: includes/Config/CPT/VirtualPostBuilder.php:122
-#: includes/Config/CPT/VirtualPostBuilder.php:133
-#, php-format
-msgid "&#9654; Child shortcodes (%d)"
-msgstr ""
-
-#. translators: %d: Number of child shortcodes.
-#: includes/Config/CPT/VirtualPostBuilder.php:124
-#, php-format
-msgid "&#9660; Child shortcodes (%d)"
-msgstr ""
-
-#: includes/Elementor/TablekitElementorEditor.php:61
-#: includes/Elementor/TablekitWidget.php:145
-msgid "— All Blocks —"
-msgstr ""
-
-#: includes/Elementor/TablekitElementorEditor.php:62
-msgid "Loading blocks…"
-msgstr ""
-
-#: includes/Elementor/TablekitElementorRest.php:73
-msgid "You are not allowed to view this table."
-msgstr ""
-
-#: includes/Elementor/TablekitElementorRest.php:88
-#: includes/Elementor/TablekitWidget.php:185
-msgid "Table not found."
-msgstr ""
-
-#: includes/Elementor/TablekitWidget.php:130
-msgid "Select Table"
-msgstr ""
-
-#: includes/Elementor/TablekitWidget.php:136
-msgid "Create and manage tables under TableKit → Tables in the WP admin."
-msgstr ""
-
-#: includes/Elementor/TablekitWidget.php:143
-msgid "Select Block"
-msgstr ""
-
-#: includes/Elementor/TablekitWidget.php:149
-msgid "Choose a specific block to display. Or select — All Blocks — to show all blocks."
-msgstr ""
-
-#: includes/Elementor/TablekitWidget.php:178
-msgid "Select a table to display."
-msgstr ""
-
-#: includes/Elementor/TablekitWidget.php:393
-msgid "-- Select a Table --"
-msgstr ""
-
-#: includes/Libs/UtilityPackages.php:74
+#: includes/Libs/UtilityPackages.php:107
 msgid "Our Plugins"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:77
+#: includes/Libs/UtilityPackages.php:110
 msgid "Take Your WordPress Website To Next Level!"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:80
+#: includes/Libs/UtilityPackages.php:113
 msgid "Our diverse range of plugins has every solution for WordPress, Gutenberg, Elementor, and WooCommerce."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:86
+#: includes/Libs/UtilityPackages.php:119
 msgid "ElementsKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:89
+#: includes/Libs/UtilityPackages.php:122
 msgid "All-in-one Elementor addon trusted by 1 Million+ users, makes your website builder process easier with ultimate freedom."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:93
+#: includes/Libs/UtilityPackages.php:126
 msgid "GutenKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:96
+#: includes/Libs/UtilityPackages.php:129
 msgid "Page Builder Blocks, Patterns, and Templates for Gutenberg Block Editor."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:100
+#: includes/Libs/UtilityPackages.php:133
 msgid "PopupKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:103
+#: includes/Libs/UtilityPackages.php:136
 msgid "Create stunning popups with ease using our drag-and-drop builder, pre-designed templates, and advanced targeting options."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:107
+#: includes/Libs/UtilityPackages.php:140
 msgid "GetGenie AI"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:110
+#: includes/Libs/UtilityPackages.php:143
 msgid "Your personal AI assistant for content and SEO. Write content that ranks on Google with NLP keywords and SERP analysis data."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:114
+#: includes/Libs/UtilityPackages.php:147
 msgid "ShopEngine"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:117
+#: includes/Libs/UtilityPackages.php:150
 msgid "Complete WooCommerce solution for Elementor to fully customize any pages including cart, checkout, shop page, and so on."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:121
+#: includes/Libs/UtilityPackages.php:154
 msgid "MetForm"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:124
+#: includes/Libs/UtilityPackages.php:157
 msgid "Drag & drop form builder for Elementor to create contact forms, multi-step forms, and more - smoother, faster, and better!"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:128
+#: includes/Libs/UtilityPackages.php:161
 msgid "EmailKit"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:131
+#: includes/Libs/UtilityPackages.php:164
 msgid "Advanced email customizer for WooCommerce and WordPress. Build, customize, and send emails from WordPress to boost your sales!"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:135
+#: includes/Libs/UtilityPackages.php:168
 msgid "WP Social"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:138
+#: includes/Libs/UtilityPackages.php:171
 msgid "Add social share, login, and engagement counter - unified solution for all social media with tons of different styles for your website."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:142
+#: includes/Libs/UtilityPackages.php:175
 msgid "WP Ultimate Review"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:145
+#: includes/Libs/UtilityPackages.php:178
 msgid "Collect and showcase reviews on your website to build brand credibility and social proof with the easiest solution."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:149
+#: includes/Libs/UtilityPackages.php:182
 msgid "FundEngine"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:152
+#: includes/Libs/UtilityPackages.php:185
 msgid "Create fundraising, crowdfunding, and donation websites with PayPal and Stripe payment gateway integration."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:156
+#: includes/Libs/UtilityPackages.php:189
 msgid "Blocks for ShopEngine"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:159
+#: includes/Libs/UtilityPackages.php:192
 msgid "All in one WooCommerce solution for Gutenberg! Build your WooCommerce pages in a block editor with full customization."
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:163
+#: includes/Libs/UtilityPackages.php:196
 msgid "Genie Image"
 msgstr ""
 
-#: includes/Libs/UtilityPackages.php:166
+#: includes/Libs/UtilityPackages.php:199
 msgid "AI-powered text-to-image generator for WordPress with OpenAI's DALL-E 2 technology to generate high-quality images in one click."
 msgstr ""
 
@@ -452,6 +384,26 @@ msgstr ""
 
 #: scoped/deps/wpmet/utility-package/src/Plugins/Plugins.php:373
 msgid "Read Docs"
+msgstr ""
+
+#: scoped/deps/wpmet/utility-package/src/Stories/Stories.php:200
+msgid "Stories"
+msgstr ""
+
+#: scoped/deps/wpmet/utility-package/src/Stories/Stories.php:201
+msgid "Wpmet Stories"
+msgstr ""
+
+#: scoped/deps/wpmet/utility-package/src/Stories/Stories.php:233
+msgid "Need Help?"
+msgstr ""
+
+#: scoped/deps/wpmet/utility-package/src/Stories/Stories.php:233
+msgid "Blog"
+msgstr ""
+
+#: scoped/deps/wpmet/utility-package/src/Stories/Stories.php:233
+msgid "Facebook Community"
 msgstr ""
 
 #: src/admin/dashboard/assets/js/welcome.js:6
@@ -657,7 +609,7 @@ msgstr ""
 #: src/admin/dashboard/assets/js/welcome.js:232
 #: src/admin/dashboard/assets/js/welcome.js:242
 #: src/admin/dashboard/assets/js/welcome.js:292
-#: src/blocks/table-builder/settings.js:61
+#: src/blocks/table-builder/settings.js:67
 #: src/gkit-components/components/suspense/index.js:15
 msgid "Advanced"
 msgstr ""
@@ -815,40 +767,36 @@ msgstr ""
 msgid "Version: %s"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:34
+#: src/admin/dashboard/components/Header.js:35
 #: src/gkit-components/components/pro-switcher-notice/notice-popup.js:14
 msgid "Pro"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:34
+#: src/admin/dashboard/components/Header.js:35
 msgid "Free"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:39
+#: src/admin/dashboard/components/Header.js:40
 msgid "Overview"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:41
-msgid "License"
-msgstr ""
-
-#: src/admin/dashboard/components/Header.js:77
+#: src/admin/dashboard/components/Header.js:80
 msgid "Version:"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:81
+#: src/admin/dashboard/components/Header.js:85
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:87
+#: src/admin/dashboard/components/Header.js:91
 msgid "View Changelog"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:91
+#: src/admin/dashboard/components/Header.js:95
 msgid "Changelog"
 msgstr ""
 
-#: src/admin/dashboard/components/Header.js:92
+#: src/admin/dashboard/components/Header.js:96
 msgid "Get Premium Features"
 msgstr ""
 
@@ -857,10 +805,8 @@ msgid "Loading..."
 msgstr ""
 
 #: src/admin/dashboard/pages/Features.js:7
+#: src/global/template-library/hook/useCategoryQuery.js:42
 #: src/table-builder-components/components/placeholder/components/TableTemplatePicker.js:50
-#: src/table-builder-components/controls/pagination/PaginationContent.js:55
-#: src/table-builder-components/helpers/pagination/pagination.js:74
-#: src/table-builder-components/helpers/pagination/pagination.js:230
 msgid "All"
 msgstr ""
 
@@ -893,441 +839,430 @@ msgstr ""
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:9
+#: src/admin/deactivation-popup/DeactivationModal.js:17
 msgid "I no longer need the plugin"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:10
+#: src/admin/deactivation-popup/DeactivationModal.js:18
 msgid "Tell us more..."
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:14
+#: src/admin/deactivation-popup/DeactivationModal.js:23
 msgid "I found a better plugin"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:15
+#: src/admin/deactivation-popup/DeactivationModal.js:24
 msgid "Which plugin are you using instead?"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:19
+#: src/admin/deactivation-popup/DeactivationModal.js:29
 msgid "I couldn't get the plugin to work"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:20
+#: src/admin/deactivation-popup/DeactivationModal.js:30
 msgid "What specific issue did you face?"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:25
+#: src/admin/deactivation-popup/DeactivationModal.js:36
 msgid "It's missing a specific feature"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:26
+#: src/admin/deactivation-popup/DeactivationModal.js:37
 msgid "What feature do you need?"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:30
+#: src/admin/deactivation-popup/DeactivationModal.js:42
 msgid "The plugin affects site performance"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:31
+#: src/admin/deactivation-popup/DeactivationModal.js:43
 msgid "Please share details about the performance issues you experienced."
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:35
+#: src/admin/deactivation-popup/DeactivationModal.js:48
 msgid "It's a temporary deactivation"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:40
+#: src/admin/deactivation-popup/DeactivationModal.js:54
 msgid "Other"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:41
+#: src/admin/deactivation-popup/DeactivationModal.js:55
 msgid "Please tell us why..."
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:107
+#: src/admin/deactivation-popup/DeactivationModal.js:153
 msgid "Quick Feedback"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:113
+#: src/admin/deactivation-popup/DeactivationModal.js:159
 msgid "Close"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:122
+#: src/admin/deactivation-popup/DeactivationModal.js:168
 msgid "Please select a reason first."
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:127
+#: src/admin/deactivation-popup/DeactivationModal.js:173
 msgid "Before you go, what made you deactivate TableKit?"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:164
-msgid "💡 Need help before deactivating?"
+#: src/admin/deactivation-popup/DeactivationModal.js:212
+msgid "Need help before deactivating?"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:171
+#: src/admin/deactivation-popup/DeactivationModal.js:219
 msgid "Contact Support Team"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:185
+#: src/admin/deactivation-popup/DeactivationModal.js:230
+msgid "Clicking “Submit & Deactivate” will help us improve TableKit by sharing your feedback and usage insights. Choose “Skip & Deactivate” to deactivate the plugin without sharing any data. <a>Privacy Policy.</a>"
+msgstr ""
+
+#: src/admin/deactivation-popup/DeactivationModal.js:241
 msgid "Skip & Deactivate"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:192
+#: src/admin/deactivation-popup/DeactivationModal.js:248
 msgid "Submitting…"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:192
+#: src/admin/deactivation-popup/DeactivationModal.js:248
 msgid "Submit & Deactivate"
 msgstr ""
 
-#: src/admin/deactivation-popup/DeactivationModal.js:193
+#: src/admin/deactivation-popup/DeactivationModal.js:249
 msgid "Submitted"
 msgstr ""
 
-#: src/blocks/table-builder-item/edit.js:161
-msgid "Insert row before"
+#: src/blocks/table-builder-item/settings.js:13
+#: src/table-builder-components/controls/cell/CellStyle.js:12
+#: src/table-builder-components/controls/common/CommonStyle.js:11
+#: src/table-builder-components/controls/header/HeaderStyle.js:11
+msgid "Border radius only works properly when Border Collapse is disabled"
 msgstr ""
 
-#: src/blocks/table-builder-item/edit.js:166
-msgid "Insert row after"
-msgstr ""
-
-#: src/blocks/table-builder-item/edit.js:171
-msgid "Delete row"
-msgstr ""
-
-#: src/blocks/table-builder-item/edit.js:177
-msgid "Insert column before"
-msgstr ""
-
-#: src/blocks/table-builder-item/edit.js:182
-msgid "Insert column after"
-msgstr ""
-
-#: src/blocks/table-builder-item/edit.js:187
-msgid "Delete column"
-msgstr ""
-
-#: src/blocks/table-builder-item/edit.js:216
-msgid "Edit table"
-msgstr ""
-
-#: src/blocks/table-builder-item/settings.js:17
+#: src/blocks/table-builder-item/settings.js:24
 #: src/blocks/table-builder-row/settings.js:16
-#: src/blocks/table-builder/settings.js:57
+#: src/blocks/table-builder/settings.js:63
 #: src/gkit-components/components/suspense/index.js:14
 msgid "Style"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:26
+#: src/blocks/table-builder-item/settings.js:33
 msgid "Layout"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:31
-#: src/blocks/table-builder/settings.js:184
+#: src/blocks/table-builder-item/settings.js:38
+#: src/blocks/table-builder/settings.js:175
 #: src/gkit-components/components/swiper/dot.js:151
 #: src/table-builder-components/controls/caption/CaptionStyle.js:12
 #: src/table-builder-components/controls/cell/CellStyle.js:20
-#: src/table-builder-components/controls/common/CommonStyle.js:14
-#: src/table-builder-components/controls/group/GroupStyle.js:28
+#: src/table-builder-components/controls/common/CommonStyle.js:20
 #: src/table-builder-components/controls/header/HeaderStyle.js:21
 msgid "Alignment"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:64
-#: src/table-builder-components/controls/common/CommonStyle.js:27
-msgid "Vertical Align"
+#: src/blocks/table-builder-item/settings.js:46
+#: src/blocks/table-builder/settings.js:178
+#: src/table-builder-components/controls/caption/CaptionStyle.js:15
+#: src/table-builder-components/controls/cell/CellStyle.js:23
+#: src/table-builder-components/controls/common/CommonStyle.js:23
+#: src/table-builder-components/controls/header/HeaderStyle.js:24
+msgid "Left"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:71
-#: src/blocks/table-builder/settings.js:146
-#: src/gkit-components/components/dual-slider/index.js:44
-#: src/table-builder-components/components/chart-view/ChartStyle.js:4
-#: src/table-builder-components/controls/common/CommonStyle.js:30
-msgid "Top"
-msgstr ""
-
-#: src/blocks/table-builder-item/settings.js:72
+#: src/blocks/table-builder-item/settings.js:51
+#: src/blocks/table-builder-item/settings.js:79
+#: src/blocks/table-builder/settings.js:179
 #: src/table-builder-components/controls/caption/CaptionStyle.js:16
 #: src/table-builder-components/controls/cell/CellStyle.js:24
-#: src/table-builder-components/controls/common/CommonStyle.js:18
-#: src/table-builder-components/controls/common/CommonStyle.js:31
-#: src/table-builder-components/controls/group/GroupStyle.js:32
+#: src/table-builder-components/controls/common/CommonStyle.js:24
+#: src/table-builder-components/controls/common/CommonStyle.js:37
 #: src/table-builder-components/controls/header/HeaderStyle.js:25
 msgid "Center"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:73
-#: src/blocks/table-builder/settings.js:150
+#: src/blocks/table-builder-item/settings.js:56
+#: src/blocks/table-builder/settings.js:180
+#: src/table-builder-components/controls/caption/CaptionStyle.js:17
+#: src/table-builder-components/controls/cell/CellStyle.js:25
+#: src/table-builder-components/controls/common/CommonStyle.js:25
+#: src/table-builder-components/controls/header/HeaderStyle.js:26
+msgid "Right"
+msgstr ""
+
+#: src/blocks/table-builder-item/settings.js:71
+#: src/table-builder-components/controls/common/CommonStyle.js:33
+msgid "Vertical Align"
+msgstr ""
+
+#: src/blocks/table-builder-item/settings.js:78
+#: src/blocks/table-builder/settings.js:136
+#: src/gkit-components/components/dual-slider/index.js:44
+#: src/table-builder-components/controls/common/CommonStyle.js:36
+msgid "Top"
+msgstr ""
+
+#: src/blocks/table-builder-item/settings.js:80
+#: src/blocks/table-builder/settings.js:140
 #: src/gkit-components/components/dual-slider/index.js:43
-#: src/table-builder-components/components/chart-view/ChartStyle.js:5
-#: src/table-builder-components/controls/common/CommonStyle.js:32
+#: src/table-builder-components/controls/common/CommonStyle.js:38
 msgid "Bottom"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:85
+#: src/blocks/table-builder-item/settings.js:92
 #: src/gkit-components/components/swiper/arrow.js:281
 #: src/gkit-components/components/swiper/dot.js:241
 #: src/gkit-components/components/swiper/dot.js:377
 #: src/gkit-components/components/text-stroke/index.js:29
-#: src/table-builder-components/controls/search/SearchStyle.js:86
-#: src/table-builder-components/controls/search/SearchStyle.js:115
-#: src/table-builder-components/controls/search/SearchStyle.js:280
 msgid "Width"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:98
-#: src/blocks/table-builder/settings.js:281
+#: src/blocks/table-builder-item/settings.js:105
+#: src/blocks/table-builder/settings.js:272
 #: src/table-builder-components/controls/caption/CaptionStyle.js:52
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:141
 #: src/table-builder-components/controls/cell/CellStyle.js:99
-#: src/table-builder-components/controls/common/CommonStyle.js:115
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:104
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:114
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:197
+#: src/table-builder-components/controls/common/CommonStyle.js:129
 #: src/table-builder-components/controls/header/HeaderStyle.js:68
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:143
-#: src/table-builder-components/controls/search/SearchStyle.js:98
-#: src/table-builder-components/controls/search/SearchStyle.js:259
-#: src/table-builder-components/controls/search/SearchStyle.js:424
 msgid "Padding"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:113
-#: src/blocks/table-builder-item/settings.js:131
-#: src/blocks/table-builder-item/settings.js:142
+#: src/blocks/table-builder-item/settings.js:120
+#: src/blocks/table-builder-item/settings.js:138
+#: src/blocks/table-builder-item/settings.js:149
 #: src/blocks/table-builder-row/settings.js:24
 #: src/blocks/table-builder-row/settings.js:42
 #: src/blocks/table-builder-row/settings.js:52
-#: src/blocks/table-builder/settings.js:226
+#: src/blocks/table-builder/settings.js:217
 #: src/gkit-components/components/swiper/arrow.js:338
 #: src/gkit-components/components/swiper/arrow.js:364
 #: src/gkit-components/components/swiper/dot.js:234
 #: src/gkit-components/components/swiper/dot.js:321
 #: src/gkit-components/components/swiper/dot.js:370
 #: src/table-builder-components/components/advanced-column-style/index.js:70
-#: src/table-builder-components/components/freeze-table/index.js:101
-#: src/table-builder-components/components/freeze-table/index.js:139
-#: src/table-builder-components/components/freeze-table/index.js:154
-#: src/table-builder-components/components/freeze-table/index.js:164
-#: src/table-builder-components/components/selection-color/ColumnColor.js:29
 #: src/table-builder-components/controls/caption/CaptionStyle.js:33
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:64
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:102
 #: src/table-builder-components/controls/cell/CellStyle.js:57
 #: src/table-builder-components/controls/cell/CellStyle.js:73
-#: src/table-builder-components/controls/common/CommonStyle.js:70
-#: src/table-builder-components/controls/common/CommonStyle.js:89
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:51
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:79
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:143
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:166
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:231
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:259
-#: src/table-builder-components/controls/group/GroupStyle.js:49
-#: src/table-builder-components/controls/group/GroupStyle.js:75
+#: src/table-builder-components/controls/common/CommonStyle.js:76
+#: src/table-builder-components/controls/common/CommonStyle.js:95
 #: src/table-builder-components/controls/header/HeaderStyle.js:42
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:44
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:100
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:106
-#: src/table-builder-components/controls/search/SearchStyle.js:33
-#: src/table-builder-components/controls/search/SearchStyle.js:61
-#: src/table-builder-components/controls/search/SearchStyle.js:163
-#: src/table-builder-components/controls/search/SearchStyle.js:196
-#: src/table-builder-components/controls/search/SearchStyle.js:229
-#: src/table-builder-components/controls/search/SearchStyle.js:328
-#: src/table-builder-components/controls/search/SearchStyle.js:361
-#: src/table-builder-components/controls/search/SearchStyle.js:394
 msgid "Background"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:119
-#: src/blocks/table-builder-item/settings.js:159
+#: src/blocks/table-builder-item/settings.js:126
+#: src/blocks/table-builder-item/settings.js:166
 #: src/blocks/table-builder-row/settings.js:30
 #: src/blocks/table-builder-row/settings.js:68
 #: src/gkit-components/components/blend-mode/index.js:14
 #: src/gkit-components/components/swiper/arrow.js:321
 #: src/gkit-components/components/swiper/dot.js:216
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:40
-#: src/table-builder-components/controls/common/CommonStyle.js:52
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:33
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:130
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:213
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:16
-#: src/table-builder-components/controls/search/SearchStyle.js:15
-#: src/table-builder-components/controls/search/SearchStyle.js:141
-#: src/table-builder-components/controls/search/SearchStyle.js:306
-#: src/table-builder-components/controls/sorting/SortingStyle.js:54
+#: src/table-builder-components/controls/common/CommonStyle.js:58
 msgid "Normal"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:123
-#: src/blocks/table-builder-item/settings.js:163
+#: src/blocks/table-builder-item/settings.js:130
+#: src/blocks/table-builder-item/settings.js:170
 #: src/blocks/table-builder-row/settings.js:34
 #: src/blocks/table-builder-row/settings.js:72
 #: src/gkit-components/components/swiper/arrow.js:325
 #: src/gkit-components/components/swiper/dot.js:220
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:44
-#: src/table-builder-components/controls/common/CommonStyle.js:56
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:37
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:134
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:217
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:20
-#: src/table-builder-components/controls/search/SearchStyle.js:19
-#: src/table-builder-components/controls/search/SearchStyle.js:145
-#: src/table-builder-components/controls/search/SearchStyle.js:310
-#: src/table-builder-components/controls/sorting/SortingStyle.js:58
+#: src/table-builder-components/controls/common/CommonStyle.js:62
 msgid "Hover"
 msgstr ""
 
-#: src/blocks/table-builder-item/settings.js:153
-#: src/blocks/table-builder-item/settings.js:171
-#: src/blocks/table-builder-item/settings.js:181
+#: src/blocks/table-builder-item/settings.js:160
+#: src/blocks/table-builder-item/settings.js:178
+#: src/blocks/table-builder-item/settings.js:188
 #: src/blocks/table-builder-row/settings.js:62
 #: src/blocks/table-builder-row/settings.js:81
 #: src/blocks/table-builder-row/settings.js:93
-#: src/blocks/table-builder/settings.js:245
+#: src/blocks/table-builder/settings.js:236
 #: src/gkit-components/components/border-control/index.js:67
 #: src/gkit-components/components/swiper/arrow.js:345
 #: src/gkit-components/components/swiper/dot.js:282
 #: src/gkit-components/components/swiper/dot.js:327
 #: src/gkit-components/components/swiper/dot.js:418
 #: src/table-builder-components/controls/caption/CaptionStyle.js:39
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:70
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:108
 #: src/table-builder-components/controls/cell/CellStyle.js:85
-#: src/table-builder-components/controls/common/CommonStyle.js:104
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:57
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:85
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:149
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:172
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:237
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:265
+#: src/table-builder-components/controls/common/CommonStyle.js:110
 #: src/table-builder-components/controls/header/HeaderStyle.js:48
-#: src/table-builder-components/controls/search/SearchStyle.js:39
-#: src/table-builder-components/controls/search/SearchStyle.js:67
-#: src/table-builder-components/controls/search/SearchStyle.js:169
-#: src/table-builder-components/controls/search/SearchStyle.js:202
-#: src/table-builder-components/controls/search/SearchStyle.js:235
-#: src/table-builder-components/controls/search/SearchStyle.js:334
-#: src/table-builder-components/controls/search/SearchStyle.js:367
-#: src/table-builder-components/controls/search/SearchStyle.js:400
 msgid "Border"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:187
-msgid "Insert a table for sharing data."
+#: src/blocks/table-builder-item/settings.js:198
+#: src/blocks/table-builder-row/settings.js:104
+#: src/blocks/table-builder/settings.js:251
+#: src/gkit-components/components/swiper/arrow.js:307
+#: src/gkit-components/components/swiper/dot.js:288
+#: src/table-builder-components/controls/caption/CaptionStyle.js:45
+#: src/table-builder-components/controls/cell/CellStyle.js:91
+#: src/table-builder-components/controls/common/CommonStyle.js:116
+#: src/table-builder-components/controls/header/HeaderStyle.js:54
+msgid "Border Radius"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:198
-msgid "Show Header"
+#. translators: %d: column number
+#: src/blocks/table-builder/components/TableMenu.js:65
+#, js-format
+msgid "Column %d"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:205
-msgid "Show Footer"
+#. translators: %d: row number
+#: src/blocks/table-builder/components/TableMenu.js:69
+#, js-format
+msgid "Row %d"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:213
-msgid "Column count"
+#: src/blocks/table-builder/components/TableMenu.js:108
+msgid "Edit table"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:221
-msgid "Row count"
+#: src/blocks/table-builder/components/TableMenu.js:113
+msgid "Rows"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:234
-msgid "Create Table"
+#: src/blocks/table-builder/components/TableMenu.js:117
+msgid "Insert above"
 msgstr ""
 
-#: src/blocks/table-builder/edit.js:340
-msgid "Caption for Table"
+#: src/blocks/table-builder/components/TableMenu.js:120
+msgid "Insert below"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:53
-#: src/gkit-components/components/suspense/index.js:13
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:12
-#: src/table-builder-components/controls/pagination/PaginationContent.js:42
-#: src/table-builder-components/controls/pagination/PaginationContent.js:62
-#: src/table-builder-components/controls/pagination/PaginationContent.js:70
-msgid "Content"
+#: src/blocks/table-builder/components/TableMenu.js:124
+msgid "Delete row"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:70
-msgid "Settings"
+#: src/blocks/table-builder/components/TableMenu.js:130
+msgid "Add row at top"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:72
-msgid "Enable Header"
+#: src/blocks/table-builder/components/TableMenu.js:133
+msgid "Add row at bottom"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:76
-msgid "Sort & duplicate columns not work without header"
+#: src/blocks/table-builder/components/TableMenu.js:139
+msgid "Columns"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:80
-msgid "Enable Footer"
+#: src/blocks/table-builder/components/TableMenu.js:143
+msgid "Insert left"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:85
-msgid "Enable Sort"
+#: src/blocks/table-builder/components/TableMenu.js:146
+msgid "Insert right"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:89
-msgid "Pro Feature"
+#: src/blocks/table-builder/components/TableMenu.js:150
+msgid "Delete column"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:92
-msgid "Sorting work at frontend"
+#: src/blocks/table-builder/components/TableMenu.js:156
+msgid "Add column at start"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:96
-msgid "Merged cells detected. Please disable sorting to prevent layout issues."
+#: src/blocks/table-builder/components/TableMenu.js:159
+msgid "Add column at end"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:101
-msgid "Fixed width table cells"
+#: src/blocks/table-builder/edit.js:99
+msgid "A merged cell was split by the row move, so it was unmerged."
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:106
-msgid "Border Collapse"
+#: src/blocks/table-builder/edit.js:130
+#: src/table-builder-components/controls/header/HeaderStyle.js:18
+msgid "Header"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:114
-msgid "Vertical Spacing"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:123
-msgid "Horizontal Spacing"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:134
-msgid "Enable Caption"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:140
-msgid "Caption Position"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:177
+#: src/blocks/table-builder/edit.js:144
+#: src/blocks/table-builder/settings.js:168
 msgid "Footer"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:195
+#: src/blocks/table-builder/edit.js:181
+msgid "Insert a table for sharing data."
+msgstr ""
+
+#: src/blocks/table-builder/edit.js:192
+msgid "Show Header"
+msgstr ""
+
+#: src/blocks/table-builder/edit.js:199
+msgid "Show Footer"
+msgstr ""
+
+#: src/blocks/table-builder/edit.js:207
+msgid "Column count"
+msgstr ""
+
+#: src/blocks/table-builder/edit.js:215
+msgid "Row count"
+msgstr ""
+
+#: src/blocks/table-builder/edit.js:228
+msgid "Create Table"
+msgstr ""
+
+#: src/blocks/table-builder/edit.js:292
+msgid "Caption for Table"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:59
+#: src/gkit-components/components/suspense/index.js:13
+msgid "Content"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:76
+msgid "Settings"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:78
+msgid "Enable Header"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:82
+msgid "Column actions are in each cell's \"Table\" menu."
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:86
+msgid "Enable Footer"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:91
+msgid "Fixed width table cells"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:96
+msgid "Border Collapse"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:104
+msgid "Vertical Spacing"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:113
+msgid "Horizontal Spacing"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:124
+msgid "Enable Caption"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:130
+msgid "Caption Position"
+msgstr ""
+
+#: src/blocks/table-builder/settings.js:186
 #: src/gkit-components/components/typography/index.js:68
 #: src/table-builder-components/controls/caption/CaptionStyle.js:23
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:23
 #: src/table-builder-components/controls/cell/CellStyle.js:31
-#: src/table-builder-components/controls/common/CommonStyle.js:44
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:191
-#: src/table-builder-components/controls/group/GroupStyle.js:39
+#: src/table-builder-components/controls/common/CommonStyle.js:50
 #: src/table-builder-components/controls/header/HeaderStyle.js:32
-#: src/table-builder-components/controls/search/SearchStyle.js:109
-#: src/table-builder-components/controls/search/SearchStyle.js:274
 msgid "Typography"
 msgstr ""
 
-#: src/blocks/table-builder/settings.js:210
+#: src/blocks/table-builder/settings.js:201
 #: src/gkit-components/components/background/index.js:192
 #: src/gkit-components/components/blend-mode/index.js:70
 #: src/gkit-components/components/color/index.js:17
@@ -1335,67 +1270,13 @@ msgstr ""
 #: src/gkit-components/components/swiper/arrow.js:359
 #: src/gkit-components/components/text-stroke/index.js:44
 #: src/table-builder-components/components/advanced-column-style/index.js:66
-#: src/table-builder-components/components/freeze-table/index.js:91
-#: src/table-builder-components/components/freeze-table/index.js:129
-#: src/table-builder-components/components/selection-color/ColumnColor.js:37
 #: src/table-builder-components/controls/caption/CaptionStyle.js:28
 #: src/table-builder-components/controls/cell/CellStyle.js:52
 #: src/table-builder-components/controls/cell/CellStyle.js:68
-#: src/table-builder-components/controls/common/CommonStyle.js:65
-#: src/table-builder-components/controls/common/CommonStyle.js:84
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:46
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:74
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:226
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:254
+#: src/table-builder-components/controls/common/CommonStyle.js:71
+#: src/table-builder-components/controls/common/CommonStyle.js:90
 #: src/table-builder-components/controls/header/HeaderStyle.js:37
-#: src/table-builder-components/controls/search/SearchStyle.js:28
-#: src/table-builder-components/controls/search/SearchStyle.js:56
-#: src/table-builder-components/controls/search/SearchStyle.js:158
-#: src/table-builder-components/controls/search/SearchStyle.js:191
-#: src/table-builder-components/controls/search/SearchStyle.js:224
-#: src/table-builder-components/controls/search/SearchStyle.js:323
-#: src/table-builder-components/controls/search/SearchStyle.js:356
-#: src/table-builder-components/controls/search/SearchStyle.js:389
-#: src/table-builder-components/controls/sorting/SortingStyle.js:66
-#: src/table-builder-components/controls/sorting/SortingStyle.js:74
 msgid "Color"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:260
-#: src/gkit-components/components/swiper/arrow.js:307
-#: src/gkit-components/components/swiper/dot.js:288
-#: src/table-builder-components/controls/caption/CaptionStyle.js:45
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:76
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:114
-#: src/table-builder-components/controls/cell/CellStyle.js:91
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:63
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:91
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:155
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:178
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:243
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:271
-#: src/table-builder-components/controls/header/HeaderStyle.js:54
-#: src/table-builder-components/controls/search/SearchStyle.js:45
-#: src/table-builder-components/controls/search/SearchStyle.js:73
-#: src/table-builder-components/controls/search/SearchStyle.js:175
-#: src/table-builder-components/controls/search/SearchStyle.js:208
-#: src/table-builder-components/controls/search/SearchStyle.js:241
-#: src/table-builder-components/controls/search/SearchStyle.js:340
-#: src/table-builder-components/controls/search/SearchStyle.js:373
-#: src/table-builder-components/controls/search/SearchStyle.js:406
-msgid "Border Radius"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:321
-msgid "Resizer"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:323
-msgid "Enable Resizer"
-msgstr ""
-
-#: src/blocks/table-builder/settings.js:326
-msgid "Allow resizing table columns and rows in the editor."
 msgstr ""
 
 #: src/gkit-components/components/advanced-url/index.js:128
@@ -1428,7 +1309,7 @@ msgid "Classic"
 msgstr ""
 
 #: src/gkit-components/components/background-overlay/index.js:204
-#: src/gkit-components/components/background-overlay/index.js:388
+#: src/gkit-components/components/background-overlay/index.js:383
 #: src/gkit-components/components/background/index.js:163
 #: src/gkit-components/components/background/index.js:203
 msgid "Gradient"
@@ -1440,18 +1321,18 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:235
+#: src/gkit-components/components/background-overlay/index.js:230
 #: src/gkit-components/components/background/index.js:226
 #: src/gkit-components/components/media/index.js:128
 msgid "Image Size"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:245
+#: src/gkit-components/components/background-overlay/index.js:240
 #: src/gkit-components/components/background/index.js:237
 msgid "Position"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:248
+#: src/gkit-components/components/background-overlay/index.js:243
 #: src/gkit-components/components/background/index.js:240
 #: src/gkit-components/components/border-control/index.js:49
 #: src/gkit-components/components/font-family/index.js:50
@@ -1459,53 +1340,53 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:249
+#: src/gkit-components/components/background-overlay/index.js:244
 #: src/gkit-components/components/background/index.js:241
 msgid "Center Center"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:250
+#: src/gkit-components/components/background-overlay/index.js:245
 #: src/gkit-components/components/background/index.js:242
 msgid "Center Left"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:251
+#: src/gkit-components/components/background-overlay/index.js:246
 #: src/gkit-components/components/background/index.js:243
 msgid "Center Right"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:252
+#: src/gkit-components/components/background-overlay/index.js:247
 #: src/gkit-components/components/background/index.js:244
 msgid "Top Center"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:253
+#: src/gkit-components/components/background-overlay/index.js:248
 #: src/gkit-components/components/background/index.js:245
 msgid "Top Left"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:254
+#: src/gkit-components/components/background-overlay/index.js:249
 #: src/gkit-components/components/background/index.js:246
 msgid "Top Right"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:255
+#: src/gkit-components/components/background-overlay/index.js:250
 #: src/gkit-components/components/background/index.js:247
 msgid "Bottom Center"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:256
+#: src/gkit-components/components/background-overlay/index.js:251
 #: src/gkit-components/components/background/index.js:248
 msgid "Bottom Left"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:257
+#: src/gkit-components/components/background-overlay/index.js:252
 #: src/gkit-components/components/background/index.js:249
 msgid "Bottom Right"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:258
-#: src/gkit-components/components/background-overlay/index.js:353
+#: src/gkit-components/components/background-overlay/index.js:253
+#: src/gkit-components/components/background-overlay/index.js:348
 #: src/gkit-components/components/background/index.js:250
 #: src/gkit-components/components/background/index.js:347
 #: src/gkit-components/components/border-control/index.js:50
@@ -1513,88 +1394,88 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:270
+#: src/gkit-components/components/background-overlay/index.js:265
 #: src/gkit-components/components/background/index.js:262
 msgid "Position X"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:283
+#: src/gkit-components/components/background-overlay/index.js:278
 #: src/gkit-components/components/background/index.js:276
 msgid "Position Y"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:298
+#: src/gkit-components/components/background-overlay/index.js:293
 #: src/gkit-components/components/background/index.js:292
 msgid "Attachment"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:301
+#: src/gkit-components/components/background-overlay/index.js:296
 #: src/gkit-components/components/background/index.js:295
 msgid "Scroll"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:305
+#: src/gkit-components/components/background-overlay/index.js:300
 #: src/gkit-components/components/background/index.js:299
 msgid "Fixed"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:314
+#: src/gkit-components/components/background-overlay/index.js:309
 #: src/gkit-components/components/background/index.js:308
 msgid "Repeat"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:317
+#: src/gkit-components/components/background-overlay/index.js:312
 #: src/gkit-components/components/background/index.js:311
 msgid "Yes"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:321
+#: src/gkit-components/components/background-overlay/index.js:316
 #: src/gkit-components/components/background/index.js:315
 msgid "X"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:325
+#: src/gkit-components/components/background-overlay/index.js:320
 #: src/gkit-components/components/background/index.js:319
 msgid "Y"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:329
+#: src/gkit-components/components/background-overlay/index.js:324
 #: src/gkit-components/components/background/index.js:323
 msgid "No"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:338
+#: src/gkit-components/components/background-overlay/index.js:333
 #: src/gkit-components/components/background/index.js:332
 msgid "Display Size"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:341
+#: src/gkit-components/components/background-overlay/index.js:336
 #: src/gkit-components/components/background/index.js:335
 msgid "Cover"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:345
+#: src/gkit-components/components/background-overlay/index.js:340
 #: src/gkit-components/components/background/index.js:339
 msgid "Contain"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:349
+#: src/gkit-components/components/background-overlay/index.js:344
 #: src/gkit-components/components/background/index.js:343
 msgid "Auto"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:365
+#: src/gkit-components/components/background-overlay/index.js:360
 #: src/gkit-components/components/background/index.js:359
 msgid "Custom Size"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:400
+#: src/gkit-components/components/background-overlay/index.js:395
 #: src/gkit-components/components/swiper/dot.js:300
 #: src/gkit-components/components/swiper/dot.js:349
 msgid "Opacity"
 msgstr ""
 
-#: src/gkit-components/components/background-overlay/index.js:412
+#: src/gkit-components/components/background-overlay/index.js:407
 #: src/gkit-components/components/css-filters/index.js:30
 msgid "CSS Filters"
 msgstr ""
@@ -1761,7 +1642,6 @@ msgstr ""
 
 #: src/gkit-components/components/font-family/default-fonts-weights.js:4
 #: src/gkit-components/components/typography/font-weights.js:8
-#: src/table-builder-components/controls/pagination/PaginationContent.js:54
 msgid "100"
 msgstr ""
 
@@ -1846,6 +1726,9 @@ msgid "the editor once after clicking the \"Enable\" button to finish the proces
 msgstr ""
 
 #: src/gkit-components/components/icon-picker/index.js:243
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:430
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:446
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:459
 msgid "Cancel"
 msgstr ""
 
@@ -1854,7 +1737,6 @@ msgid "Enable"
 msgstr ""
 
 #: src/gkit-components/components/icon-picker/modal-content.js:32
-#: src/table-builder-components/controls/search/SearchContent.js:11
 msgid "Search Icon"
 msgstr ""
 
@@ -1933,16 +1815,12 @@ msgid "Right Arrow position"
 msgstr ""
 
 #: src/gkit-components/components/swiper/arrow.js:244
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:29
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:22
 msgid "Icon Size"
 msgstr ""
 
 #: src/gkit-components/components/swiper/arrow.js:263
 #: src/gkit-components/components/swiper/dot.js:262
 #: src/gkit-components/components/swiper/dot.js:398
-#: src/table-builder-components/controls/search/SearchStyle.js:127
-#: src/table-builder-components/controls/search/SearchStyle.js:292
 msgid "Height"
 msgstr ""
 
@@ -1952,16 +1830,8 @@ msgstr ""
 
 #: src/gkit-components/components/swiper/arrow.js:350
 #: src/gkit-components/components/swiper/arrow.js:375
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:82
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:120
-#: src/table-builder-components/controls/common/CommonStyle.js:109
+#: src/table-builder-components/controls/common/CommonStyle.js:123
 #: src/table-builder-components/controls/header/HeaderStyle.js:61
-#: src/table-builder-components/controls/search/SearchStyle.js:181
-#: src/table-builder-components/controls/search/SearchStyle.js:214
-#: src/table-builder-components/controls/search/SearchStyle.js:247
-#: src/table-builder-components/controls/search/SearchStyle.js:346
-#: src/table-builder-components/controls/search/SearchStyle.js:379
-#: src/table-builder-components/controls/search/SearchStyle.js:412
 msgid "Box Shadow"
 msgstr ""
 
@@ -1986,8 +1856,6 @@ msgid "Spacing Top To Bottom"
 msgstr ""
 
 #: src/gkit-components/components/swiper/dot.js:224
-#: src/table-builder-components/controls/search/SearchStyle.js:149
-#: src/table-builder-components/controls/search/SearchStyle.js:314
 msgid "Active"
 msgstr ""
 
@@ -2113,6 +1981,113 @@ msgstr ""
 msgid "items"
 msgstr ""
 
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:206
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:296
+msgid "Session expired. Please refresh the page and try again."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:213
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:239
+msgid "Plugin installed but activation failed. Please try again."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:256
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:313
+msgid "Unknown error"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:260
+msgid "Failed to process plugins"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:264
+msgid "An error occurred"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:302
+msgid "You do not have permission to activate plugins."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:316
+msgid "Failed to activate pro plugins"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:319
+msgid "An error occurred during activation"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:356
+msgid "Installed"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:359
+msgid "Not Installed"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:405
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:450
+msgid "Activating & Importing..."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:407
+msgid "Installing & Importing..."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:410
+msgid "Activate Free Plugins"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:410
+msgid "Activate & Import"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:412
+msgid "Install Free Plugins"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:412
+msgid "Install & Import"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:420
+msgid "Checking..."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:450
+msgid "Activate Pro & Import"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:459
+msgid "Import Without Pro"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:462
+msgid "Get Pro Plugin"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:472
+msgid "Checking plugin status..."
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:476
+msgid "Activate the Pro plugin to use all features:"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:478
+msgid "This pattern requires the Pro plugin:"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:481
+msgid "This pattern requires the following plugins to be installed and activated:"
+msgstr ""
+
+#: src/global/template-library/components/pattern/MissingPluginsModal.js:486
+msgid "Required Plugins"
+msgstr ""
+
 #: src/global/template-library/components/pattern/Pattern.js:109
 #: src/table-builder-components/components/placeholder/components/PatternList.js:20
 msgid "Importing"
@@ -2129,6 +2104,10 @@ msgstr ""
 
 #: src/global/template-library/components/pattern/Pattern.js:131
 msgid "Click to see required plugins"
+msgstr ""
+
+#: src/global/template-library/components/TableBuilderTemplatePicker.js:61
+msgid "Template Library"
 msgstr ""
 
 #: src/global/template-library/TableBuilderPlaceholder.js:20
@@ -2168,100 +2147,127 @@ msgstr ""
 msgid "The ultimate solution to build a complete WooCommerce site in Gutenberg."
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:22
+#: src/onboard/assets/js/pluginList.js:24
 msgid "Page Builder Elements"
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:23
+#: src/onboard/assets/js/pluginList.js:25
 msgid "Best companion for Elementor with top widgets and templates."
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:27
+#: src/onboard/assets/js/pluginList.js:29
 msgid "Form Builder"
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:28
+#: src/onboard/assets/js/pluginList.js:30
 msgid "Most flexible form builder for Elementor with a wide range of features."
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:32
+#: src/onboard/assets/js/pluginList.js:34
 msgid "Popup Builder"
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:33
+#: src/onboard/assets/js/pluginList.js:35
 msgid "Design popups that convert, right in your WordPress dashboard."
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:37
+#: src/onboard/assets/js/pluginList.js:39
 msgid "Review Management"
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:38
+#: src/onboard/assets/js/pluginList.js:40
 msgid "Build credibility for your business with the all-in-one review plugin."
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:42
+#: src/onboard/assets/js/pluginList.js:44
 msgid "Social Integration"
 msgstr ""
 
-#: src/onboard/assets/js/pluginList.js:43
+#: src/onboard/assets/js/pluginList.js:45
 msgid "WordPress integration with popular social platforms to show social proof."
 msgstr ""
 
-#: src/onboard/components/Pagination.js:54
-msgid "Back"
+#: src/onboard/components/Pagination.js:76
+msgid "Skip"
 msgstr ""
 
-#: src/onboard/components/Pagination.js:72
-msgid "Get Lifetime Pro Access"
+#: src/onboard/components/Pagination.js:83
+msgid "Agree & Continue"
 msgstr ""
 
-#: src/onboard/components/Pagination.js:82
+#: src/onboard/components/Pagination.js:85
+msgid "Agree to share the diagnostic data and plugin usage details."
+msgstr ""
+
+#: src/onboard/components/Pagination.js:96
+#: src/onboard/components/Pagination.js:109
+#: src/onboard/components/Pagination.js:146
+#: src/onboard/components/Pagination.js:158
 msgid "Continue"
 msgstr ""
 
-#: src/onboard/components/Pagination.js:91
+#: src/onboard/components/Pagination.js:110
+msgid "Skip & Continue"
+msgstr ""
+
+#: src/onboard/components/Pagination.js:117
 msgid "Unlock All & Continue"
 msgstr ""
 
-#: src/onboard/components/StepsBar.js:14
-msgid "Sign Up"
+#: src/onboard/components/Pagination.js:119
+msgid "Installs and activates all listed plugins that aren't already active on your site. Existing active plugins remain unchanged."
+msgstr ""
+
+#: src/onboard/components/Pagination.js:142
+msgid "Get Lifetime Pro Access"
+msgstr ""
+
+#: src/onboard/components/Pagination.js:168
+msgid "Back"
 msgstr ""
 
 #: src/onboard/components/StepsBar.js:15
-msgid "Tutorial"
+msgid "Sign Up"
 msgstr ""
 
 #: src/onboard/components/StepsBar.js:16
-msgid "Website Powerup"
+msgid "Tutorial"
 msgstr ""
 
 #: src/onboard/components/StepsBar.js:17
+msgid "Website Powerup"
+msgstr ""
+
+#: src/onboard/components/StepsBar.js:18
 msgid "Finalizing"
 msgstr ""
 
-#: src/onboard/components/StepsBar.js:26
+#: src/onboard/components/StepsBar.js:27
 msgid "Surprise"
 msgstr ""
 
-#: src/onboard/pages/Finalize.js:52
+#: src/onboard/pages/Finalize.js:56
 msgid "Setup Configurations"
 msgstr ""
 
-#: src/onboard/pages/Finalize.js:68
-#: src/onboard/pages/Finalize.js:80
+#: src/onboard/pages/Finalize.js:72
+#: src/onboard/pages/Finalize.js:84
 msgid " Activated"
 msgstr ""
 
-#: src/onboard/pages/Finalize.js:123
+#: src/onboard/pages/Finalize.js:134
 msgid "Great! You're All Set!"
 msgstr ""
 
-#: src/onboard/pages/Finalize.js:127
+#: src/onboard/pages/Finalize.js:139
 msgid "Here's an overview of everything that is setup."
 msgstr ""
 
-#: src/onboard/pages/Finalize.js:149
+#: src/onboard/pages/Finalize.js:140
+msgid "Setting up your selected plugins and configurations. This may take a few moments."
+msgstr ""
+
+#: src/onboard/pages/Finalize.js:170
 msgid "Go to WP Dashboard"
 msgstr ""
 
@@ -2314,7 +2320,7 @@ msgid "Product Tables"
 msgstr ""
 
 #: src/onboard/pages/Surprise.js:9
-msgid " Data Tables"
+msgid "Data Tables"
 msgstr ""
 
 #: src/onboard/pages/Surprise.js:10
@@ -2326,7 +2332,7 @@ msgid "Freeze Headers/ Columns"
 msgstr ""
 
 #: src/onboard/pages/Surprise.js:12
-msgid " Conditional Formatting"
+msgid "Conditional Formatting"
 msgstr ""
 
 #: src/onboard/pages/Surprise.js:13
@@ -2350,11 +2356,10 @@ msgid "Full Customization"
 msgstr ""
 
 #: src/onboard/pages/Surprise.js:21
-msgid "Paginantion"
+msgid "Pagination"
 msgstr ""
 
 #: src/onboard/pages/Surprise.js:22
-#: src/table-builder-components/controls/sorting/SortingStyle.js:12
 msgid "Sorting"
 msgstr ""
 
@@ -2370,12 +2375,32 @@ msgstr ""
 msgid "24/7 Customer Support"
 msgstr ""
 
-#: src/onboard/pages/Tutorial.js:21
+#: src/onboard/pages/Tutorial.js:23
 msgid "Watch the Quick Start Tutorial"
 msgstr ""
 
-#: src/onboard/pages/Tutorial.js:39
+#: src/onboard/pages/Tutorial.js:32
+msgid "Play the TableKit tutorial video"
+msgstr ""
+
+#: src/onboard/pages/Tutorial.js:47
 msgid "TableKit Tutorial"
+msgstr ""
+
+#: src/onboard/pages/Tutorial.js:66
+msgid "Share diagnostic data and plugin usage details."
+msgstr ""
+
+#: src/onboard/pages/Tutorial.js:68
+msgid "We collect limited non-sensitive diagnostic data and plugin usage information to improve TableKit’s compatibility with popular plugins and themes. By sharing this information, you may also receive special discounts as a thank-you gesture."
+msgstr ""
+
+#: src/onboard/pages/Tutorial.js:69
+msgid "We respect your privacy and won’t send unsolicited promotional emails."
+msgstr ""
+
+#: src/onboard/pages/Tutorial.js:76
+msgid "What information is collected?"
 msgstr ""
 
 #: src/table-builder-components/components/advanced-column-style/index.js:29
@@ -2383,7 +2408,6 @@ msgid "Select an Option"
 msgstr ""
 
 #: src/table-builder-components/components/advanced-column-style/index.js:53
-#: src/table-builder-components/components/selection-color/ColumnColor.js:21
 msgid "Column"
 msgstr ""
 
@@ -2392,249 +2416,7 @@ msgid "Add Style"
 msgstr ""
 
 #: src/table-builder-components/components/advanced-column-style/index.js:61
-#: src/table-builder-components/components/selection-color/ColumnColor.js:24
 msgid "Select Column"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:7
-msgid "Bar"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:8
-msgid "Horizontal Bar"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:9
-msgid "Line"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:10
-msgid "Area"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:11
-msgid "Pie"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:12
-msgid "Doughnut"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:13
-msgid "Radar"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:14
-msgid "Polar Area"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:53
-msgid "Chart View"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:55
-msgid "Enable Chart/Graph Toggle"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:61
-msgid "Adds a Table/Chart toggle so visitors can switch between the table and a chart view of the same data. Search and Export are disabled while this is on."
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:66
-msgid "Chart Type"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:72
-msgid "X-Axis Column"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:73
-#: src/table-builder-components/components/chart-view/ChartSettings.js:88
-msgid "Select column"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:79
-msgid "Y-Axis Column(s)"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:87
-msgid "Y-Axis Column"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:95
-msgid "The selected Y-axis columns have very different value ranges (for example an ID/EAN/barcode column mixed with Price or Stock). Bar, Pie, Radar, Polar Area and Doughnut all share one scale across every column, so the smaller-value columns may appear flat or invisible. Try charting columns with comparable values together."
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:99
-msgid "Default View"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartSettings.js:105
-msgid "Chart"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:6
-#: src/table-builder-components/components/freeze-table/index.js:116
-#: src/table-builder-components/controls/caption/CaptionStyle.js:15
-#: src/table-builder-components/controls/cell/CellStyle.js:23
-#: src/table-builder-components/controls/common/CommonStyle.js:17
-#: src/table-builder-components/controls/group/GroupStyle.js:31
-#: src/table-builder-components/controls/header/HeaderStyle.js:24
-msgid "Left"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:7
-#: src/table-builder-components/components/freeze-table/index.js:120
-#: src/table-builder-components/controls/caption/CaptionStyle.js:17
-#: src/table-builder-components/controls/cell/CellStyle.js:25
-#: src/table-builder-components/controls/common/CommonStyle.js:19
-#: src/table-builder-components/controls/group/GroupStyle.js:33
-#: src/table-builder-components/controls/header/HeaderStyle.js:26
-msgid "Right"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:18
-msgid "Chart Height"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:29
-msgid "Chart Style"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:33
-msgid "Show Legend"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:39
-msgid "Legend Position"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartStyle.js:46
-msgid "Show Grid Lines"
-msgstr ""
-
-#: src/table-builder-components/components/chart-view/ChartView.js:75
-msgid "Select an X-axis column and at least one Y-axis column to preview the chart."
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:160
-msgid "Conditional Formatting"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:170
-msgid "Target Column"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:176
-msgid "Condition Type"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:184
-msgid "Comparison Value"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:185
-msgid "Enter comparison value"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:192
-msgid "Apply Formatting"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:208
-msgid "Replace Text"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:209
-msgid "Enter Value"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:236
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:11
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:20
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:28
-msgid "CSS Class"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:237
-msgid "Enter CSS class name"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:248
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:10
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:19
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:27
-msgid "Background Color"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/index.js:259
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:9
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:18
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:26
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:53
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:92
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:97
-#: src/table-builder-components/controls/group/GroupStyle.js:44
-#: src/table-builder-components/controls/group/GroupStyle.js:66
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:34
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:90
-msgid "Text Color"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:35
-msgid "Is Equal To"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:36
-msgid "Not Equal"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:37
-msgid "Contains"
-msgstr ""
-
-#: src/table-builder-components/components/Conditional-Formatting/Options.js:38
-msgid "Does Not Contain"
-msgstr ""
-
-#: src/table-builder-components/components/export/Export.js:10
-msgid "Export"
-msgstr ""
-
-#: src/table-builder-components/components/export/Export.js:14
-msgid "Export CSV"
-msgstr ""
-
-#: src/table-builder-components/components/export/Export.js:15
-msgid "Export Full CSV"
-msgstr ""
-
-#: src/table-builder-components/components/export/Export.js:16
-msgid "Export Excel"
-msgstr ""
-
-#: src/table-builder-components/components/export/Export.js:17
-msgid "Export PDF"
-msgstr ""
-
-#: src/table-builder-components/components/export/Export.js:18
-msgid "Print"
-msgstr ""
-
-#: src/table-builder-components/components/freeze-table/index.js:62
-msgid "Freeze Table"
-msgstr ""
-
-#: src/table-builder-components/components/freeze-table/index.js:64
-msgid "Enable Freeze"
-msgstr ""
-
-#: src/table-builder-components/components/freeze-table/index.js:89
-msgid "Freeze Header"
-msgstr ""
-
-#: src/table-builder-components/components/freeze-table/index.js:111
-msgid "Freeze Column"
 msgstr ""
 
 #: src/table-builder-components/components/placeholder/components/TableTemplatePicker.js:67
@@ -2646,8 +2428,6 @@ msgid "Search for patterns"
 msgstr ""
 
 #: src/table-builder-components/components/placeholder/components/TableTemplatePicker.js:77
-#: src/table-builder-components/controls/search/SearchContent.js:9
-#: src/table-builder-components/controls/search/SearchStyle.js:10
 msgid "Search"
 msgstr ""
 
@@ -2664,31 +2444,7 @@ msgid "Caption"
 msgstr ""
 
 #: src/table-builder-components/controls/caption/CaptionStyle.js:59
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:148
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:121
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:204
-#: src/table-builder-components/controls/search/SearchStyle.js:266
-#: src/table-builder-components/controls/search/SearchStyle.js:431
 msgid "Margin"
-msgstr ""
-
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:21
-msgid "Cart Button"
-msgstr ""
-
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:58
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:29
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:85
-msgid "Icon Color"
-msgstr ""
-
-#: src/table-builder-components/controls/cart/CartButtonStyle.js:132
-msgid "Gap Between"
-msgstr ""
-
-#: src/table-builder-components/controls/cell/CellStyle.js:12
-#: src/table-builder-components/controls/header/HeaderStyle.js:11
-msgid "Border radius only works properly when Border Collapse is disabled"
 msgstr ""
 
 #: src/table-builder-components/controls/cell/CellStyle.js:17
@@ -2703,174 +2459,8 @@ msgstr ""
 msgid "Odd Cell"
 msgstr ""
 
-#: src/table-builder-components/controls/common/CommonStyle.js:11
+#: src/table-builder-components/controls/common/CommonStyle.js:17
 msgid "Common"
-msgstr ""
-
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:13
-msgid "Export Button"
-msgstr ""
-
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:15
-msgid "Export Button Icon"
-msgstr ""
-
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:110
-msgid "Export Button Dropdown"
-msgstr ""
-
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:111
-msgid "Dropdown Wrapper"
-msgstr ""
-
-#: src/table-builder-components/controls/export/ExportButtonStyle.js:189
-msgid "Dropdown Item"
-msgstr ""
-
-#: src/table-builder-components/controls/group/GroupContent.js:8
-#: src/table-builder-components/controls/group/GroupStyle.js:25
-msgid "Grouping"
-msgstr ""
-
-#: src/table-builder-components/controls/group/GroupContent.js:10
-msgid "Enable Grouping"
-msgstr ""
-
-#: src/table-builder-components/controls/group/GroupContent.js:16
-msgid "Group By Columns"
-msgstr ""
-
-#: src/table-builder-components/controls/group/GroupStyle.js:60
-msgid "Nested Group"
-msgstr ""
-
-#: src/table-builder-components/controls/group/GroupStyle.js:86
-msgid "Left Spacing"
-msgstr ""
-
-#: src/table-builder-components/controls/header/HeaderStyle.js:18
-msgid "Header"
-msgstr ""
-
-#: src/table-builder-components/controls/hide-column/HideColumn.js:17
-#: src/table-builder-components/controls/hide-column/HideColumn.js:19
-msgid "Exclude Column"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:13
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:11
-msgid "Pagination"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:14
-msgid "Pagination Icon"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:16
-msgid "Previous First"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:22
-msgid "Previous"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:28
-msgid "Next"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:34
-msgid "Next Last"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:40
-msgid "Row Per Page"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:48
-msgid "Count"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:50
-msgid "5"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:51
-msgid "10"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:52
-msgid "20"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:53
-msgid "50"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:60
-msgid "Pagination Range"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:65
-#: src/table-builder-components/helpers/pagination/pagination.js:72
-msgid "Showing {start} to {end} of {total}"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:68
-msgid "Pagination Page Of"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationContent.js:73
-#: src/table-builder-components/helpers/pagination/pagination.js:73
-msgid "Page {current} of {total}"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:39
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:95
-msgid "Input Color"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:50
-msgid "Icon Background"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:56
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:112
-msgid "Icon Border"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:62
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:118
-msgid "Icon Border Radius"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:68
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:124
-msgid "Input Border"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:74
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:130
-msgid "Input Border Radius"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:151
-msgid "Icon Padding"
-msgstr ""
-
-#: src/table-builder-components/controls/pagination/PaginationStyle.js:159
-msgid "Gap"
-msgstr ""
-
-#: src/table-builder-components/controls/search/SearchContent.js:17
-msgid "Search Placeholder"
-msgstr ""
-
-#: src/table-builder-components/controls/search/SearchStyle.js:107
-msgid "Individual Search Button"
-msgstr ""
-
-#: src/table-builder-components/controls/search/SearchStyle.js:272
-msgid "Individual Search Options"
 msgstr ""
 
 #: src/table-builder-components/controls/short-code/ShortCode.js:62
@@ -2886,31 +2476,15 @@ msgid "Save the table, then copy and paste the shortcode into a Shortcode block 
 msgstr ""
 
 #: src/table-builder-components/controls/short-code/ShortCode.js:71
+msgid "Copied!"
+msgstr ""
+
+#: src/table-builder-components/controls/short-code/ShortCode.js:71
 msgid "Copy"
 msgstr ""
 
-#: src/table-builder-components/controls/sorting/SortingStyle.js:15
-msgid "Size"
-msgstr ""
-
-#: src/table-builder-components/controls/sorting/SortingStyle.js:27
-msgid "Horizontal Position"
-msgstr ""
-
-#: src/table-builder-components/controls/sorting/SortingStyle.js:39
-msgid "Vertical Position"
-msgstr ""
-
-#: src/table-builder-components/helpers/pagination/pagination.js:31
-msgid "Items per page"
-msgstr ""
-
-#: src/table-builder-components/helpers/pagination/pagination.js:71
-msgid "Showing all {total} items"
-msgstr ""
-
-#: src/table-builder-components/helpers/pagination/pagination.js:296
-msgid "Button"
+#: src/table-builder-components/table-ops/commit.js:116
+msgid "A table needs at least one column."
 msgstr ""
 
 #: src/blocks/table-builder-item/block.json
